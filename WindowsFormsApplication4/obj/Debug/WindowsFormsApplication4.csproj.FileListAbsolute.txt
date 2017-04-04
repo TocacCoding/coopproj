@@ -1,0 +1,22 @@
+c:\users\wipul_000\documents\visual studio 2015\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csprojResolveAssemblyReference.cache
+c:\users\wipul_000\documents\visual studio 2015\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Properties.Resources.resources
+c:\users\wipul_000\documents\visual studio 2015\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csproj.GenerateResource.Cache
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csprojResolveAssemblyReference.cache
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Properties.Resources.resources
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csproj.GenerateResource.Cache
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.pdb
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsInput.dll
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsInput.xml
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.exe
+C:\Users\Wipul_000\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.pdb
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.exe
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.pdb
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.pdb
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsInput.dll
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\bin\Debug\WindowsInput.xml
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csprojResolveAssemblyReference.cache
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Properties.Resources.resources
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.csproj.GenerateResource.Cache
+C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Debug\WindowsFormsApplication4.Form1.resources
