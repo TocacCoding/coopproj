@@ -12,14 +12,21 @@ using System.Runtime.InteropServices;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Threading;
+
 namespace WindowsFormsApplication4.Functions
 {
-    class Heal
+    class Support
     {
         static InputSimulator s = new InputSimulator();
-        public static void spellHeal(VirtualKeyCode hotkey)
+        public static VirtualKeyCode paralyzeHotkey;
+        public static VirtualKeyCode poisonHotkey;
+        public static void RemovePoison()
         {
-            s.Keyboard.KeyPress(hotkey);
+            s.Keyboard.KeyPress(poisonHotkey);
+        }
+        public static void RemoveParalyze()
+        {
+            s.Keyboard.KeyPress(paralyzeHotkey);
         }
     }
 }

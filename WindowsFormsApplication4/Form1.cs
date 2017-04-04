@@ -26,37 +26,75 @@ namespace WindowsFormsApplication4
             //Thread.Sleep(7000);
             //MessageBox.Show(GetPixel(943, 76).ToString());
             //eaterHtk.DataSource = Enum.GetValues(typeof(VirtualKeyCode));
+            //int maxManaX = 971;
         }
 
         //Init Vars
         //Bar pixel color
         int emptyBarAux = -13816270;
-
-        // size hp=745px (10% == 74px)
-        // hp start:950px
-        int redHealthX = 950 - 74 - 74 - 74 - 74 - 74; // 50%
-        int yellowHealthX = 950 - 74 - 74 - 74;    // 30%
-        int greenHealthX = 950 - 74;           // 10%
         int healthY = 32;
-
-        // size mana=745px (10% == 74px)
-        // mp start:970px
-        int manaStartDrinkX = 970 + 74 + 74 + 74 + 74 + 74; // 50%
-        int manaStopDrinkX = 970 + 74 + 74 + 37; // 25%
-        int maxManaX = 971;
         int manaY = 32;
         private bool smartMana = false;
 
         // spell heal timer
         private void spellHeal_Tick(object sender, EventArgs e)
         {
-
+            if (Functions.Window.isMaximized() && spellHealingList.Count > 0)
+            {
+                foreach (Structs.spellHeal spell in spellHealingList)
+                {
+                    if (Functions.Window.GetPixel(spell.hpPixel, healthY) == emptyBarAux)
+                    {
+                        Functions.Heal.spellHeal(spell.hotkey);
+                        return; // usou heal its over
+                    }
+                }
+            }
         }
 
         // item heal timer
         private void itemHeal_Tick(object sender, EventArgs e)
         {
-
+            if (Functions.Window.isMaximized())
+            {
+                if (itemHealingList.Count > 0)
+                {
+                    foreach (Structs.itemHeal item in itemHealingList)
+                    {
+                        if (Functions.Window.GetPixel(item.hpPixel, healthY) == emptyBarAux && Functions.Window.GetPixel(item.mpPixel, manaY) == emptyBarAux)
+                        {
+                            Functions.Heal.spellHeal(item.hotkey);
+                            return; // usou pot its over
+                        }
+                    }
+                }
+                // nao tinha pots para usar vai iniciar a routine do smart mana
+                if (smartManaDrinkerStartManaPercent.Text != "" && smartManaDrinkerStopManaPercent.Text != "" && smartManaWasterHotkey.SelectedItem.ToString() != "" 
+                    && smartManaDrinkerHotkey.SelectedItem.ToString() != "")
+                {
+                    int pixelStart = 970 + ((int.Parse(smartManaDrinkerStartManaPercent.Text) * 74) / 10);
+                    int pixelStop = 970 + ((int.Parse(smartManaDrinkerStopManaPercent.Text) * 74) / 10);
+                    if (smartMana)
+                    {
+                        if (Functions.Window.GetPixel(pixelStop, manaY) != emptyBarAux)
+                        {
+                            smartMana = false;
+                            return; // ja bebeu tudo vai turn off
+                        }
+                        else
+                        {
+                            Functions.Mana.manaDrinker((VirtualKeyCode)smartManaDrinkerHotkey.SelectedItem);
+                            return; // usou mana
+                        }
+                    }
+                    else if (Functions.Window.GetPixel(pixelStart, manaY) == emptyBarAux)
+                    {
+                        smartMana = true;
+                        Functions.Mana.manaDrinker((VirtualKeyCode)smartManaWasterHotkey.SelectedItem);
+                        return; // ligou a smart mana e bebeu fluid
+                    }
+                }
+            }
         }
 
         // status checker timer
@@ -70,7 +108,8 @@ namespace WindowsFormsApplication4
         {
             GC.Collect();
         }
-        // Graphical shit - cuidado aqui a cena fica negra se apagas fodes tudo - beware
+
+        // graphical shit 
         private void login_button_Click(object sender, EventArgs e)
         {
             MessageBox.Show("sou o login button!");
@@ -81,22 +120,44 @@ namespace WindowsFormsApplication4
             MessageBox.Show("sou o $$$$$ button!");
         }
 
+        // HEALER SPELL LOGICS E CONTROLS
+        // init lista spells heal
+        public List<Structs.spellHeal> spellHealingList = new List<Structs.spellHeal>();
+
+        private void updateSpellList()
+        {
+            listBoxSpellHealingActive.DataSource = null;
+            listBoxSpellHealingActive.DataSource = spellHealingList;
+            listBoxSpellHealingActive.DisplayMember = "Name";
+        }
+
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
-            listBoxSpellHealingActive.Items.Add(this.textBoxSpellName.Text + "  " + this.comboBoxNewSpellHealingHotkey.Text 
-                + "  " + this.newSpellHealingHpBelow.Text);
+            if (textBoxSpellName.Text == "SPELL" || newSpellHealingHpBelow.Text == "100" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK")
+            {
+                if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Please select a Name.");
+                else if (newSpellHealingHpBelow.Text == "100") MessageBox.Show("Error! Please select a HP Below value.");
+                else if (comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Please select a Hotkey.");
+            }
+             else
+            {
+                Structs.spellHeal newSpell = new Structs.spellHeal(this.textBoxSpellName.Text, this.newSpellHealingHpBelow.Text, (VirtualKeyCode)comboBoxNewSpellHealingHotkey.SelectedItem);
+                spellHealingList.Add(newSpell);
+                updateSpellList();
+            }
         }
 
         private void buttonClearNewSpell_Click(object sender, EventArgs e)
         {
-            this.newSpellHealingHpBelow.ResetText();
-            this.comboBoxNewSpellHealingHotkey.ResetText();
-            this.textBoxSpellName.ResetText();
+            this.newSpellHealingHpBelow.Text = "100";
+            this.comboBoxNewSpellHealingHotkey.Text = "HTK";
+            this.textBoxSpellName.Text = "SPELL";
         }
 
         private void buttonRemoveSelectedSpellHealing_Click(object sender, EventArgs e)
         {
-            this.listBoxSpellHealingActive.Items.Remove(listBoxSpellHealingActive.SelectedItem);
+            spellHealingList.Remove((Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
+            updateSpellList();
         }
 
         private void buttonUpSpellHealing_Click(object sender, EventArgs e)
@@ -106,10 +167,10 @@ namespace WindowsFormsApplication4
             int newIndex = listBoxSpellHealingActive.SelectedIndex - 1;
             if (newIndex < 0 || newIndex >= listBoxSpellHealingActive.Items.Count)
                 return;
-            object selected = listBoxSpellHealingActive.SelectedItem;
-            listBoxSpellHealingActive.Items.Remove(selected);
-            listBoxSpellHealingActive.Items.Insert(newIndex, selected);
+            spellHealingList.Remove((Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
+            spellHealingList.Insert(newIndex, (Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
             listBoxSpellHealingActive.SetSelected(newIndex, true);
+            updateSpellList();
         }
 
         private void buttonDownSpellHealing_Click(object sender, EventArgs e)
@@ -119,11 +180,12 @@ namespace WindowsFormsApplication4
             int newIndex = listBoxSpellHealingActive.SelectedIndex + 1;
             if (newIndex < 0 || newIndex >= listBoxSpellHealingActive.Items.Count)
                 return;
-            object selected = listBoxSpellHealingActive.SelectedItem;
-            listBoxSpellHealingActive.Items.Remove(selected);
-            listBoxSpellHealingActive.Items.Insert(newIndex, selected);
+            spellHealingList.Remove((Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
+            spellHealingList.Insert(newIndex, (Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
             listBoxSpellHealingActive.SetSelected(newIndex, true);
+            updateSpellList();
         }
+        // end spell heal logics
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
@@ -149,5 +211,134 @@ namespace WindowsFormsApplication4
         {
             MessageBox.Show("sou o load cfg!");
         }
+
+        private void listBoxSpellHealingActive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxMount_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mountHtk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Actions.mountHotkey = (VirtualKeyCode)mountHtk.SelectedItem;
+        }
+
+        private void eaterHtk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Actions.eatHotkey = (VirtualKeyCode)eaterHtk.SelectedItem;
+        }
+
+        private void hasteHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Actions.hasteHotkey = (VirtualKeyCode)hasteHotkey.SelectedItem;
+        }
+
+        private void uturaHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Actions.recoveryHotkey = (VirtualKeyCode)uturaHotkey.SelectedItem;
+        }
+
+        private void poisonHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Support.poisonHotkey = (VirtualKeyCode)poisonHotkey.SelectedItem;
+        }
+
+        private void lifeRingHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Rings.Elifering = (VirtualKeyCode)lifeRingHotkey.SelectedItem;
+        }
+
+        private void energyRingHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Rings.Eenergyring = (VirtualKeyCode)energyRingHotkey.SelectedItem;
+        }
+
+        private void healingRingHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Rings.Ehealingring = (VirtualKeyCode)healingRingHotkey.SelectedItem;
+        }
+
+        private void checkBoxHealingRing_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void paralyzeHotkey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Functions.Support.paralyzeHotkey = (VirtualKeyCode)paralyzeHotkey.SelectedItem;
+        }
+
+        // HEALER ITEM LOGICS E CONTROLS
+        public List<Structs.itemHeal> itemHealingList = new List<Structs.itemHeal>();
+
+        private void updateItemList()
+        {
+            listBoxItemHealingActive.DataSource = null;
+            listBoxItemHealingActive.DataSource = itemHealingList;
+            listBoxItemHealingActive.DisplayMember = "Name";
+        }
+
+        private void buttonAddNewItemHealing_Click(object sender, EventArgs e)
+        {
+            if (textBoxItemName.Text == "SPELL" || newItemHealingHpBelow.Text == "100" || comboBoxNewItemHealingHotkey.Text.ToString() == "HTK" || newItemHealingMpBelow.Text == "100")
+            {
+                if (textBoxItemName.Text == "SPELL") MessageBox.Show("Error! Please select a Name.");
+                else if (newItemHealingHpBelow.Text == "100") MessageBox.Show("Error! Please select a HP Below value.");
+                else if (comboBoxNewItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Please select a Hotkey.");
+                else if (newItemHealingMpBelow.Text == "100") MessageBox.Show("Error! Please select a MP Below value.");
+            }
+            else
+            {
+                Structs.itemHeal newSpell = new Structs.itemHeal(textBoxItemName.Text, newItemHealingHpBelow.Text, 
+                    newItemHealingMpBelow.Text, (VirtualKeyCode)comboBoxNewItemHealingHotkey.SelectedItem);
+                itemHealingList.Add(newSpell);
+                updateItemList();
+            }
+        }
+
+        private void buttonClearNewItem_Click(object sender, EventArgs e)
+        {
+            newItemHealingHpBelow.Text = "100";
+            comboBoxNewItemHealingHotkey.Text = "HTK";
+            textBoxItemName.Text = "SPELL";
+            newItemHealingMpBelow.Text = "100";
+        }
+
+        private void buttonRemoveSelectedItemHealing_Click(object sender, EventArgs e)
+        {
+            itemHealingList.Remove((Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
+            updateItemList();
+        }
+
+        private void buttonUpItemHealing_Click(object sender, EventArgs e)
+        {
+            if (listBoxItemHealingActive.SelectedItem == null || listBoxItemHealingActive.SelectedIndex < 0)
+                return;
+            int newIndex = listBoxItemHealingActive.SelectedIndex - 1;
+            if (newIndex < 0 || newIndex >= listBoxItemHealingActive.Items.Count)
+                return;
+            itemHealingList.Remove((Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
+            itemHealingList.Insert(newIndex, (Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
+            listBoxItemHealingActive.SetSelected(newIndex, true);
+            updateItemList();
+        }
+
+        private void buttonDownItemHealing_Click(object sender, EventArgs e)
+        {
+            if (listBoxItemHealingActive.SelectedItem == null || listBoxItemHealingActive.SelectedIndex < 0)
+                return;
+            int newIndex = listBoxItemHealingActive.SelectedIndex + 1;
+            if (newIndex < 0 || newIndex >= listBoxItemHealingActive.Items.Count)
+                return;
+            itemHealingList.Remove((Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
+            itemHealingList.Insert(newIndex, (Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
+            listBoxItemHealingActive.SetSelected(newIndex, true);
+            updateItemList();
+        }
+        // end of item healer
     }
 }

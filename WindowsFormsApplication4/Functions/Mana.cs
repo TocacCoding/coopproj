@@ -14,9 +14,9 @@ namespace WindowsFormsApplication4.Functions
     class Mana
     {
         static InputSimulator s = new InputSimulator();
-        public static void manaDrinker()
+        public static void manaDrinker(VirtualKeyCode hotkey)
         {
-            s.Keyboard.KeyPress(VirtualKeyCode.VK_7);
+            s.Keyboard.KeyPress(hotkey);
         }
         public static void manaWaster()
         {

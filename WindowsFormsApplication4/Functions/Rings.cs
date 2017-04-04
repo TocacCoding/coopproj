@@ -20,21 +20,30 @@ namespace WindowsFormsApplication4.Functions
     {
         static InputSimulator s = new InputSimulator();
         /// ring funcs
+        public static VirtualKeyCode Elifering;
+        public static VirtualKeyCode Ulifering;
+        public static VirtualKeyCode Eenergyring;
+        public static VirtualKeyCode Uenergyring;
+        public static VirtualKeyCode Ehealingring;
         public void equipLifeRing()
         {
-            s.Keyboard.KeyPress(VirtualKeyCode.VK_6);
+            s.Keyboard.KeyPress(Elifering);
         }
         public void unequipLifeRing()
         {
-            s.Keyboard.KeyPress(VirtualKeyCode.VK_4);
+            s.Keyboard.KeyPress(Ulifering);
         }
         public void equipEnergyRing()
         {
-            s.Keyboard.KeyPress(VirtualKeyCode.VK_2);
+            s.Keyboard.KeyPress(Eenergyring);
         }
         public void unequipEnergyRing()
         {
-            s.Keyboard.KeyPress(VirtualKeyCode.VK_5);
+            s.Keyboard.KeyPress(Uenergyring);
+        }
+        public void equipHealingRing()
+        {
+            s.Keyboard.KeyPress(Ehealingring);
         }
     }
 }
