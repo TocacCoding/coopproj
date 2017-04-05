@@ -19,7 +19,7 @@ namespace WindowsFormsApplication4.Structs
                 name = NAME;
                 hpPercent = HP;
                 hotkey = HTK;
-                hpPixel = 950 - ((int.Parse(HP) * 74) / 10);
+                hpPixel = 210 + ((int.Parse(HP) * 74) / 10);
         }
             public override String ToString()
             {

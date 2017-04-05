@@ -21,8 +21,8 @@ namespace WindowsFormsApplication4.Structs
             hpPercent = HP;
             mpPercent = MP;
             hotkey = HTK;
-            hpPixel = 950 - ((int.Parse(HP) * 74) / 10);
-            mpPixel = 970 + ((int.Parse(MP) * 74) / 10);
+            hpPixel = 210 + ((int.Parse(HP) * 74) / 10);
+            mpPixel = 1710 - ((int.Parse(MP) * 74) / 10);
         }
         public override String ToString()
         {

@@ -34,7 +34,7 @@ namespace WindowsFormsApplication4
         int healthY = 32;
         int manaY = 32;
         int maxManaX = 971;
-        private bool smartMana = false;
+        //private bool smartMana = false;
 
         // spell heal timer
         private void spellHeal_Tick(object sender, EventArgs e)
@@ -67,19 +67,6 @@ namespace WindowsFormsApplication4
                             return; // usou pot its over
                         }
                     }
-                }
-                // nao tinha pots para usar vai iniciar a routine do smart mana
-                if (smartManaDrinkerStartManaPercent.Text != "" && smartManaDrinkerStopManaPercent.Text != "" 
-                    && smartManaDrinkerHotkey.SelectedItem != null && smartManaDrinkerHotkey.SelectedItem.ToString() != "HTK")
-                {
-                    int pixelStart = 970 + ((int.Parse(smartManaDrinkerStartManaPercent.Text) * 74) / 10);
-                    int pixelStop = 970 + ((int.Parse(smartManaDrinkerStopManaPercent.Text) * 74) / 10);
-                    if (smartMana)
-                    {
-                        Functions.Mana.manaDrinker((VirtualKeyCode)smartManaDrinkerHotkey.SelectedItem);
-                        if (Functions.Window.GetPixel(pixelStop, manaY) != emptyBarAux) smartMana = false;                  
-                    }
-                    else if (Functions.Window.GetPixel(pixelStart, manaY) == emptyBarAux) smartMana = true;
                 }
             }
         }
@@ -173,10 +160,10 @@ namespace WindowsFormsApplication4
 
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
-            if (textBoxSpellName.Text == "SPELL" || newSpellHealingHpBelow.Text == "100" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK")
+            if (textBoxSpellName.Text == "SPELL" || newSpellHealingHpBelow.Text == "HP" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK")
             {
                 if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Please select a Name.");
-                else if (newSpellHealingHpBelow.Text == "100") MessageBox.Show("Error! Please select a HP Below value.");
+                else if (newSpellHealingHpBelow.Text == "HP") MessageBox.Show("Error! Please select a HP Below value.");
                 else if (comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Please select a Hotkey.");
             }
              else
@@ -189,7 +176,7 @@ namespace WindowsFormsApplication4
 
         private void buttonClearNewSpell_Click(object sender, EventArgs e)
         {
-            this.newSpellHealingHpBelow.Text = "100";
+            this.newSpellHealingHpBelow.Text = "HP";
             this.comboBoxNewSpellHealingHotkey.Text = "HTK";
             this.textBoxSpellName.Text = "SPELL";
         }
@@ -313,12 +300,12 @@ namespace WindowsFormsApplication4
 
         private void buttonAddNewItemHealing_Click(object sender, EventArgs e)
         {
-            if (textBoxItemName.Text == "SPELL" || newItemHealingHpBelow.Text == "100" || comboBoxNewItemHealingHotkey.Text.ToString() == "HTK" || newItemHealingMpBelow.Text == "100")
+            if (textBoxItemName.Text == "ITEM" || newItemHealingHpBelow.Text == "HP" || comboBoxNewItemHealingHotkey.Text.ToString() == "HTK" || newItemHealingMpBelow.Text == "MP")
             {
-                if (textBoxItemName.Text == "SPELL") MessageBox.Show("Error! Please select a Name.");
-                else if (newItemHealingHpBelow.Text == "100") MessageBox.Show("Error! Please select a HP Below value.");
+                if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Please select a Name.");
+                else if (newItemHealingHpBelow.Text == "HP") MessageBox.Show("Error! Please select a HP Below value.");
                 else if (comboBoxNewItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Please select a Hotkey.");
-                else if (newItemHealingMpBelow.Text == "100") MessageBox.Show("Error! Please select a MP Below value.");
+                else if (newItemHealingMpBelow.Text == "MP") MessageBox.Show("Error! Please select a MP Below value.");
             }
             else
             {
@@ -331,10 +318,10 @@ namespace WindowsFormsApplication4
 
         private void buttonClearNewItem_Click(object sender, EventArgs e)
         {
-            newItemHealingHpBelow.Text = "100";
+            newItemHealingHpBelow.Text = "HP";
             comboBoxNewItemHealingHotkey.Text = "HTK";
-            textBoxItemName.Text = "SPELL";
-            newItemHealingMpBelow.Text = "100";
+            textBoxItemName.Text = "ITEM";
+            newItemHealingMpBelow.Text = "MP";
         }
 
         private void buttonRemoveSelectedItemHealing_Click(object sender, EventArgs e)
@@ -476,6 +463,45 @@ namespace WindowsFormsApplication4
                 MessageBox.Show("Select hotkey first!");
             }
             else checkBoxEnergyRing.CheckState = 0;
+        }
+
+        private void buttonApplyMaxValues_Click(object sender, EventArgs e)
+        {
+            if (maxHpInput != null && maxMpInput !=null)
+            {
+                int hpValid;
+                int mpValid;
+                int.TryParse(maxHpInput.Text, out hpValid);
+                int.TryParse(maxMpInput.Text, out mpValid);
+
+                if (hpValid > 0 && mpValid > 0)
+                {
+                    groupBoxItemHealing.Visible = true;
+                    groupBoxSpellHealing.Visible = true;
+                    maxHpInput.ReadOnly = true;
+                    maxMpInput.ReadOnly = true;
+                    buttonResetHealing.Visible = true;
+                    buttonApplyMaxValues.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Error! Values out of range.");
+                    groupBoxItemHealing.Visible = false;
+                    groupBoxSpellHealing.Visible = false;
+                }
+            }
+        }
+
+        private void buttonResetHealing_Click(object sender, EventArgs e)
+        {
+            spellHealingList.Clear();
+            itemHealingList.Clear();
+            maxHpInput.ReadOnly = false;
+            maxMpInput.ReadOnly = false;
+            groupBoxItemHealing.Visible = false;
+            groupBoxSpellHealing.Visible = false;
+            buttonApplyMaxValues.Visible = true;
+            buttonResetHealing.Visible = false;
         }
         //
     }
