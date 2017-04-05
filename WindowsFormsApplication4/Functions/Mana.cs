@@ -14,13 +14,15 @@ namespace WindowsFormsApplication4.Functions
     class Mana
     {
         static InputSimulator s = new InputSimulator();
+
         public static void manaDrinker(VirtualKeyCode hotkey)
         {
             s.Keyboard.KeyPress(hotkey);
         }
-        public static void manaWaster()
+
+        public static void manaWaster(VirtualKeyCode hotkey)
         {
-            s.Keyboard.KeyPress(VirtualKeyCode.NUMPAD5);
+            s.Keyboard.KeyPress(hotkey);
         }
     }
 }

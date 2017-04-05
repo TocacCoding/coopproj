@@ -35,7 +35,6 @@ namespace WindowsFormsApplication4
             this.spellHealTimer = new System.Windows.Forms.Timer(this.components);
             this.itemHealTimer = new System.Windows.Forms.Timer(this.components);
             this.statusCheckTimer = new System.Windows.Forms.Timer(this.components);
-            this.collectionTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_account = new System.Windows.Forms.TabPage();
             this.buttonRegister = new System.Windows.Forms.Button();
@@ -174,12 +173,6 @@ namespace WindowsFormsApplication4
             this.statusCheckTimer.Enabled = true;
             this.statusCheckTimer.Interval = 3000;
             this.statusCheckTimer.Tick += new System.EventHandler(this.statusChecker_Tick);
-            // 
-            // collectionTimer
-            // 
-            this.collectionTimer.Enabled = true;
-            this.collectionTimer.Interval = 180000;
-            this.collectionTimer.Tick += new System.EventHandler(this.gc_Tick);
             // 
             // tabControl1
             // 
@@ -1350,6 +1343,7 @@ namespace WindowsFormsApplication4
             this.smartManaWasterHotkey.Name = "smartManaWasterHotkey";
             this.smartManaWasterHotkey.Size = new System.Drawing.Size(77, 21);
             this.smartManaWasterHotkey.TabIndex = 5;
+            this.smartManaWasterHotkey.Text = "HTK";
             // 
             // labelManaWasterHotkey
             // 
@@ -1620,6 +1614,7 @@ namespace WindowsFormsApplication4
             this.smartManaDrinkerHotkey.Name = "smartManaDrinkerHotkey";
             this.smartManaDrinkerHotkey.Size = new System.Drawing.Size(77, 21);
             this.smartManaDrinkerHotkey.TabIndex = 4;
+            this.smartManaDrinkerHotkey.Text = "HTK";
             // 
             // labelSmartManaDrinkerHotkey
             // 
@@ -2248,6 +2243,7 @@ namespace WindowsFormsApplication4
             this.mountHtk.Name = "mountHtk";
             this.mountHtk.Size = new System.Drawing.Size(77, 21);
             this.mountHtk.TabIndex = 4;
+            this.mountHtk.Text = "HTK";
             this.mountHtk.SelectedIndexChanged += new System.EventHandler(this.mountHtk_SelectedIndexChanged);
             // 
             // eaterHtk
@@ -2430,6 +2426,7 @@ namespace WindowsFormsApplication4
             this.eaterHtk.Name = "eaterHtk";
             this.eaterHtk.Size = new System.Drawing.Size(77, 21);
             this.eaterHtk.TabIndex = 3;
+            this.eaterHtk.Text = "HTK";
             this.eaterHtk.SelectedIndexChanged += new System.EventHandler(this.eaterHtk_SelectedIndexChanged);
             // 
             // checkBoxMount
@@ -2452,6 +2449,7 @@ namespace WindowsFormsApplication4
             this.checkBoxEater.TabIndex = 0;
             this.checkBoxEater.Text = "Eater";
             this.checkBoxEater.UseVisualStyleBackColor = true;
+            this.checkBoxEater.CheckedChanged += new System.EventHandler(this.checkBoxEater_CheckedChanged);
             // 
             // groupboxRings
             // 
@@ -3196,6 +3194,7 @@ namespace WindowsFormsApplication4
             this.energyRingHotkey.Name = "energyRingHotkey";
             this.energyRingHotkey.Size = new System.Drawing.Size(77, 21);
             this.energyRingHotkey.TabIndex = 6;
+            this.energyRingHotkey.Text = "HTK";
             this.energyRingHotkey.SelectedIndexChanged += new System.EventHandler(this.energyRingHotkey_SelectedIndexChanged);
             // 
             // lifeRingHotkey
@@ -3378,6 +3377,7 @@ namespace WindowsFormsApplication4
             this.lifeRingHotkey.Name = "lifeRingHotkey";
             this.lifeRingHotkey.Size = new System.Drawing.Size(77, 21);
             this.lifeRingHotkey.TabIndex = 5;
+            this.lifeRingHotkey.Text = "HTK";
             this.lifeRingHotkey.SelectedIndexChanged += new System.EventHandler(this.lifeRingHotkey_SelectedIndexChanged);
             // 
             // checkBoxMightRing
@@ -3420,6 +3420,7 @@ namespace WindowsFormsApplication4
             this.checkBoxEnergyRing.TabIndex = 1;
             this.checkBoxEnergyRing.Text = "Energy Ring";
             this.checkBoxEnergyRing.UseVisualStyleBackColor = true;
+            this.checkBoxEnergyRing.CheckedChanged += new System.EventHandler(this.checkBoxEnergyRing_CheckedChanged);
             // 
             // checkBoxLifeRing
             // 
@@ -3430,6 +3431,7 @@ namespace WindowsFormsApplication4
             this.checkBoxLifeRing.TabIndex = 0;
             this.checkBoxLifeRing.Text = "Life Ring";
             this.checkBoxLifeRing.UseVisualStyleBackColor = true;
+            this.checkBoxLifeRing.CheckedChanged += new System.EventHandler(this.checkBoxLifeRing_CheckedChanged);
             // 
             // tab_support
             // 
@@ -3635,7 +3637,7 @@ namespace WindowsFormsApplication4
             this.uturaHotkey.Name = "uturaHotkey";
             this.uturaHotkey.Size = new System.Drawing.Size(77, 21);
             this.uturaHotkey.TabIndex = 8;
-            this.uturaHotkey.Text = "select HTK";
+            this.uturaHotkey.Text = "HTK";
             this.uturaHotkey.SelectedIndexChanged += new System.EventHandler(this.uturaHotkey_SelectedIndexChanged);
             // 
             // hasteHotkey
@@ -3818,7 +3820,7 @@ namespace WindowsFormsApplication4
             this.hasteHotkey.Name = "hasteHotkey";
             this.hasteHotkey.Size = new System.Drawing.Size(77, 21);
             this.hasteHotkey.TabIndex = 7;
-            this.hasteHotkey.Text = "select HTK";
+            this.hasteHotkey.Text = "HTK";
             this.hasteHotkey.SelectedIndexChanged += new System.EventHandler(this.hasteHotkey_SelectedIndexChanged);
             // 
             // checkBoxUtura
@@ -3830,6 +3832,7 @@ namespace WindowsFormsApplication4
             this.checkBoxUtura.TabIndex = 1;
             this.checkBoxUtura.Text = "Utura";
             this.checkBoxUtura.UseVisualStyleBackColor = true;
+            this.checkBoxUtura.CheckedChanged += new System.EventHandler(this.checkBoxUtura_CheckedChanged);
             // 
             // checkBoxHaste
             // 
@@ -3840,6 +3843,7 @@ namespace WindowsFormsApplication4
             this.checkBoxHaste.TabIndex = 0;
             this.checkBoxHaste.Text = "Haste";
             this.checkBoxHaste.UseVisualStyleBackColor = true;
+            this.checkBoxHaste.CheckedChanged += new System.EventHandler(this.checkBoxHaste_CheckedChanged);
             // 
             // groupBoxConditionHealer
             // 
@@ -4034,7 +4038,7 @@ namespace WindowsFormsApplication4
             this.poisonHotkey.Name = "poisonHotkey";
             this.poisonHotkey.Size = new System.Drawing.Size(77, 21);
             this.poisonHotkey.TabIndex = 7;
-            this.poisonHotkey.Text = "select HTK";
+            this.poisonHotkey.Text = "HTK";
             this.poisonHotkey.SelectedIndexChanged += new System.EventHandler(this.poisonHotkey_SelectedIndexChanged);
             // 
             // paralyzeHotkey
@@ -4217,7 +4221,7 @@ namespace WindowsFormsApplication4
             this.paralyzeHotkey.Name = "paralyzeHotkey";
             this.paralyzeHotkey.Size = new System.Drawing.Size(77, 21);
             this.paralyzeHotkey.TabIndex = 6;
-            this.paralyzeHotkey.Text = "select HTK";
+            this.paralyzeHotkey.Text = "HTK";
             this.paralyzeHotkey.SelectedIndexChanged += new System.EventHandler(this.paralyzeHotkey_SelectedIndexChanged);
             // 
             // checkBoxPoison
@@ -4229,6 +4233,7 @@ namespace WindowsFormsApplication4
             this.checkBoxPoison.TabIndex = 1;
             this.checkBoxPoison.Text = "Poison";
             this.checkBoxPoison.UseVisualStyleBackColor = true;
+            this.checkBoxPoison.CheckedChanged += new System.EventHandler(this.checkBoxPoison_CheckedChanged);
             // 
             // checkBoxParalyze
             // 
@@ -4239,6 +4244,7 @@ namespace WindowsFormsApplication4
             this.checkBoxParalyze.TabIndex = 0;
             this.checkBoxParalyze.Text = "Paralyze";
             this.checkBoxParalyze.UseVisualStyleBackColor = true;
+            this.checkBoxParalyze.CheckedChanged += new System.EventHandler(this.checkBoxParalyze_CheckedChanged);
             // 
             // Form1
             // 
@@ -4292,7 +4298,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.Timer spellHealTimer;
         private System.Windows.Forms.Timer itemHealTimer;
         private System.Windows.Forms.Timer statusCheckTimer;
-        private System.Windows.Forms.Timer collectionTimer;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tab_account;
         private System.Windows.Forms.TextBox password_input;

@@ -12,19 +12,31 @@ using System.Runtime.InteropServices;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Threading;
+using System.Diagnostics;
+
 
 namespace WindowsFormsApplication4.Functions
 {
     class Window
     {
-        public static int GetPixel(int X, int Y)
+        static Bitmap screenPixel = new Bitmap(1, 1, PixelFormat.Format32bppArgb);
+        static Point location = new Point();
+        public static int GetPixel(int x, int y)
         {
-            Bitmap bmp = new Bitmap(1, 1, PixelFormat.Format32bppPArgb);
-            Graphics grp = Graphics.FromImage(bmp);
-            grp.CopyFromScreen(new Point(X, Y), Point.Empty, new Size(1, 1));
-            grp.Save();
-            grp.Dispose();
-            return bmp.GetPixel(0, 0).ToArgb();
+             location.X = x;
+             location.Y = y;
+            using (Graphics gdest = Graphics.FromImage(screenPixel))
+            {
+                using (Graphics gsrc = Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    IntPtr hSrcDC = gsrc.GetHdc();
+                    IntPtr hDC = gdest.GetHdc();
+                    int retval = NativeMethods.BitBlt(hDC, 0, 0, 1, 1, hSrcDC, location.X, location.Y, (int)CopyPixelOperation.SourceCopy);
+                    gdest.ReleaseHdc();
+                    gsrc.ReleaseHdc();
+                }
+            }
+            return screenPixel.GetPixel(0, 0).ToArgb();
         }
         public static bool isMaximized()
         {

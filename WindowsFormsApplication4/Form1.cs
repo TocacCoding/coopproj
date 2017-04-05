@@ -69,8 +69,7 @@ namespace WindowsFormsApplication4
                     }
                 }
                 // nao tinha pots para usar vai iniciar a routine do smart mana
-                if (smartManaDrinkerStartManaPercent.Text != "" && smartManaDrinkerStopManaPercent.Text != "" && smartManaWasterHotkey.SelectedItem.ToString() != "" 
-                    && smartManaDrinkerHotkey.SelectedItem.ToString() != "")
+                if (smartManaDrinkerStartManaPercent.Text != "" && smartManaDrinkerStopManaPercent.Text != "" && smartManaDrinkerHotkey.SelectedItem.ToString() != "HTK")
                 {
                     int pixelStart = 970 + ((int.Parse(smartManaDrinkerStartManaPercent.Text) * 74) / 10);
                     int pixelStop = 970 + ((int.Parse(smartManaDrinkerStopManaPercent.Text) * 74) / 10);
@@ -90,7 +89,7 @@ namespace WindowsFormsApplication4
                     else if (Functions.Window.GetPixel(pixelStart, manaY) == emptyBarAux)
                     {
                         smartMana = true;
-                        Functions.Mana.manaDrinker((VirtualKeyCode)smartManaWasterHotkey.SelectedItem);
+                        Functions.Mana.manaDrinker((VirtualKeyCode)smartManaDrinkerHotkey.SelectedItem);
                         return; // ligou a smart mana e bebeu fluid
                     }
                 }
@@ -98,15 +97,68 @@ namespace WindowsFormsApplication4
         }
 
         // status checker timer
+        // init vars status
+        // routine
+        bool autoEat = false;
+        bool autoMount = false;
+        // spells
+        bool autoUtana = false;
+        bool autoUtamo = false;
+        // rings
+        bool autoLifeRing = false;
+        bool autoEnergyRing = false;
+        bool autoTimering = false;
+        bool autoMightRing = false;
+        bool autoHealingRing = false;
+        // condition
+        bool autoParalyze = false;
+        bool autoPox = false;
+        // holder
+        bool autoHaste = false;
+        bool autoUtura = false;
+        // mana waste
+        bool autoManaWaste = false;
+
         private void statusChecker_Tick(object sender, EventArgs e)
         {
+            if (Functions.Window.isMaximized() && !Functions.Status.isPZ() && Functions.Window.isClear())
+            {
+                // routine
+                if (autoEat || autoMount)
+                {
+                    if (autoEat && Functions.Status.isHungry()) Functions.Actions.eat();
+                    else if (autoMount && !Functions.Status.isMounted()) Functions.Actions.mount();
+                }
+                // spells
+                if (autoUtana || autoUtamo)
+                {
+                    // falta implementar!
+                }
+                // rings
+                if (autoLifeRing || autoEnergyRing || autoTimering || autoMightRing || autoHealingRing)
+                {
+                    if (autoEnergyRing && !Functions.Status.isEnergyRing()) Functions.Rings.equipEnergyRing();
+                    else if (autoLifeRing && !Functions.Status.isLifeRing()) Functions.Rings.equipLifeRing();
 
-        }
-
-        // garbage collection timer
-        private void gc_Tick(object sender, EventArgs e)
-        {
-            GC.Collect();
+                }
+                // condition
+                if (autoParalyze || autoPox)
+                {
+                    if (autoParalyze && Functions.Status.isParalyzed()) Functions.Support.RemoveParalyze();
+                    else if (autoPox) Functions.Support.RemovePoison();
+                }
+                // holder
+                if (autoHaste || autoUtura)
+                {
+                    if (autoHaste && !Functions.Status.isHasted()) Functions.Actions.haste();
+                    else if (autoUtura && !Functions.Status.isEmpowered()) Functions.Actions.empower();
+                }
+                // mana waste
+                if (autoManaWaste)
+                {
+                    Functions.Mana.manaWaster((VirtualKeyCode)smartManaWasterHotkey.SelectedItem);
+                }
+            }
         }
 
         // graphical shit 
@@ -156,8 +208,11 @@ namespace WindowsFormsApplication4
 
         private void buttonRemoveSelectedSpellHealing_Click(object sender, EventArgs e)
         {
-            spellHealingList.Remove((Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
-            updateSpellList();
+            if (spellHealingList.Count > 0)
+            {
+                spellHealingList.Remove((Structs.spellHeal)listBoxSpellHealingActive.SelectedItem);
+                updateSpellList();
+            }
         }
 
         private void buttonUpSpellHealing_Click(object sender, EventArgs e)
@@ -213,11 +268,6 @@ namespace WindowsFormsApplication4
         }
 
         private void listBoxSpellHealingActive_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBoxMount_CheckedChanged(object sender, EventArgs e)
         {
 
         }
@@ -310,8 +360,12 @@ namespace WindowsFormsApplication4
 
         private void buttonRemoveSelectedItemHealing_Click(object sender, EventArgs e)
         {
-            itemHealingList.Remove((Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
-            updateItemList();
+            if (itemHealingList.Count > 0)
+            {
+                itemHealingList.Remove((Structs.itemHeal)listBoxItemHealingActive.SelectedItem);
+                updateItemList();
+            }
+
         }
 
         private void buttonUpItemHealing_Click(object sender, EventArgs e)
@@ -339,6 +393,112 @@ namespace WindowsFormsApplication4
             listBoxItemHealingActive.SetSelected(newIndex, true);
             updateItemList();
         }
-        // end of item healer
+        // end of item healing
+
+        private void checkBoxHaste_CheckedChanged(object sender, EventArgs e)
+        {
+            if (hasteHotkey.Text != "HTK")
+            {
+                autoHaste = !autoHaste;
+            }
+            else if (checkBoxHaste.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxHaste.CheckState = 0;
+        }
+
+        private void checkBoxUtura_CheckedChanged(object sender, EventArgs e)
+        {
+            if (uturaHotkey.Text != "HTK")
+            {
+                autoUtura = !autoUtura;
+            }
+            else if (checkBoxUtura.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxUtura.CheckState = 0;
+        }
+
+        private void checkBoxParalyze_CheckedChanged(object sender, EventArgs e)
+        {
+            if (paralyzeHotkey.Text != "HTK")
+            {
+                autoParalyze = !autoParalyze;
+            }
+            else if (checkBoxParalyze.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxParalyze.CheckState = 0;
+        }
+
+        private void checkBoxPoison_CheckedChanged(object sender, EventArgs e)
+        {
+            if (poisonHotkey.Text != "HTK")
+            {
+                autoPox = !autoPox;
+            }
+            else if (checkBoxPoison.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxPoison.CheckState = 0;
+        }
+
+        private void checkBoxEater_CheckedChanged(object sender, EventArgs e)
+        {
+            if (eaterHtk.Text != "HTK")
+            {
+                autoEat = !autoEat;
+            }
+            else if (checkBoxEater.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxEater.CheckState = 0;
+        }
+
+        private void checkBoxMount_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mountHtk.Text != "HTK")
+            {
+                autoMount = !autoMount;
+            }
+            else if (checkBoxMount.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxMount.CheckState = 0;
+        }
+
+        private void checkBoxLifeRing_CheckedChanged(object sender, EventArgs e)
+        {
+            if (lifeRingHotkey.Text != "HTK")
+            {
+                autoLifeRing = !autoLifeRing;
+            }
+            else if (checkBoxLifeRing.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxLifeRing.CheckState = 0;
+        }
+
+        private void checkBoxEnergyRing_CheckedChanged(object sender, EventArgs e)
+        {
+            if (energyRingHotkey.Text != "HTK")
+            {
+                autoEnergyRing = !autoEnergyRing;
+            }
+            else if (checkBoxEnergyRing.CheckState == 0)
+            {
+                MessageBox.Show("Select hotkey first!");
+            }
+            else checkBoxEnergyRing.CheckState = 0;
+        }
+
+        //
     }
 }

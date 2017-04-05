@@ -25,23 +25,28 @@ namespace WindowsFormsApplication4.Functions
         public static VirtualKeyCode Eenergyring;
         public static VirtualKeyCode Uenergyring;
         public static VirtualKeyCode Ehealingring;
-        public void equipLifeRing()
+
+        public static void equipLifeRing()
         {
             s.Keyboard.KeyPress(Elifering);
         }
-        public void unequipLifeRing()
+
+        public static void unequipLifeRing()
         {
             s.Keyboard.KeyPress(Ulifering);
         }
-        public void equipEnergyRing()
+
+        public static void equipEnergyRing()
         {
             s.Keyboard.KeyPress(Eenergyring);
         }
-        public void unequipEnergyRing()
+
+        public static void unequipEnergyRing()
         {
             s.Keyboard.KeyPress(Uenergyring);
         }
-        public void equipHealingRing()
+
+        public static void equipHealingRing()
         {
             s.Keyboard.KeyPress(Ehealingring);
         }

@@ -20,10 +20,12 @@ namespace WindowsFormsApplication4.Functions
         static InputSimulator s = new InputSimulator();
         public static VirtualKeyCode paralyzeHotkey;
         public static VirtualKeyCode poisonHotkey;
+
         public static void RemovePoison()
         {
             s.Keyboard.KeyPress(poisonHotkey);
         }
+
         public static void RemoveParalyze()
         {
             s.Keyboard.KeyPress(paralyzeHotkey);
