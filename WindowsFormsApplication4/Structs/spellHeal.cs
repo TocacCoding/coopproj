@@ -23,7 +23,7 @@ namespace WindowsFormsApplication4.Structs
         }
             public override String ToString()
             {
-            return this.name + "       " + this.hpPercent + "       " + this.hotkey;
+            return "N: " + this.name + "     HP: <" + this.hpPercent + "%     HT: " + this.hotkey;
         }
 
     }

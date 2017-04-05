@@ -61,10 +61,41 @@ namespace WindowsFormsApplication4
                 {
                     foreach (Structs.itemHeal item in itemHealingList)
                     {
-                        if (Functions.Window.GetPixel(item.hpPixel, healthY) == emptyBarAux && Functions.Window.GetPixel(item.mpPixel, manaY) == emptyBarAux)
+                        if (item.operatorHp == "BELOW" && item.operatorMp == "BELOW")
                         {
-                            Functions.Heal.spellHeal(item.hotkey);
-                            return; // usou pot its over
+                            // below below
+                            if (Functions.Window.GetPixel(item.hpPixel, healthY) == emptyBarAux && Functions.Window.GetPixel(item.mpPixel, manaY) == emptyBarAux)
+                            {
+                                Functions.Heal.spellHeal(item.hotkey);
+                                return; // usou pot its over
+                            }
+                        }
+                        else if (item.operatorHp == "BELOW" && item.operatorMp == "OVER")
+                        {
+                            // below over
+                            if (Functions.Window.GetPixel(item.hpPixel, healthY) == emptyBarAux && Functions.Window.GetPixel(item.mpPixel, manaY) != emptyBarAux)
+                            {
+                                Functions.Heal.spellHeal(item.hotkey);
+                                return; // usou pot its over
+                            }
+                        }
+                        else if (item.operatorHp == "OVER" && item.operatorMp == "BELOW")
+                        {
+                            // over below
+                            if (Functions.Window.GetPixel(item.hpPixel, healthY) != emptyBarAux && Functions.Window.GetPixel(item.mpPixel, manaY) == emptyBarAux)
+                            {
+                                Functions.Heal.spellHeal(item.hotkey);
+                                return; // usou pot its over
+                            }
+                        }
+                        else if (item.operatorHp == "OVER" && item.operatorMp == "OVER")
+                        {
+                            // over over
+                            if (Functions.Window.GetPixel(item.hpPixel, healthY) != emptyBarAux && Functions.Window.GetPixel(item.mpPixel, manaY) != emptyBarAux)
+                            {
+                                Functions.Heal.spellHeal(item.hotkey);
+                                return; // usou pot its over
+                            }
                         }
                     }
                 }
@@ -310,7 +341,7 @@ namespace WindowsFormsApplication4
             else
             {
                 Structs.itemHeal newSpell = new Structs.itemHeal(textBoxItemName.Text, newItemHealingHpBelow.Text, 
-                    newItemHealingMpBelow.Text, (VirtualKeyCode)comboBoxNewItemHealingHotkey.SelectedItem);
+                    newItemHealingMpBelow.Text, (VirtualKeyCode)comboBoxNewItemHealingHotkey.SelectedItem, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text);
                 itemHealingList.Add(newSpell);
                 updateItemList();
             }
@@ -322,6 +353,8 @@ namespace WindowsFormsApplication4
             comboBoxNewItemHealingHotkey.Text = "HTK";
             textBoxItemName.Text = "ITEM";
             newItemHealingMpBelow.Text = "MP";
+            comboBoxHpBelowOver.Text = "BELOW";
+            comboBoxMpBelowOver.Text = "BELOW";
         }
 
         private void buttonRemoveSelectedItemHealing_Click(object sender, EventArgs e)
