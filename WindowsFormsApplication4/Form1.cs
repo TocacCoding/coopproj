@@ -496,6 +496,8 @@ namespace WindowsFormsApplication4
         {
             spellHealingList.Clear();
             itemHealingList.Clear();
+            updateItemList();
+            updateSpellList();
             maxHpInput.ReadOnly = false;
             maxMpInput.ReadOnly = false;
             groupBoxItemHealing.Visible = false;
