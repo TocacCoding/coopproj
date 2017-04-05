@@ -21,9 +21,9 @@ namespace WindowsFormsApplication4.Functions
         static InputSimulator s = new InputSimulator();
         /// ring funcs
         public static VirtualKeyCode Elifering;
-        public static VirtualKeyCode Ulifering;
+        //public static VirtualKeyCode Ulifering;
         public static VirtualKeyCode Eenergyring;
-        public static VirtualKeyCode Uenergyring;
+        //public static VirtualKeyCode Uenergyring;
         public static VirtualKeyCode Ehealingring;
 
         public static void equipLifeRing()
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication4.Functions
 
         public static void unequipLifeRing()
         {
-            s.Keyboard.KeyPress(Ulifering);
+            //s.Keyboard.KeyPress(Ulifering);
         }
 
         public static void equipEnergyRing()
@@ -43,7 +43,7 @@ namespace WindowsFormsApplication4.Functions
 
         public static void unequipEnergyRing()
         {
-            s.Keyboard.KeyPress(Uenergyring);
+            //s.Keyboard.KeyPress(Uenergyring);
         }
 
         public static void equipHealingRing()

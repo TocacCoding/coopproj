@@ -26,7 +26,6 @@ namespace WindowsFormsApplication4
             //Thread.Sleep(7000);
             //MessageBox.Show(GetPixel(943, 76).ToString());
             //eaterHtk.DataSource = Enum.GetValues(typeof(VirtualKeyCode));
-            //int maxManaX = 971;
         }
 
         //Init Vars
@@ -34,6 +33,7 @@ namespace WindowsFormsApplication4
         int emptyBarAux = -13816270;
         int healthY = 32;
         int manaY = 32;
+        int maxManaX = 971;
         private bool smartMana = false;
 
         // spell heal timer
@@ -69,29 +69,17 @@ namespace WindowsFormsApplication4
                     }
                 }
                 // nao tinha pots para usar vai iniciar a routine do smart mana
-                if (smartManaDrinkerStartManaPercent.Text != "" && smartManaDrinkerStopManaPercent.Text != "" && smartManaDrinkerHotkey.SelectedItem.ToString() != "HTK")
+                if (smartManaDrinkerStartManaPercent.Text != "" && smartManaDrinkerStopManaPercent.Text != "" 
+                    && smartManaDrinkerHotkey.SelectedItem != null && smartManaDrinkerHotkey.SelectedItem.ToString() != "HTK")
                 {
                     int pixelStart = 970 + ((int.Parse(smartManaDrinkerStartManaPercent.Text) * 74) / 10);
                     int pixelStop = 970 + ((int.Parse(smartManaDrinkerStopManaPercent.Text) * 74) / 10);
                     if (smartMana)
                     {
-                        if (Functions.Window.GetPixel(pixelStop, manaY) != emptyBarAux)
-                        {
-                            smartMana = false;
-                            return; // ja bebeu tudo vai turn off
-                        }
-                        else
-                        {
-                            Functions.Mana.manaDrinker((VirtualKeyCode)smartManaDrinkerHotkey.SelectedItem);
-                            return; // usou mana
-                        }
-                    }
-                    else if (Functions.Window.GetPixel(pixelStart, manaY) == emptyBarAux)
-                    {
-                        smartMana = true;
                         Functions.Mana.manaDrinker((VirtualKeyCode)smartManaDrinkerHotkey.SelectedItem);
-                        return; // ligou a smart mana e bebeu fluid
+                        if (Functions.Window.GetPixel(pixelStop, manaY) != emptyBarAux) smartMana = false;                  
                     }
+                    else if (Functions.Window.GetPixel(pixelStart, manaY) == emptyBarAux) smartMana = true;
                 }
             }
         }
@@ -156,7 +144,7 @@ namespace WindowsFormsApplication4
                 // mana waste
                 if (autoManaWaste)
                 {
-                    Functions.Mana.manaWaster((VirtualKeyCode)smartManaWasterHotkey.SelectedItem);
+                    if(Functions.Window.GetPixel(maxManaX, manaY) != emptyBarAux) Functions.Mana.manaWaster((VirtualKeyCode)smartManaWasterHotkey.SelectedItem);
                 }
             }
         }
@@ -267,11 +255,6 @@ namespace WindowsFormsApplication4
             MessageBox.Show("sou o load cfg!");
         }
 
-        private void listBoxSpellHealingActive_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void mountHtk_SelectedIndexChanged(object sender, EventArgs e)
         {
             Functions.Actions.mountHotkey = (VirtualKeyCode)mountHtk.SelectedItem;
@@ -312,17 +295,13 @@ namespace WindowsFormsApplication4
             Functions.Rings.Ehealingring = (VirtualKeyCode)healingRingHotkey.SelectedItem;
         }
 
-        private void checkBoxHealingRing_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void paralyzeHotkey_SelectedIndexChanged(object sender, EventArgs e)
         {
             Functions.Support.paralyzeHotkey = (VirtualKeyCode)paralyzeHotkey.SelectedItem;
         }
 
         // HEALER ITEM LOGICS E CONTROLS
+        // init list item heal
         public List<Structs.itemHeal> itemHealingList = new List<Structs.itemHeal>();
 
         private void updateItemList()
@@ -498,7 +477,6 @@ namespace WindowsFormsApplication4
             }
             else checkBoxEnergyRing.CheckState = 0;
         }
-
         //
     }
 }

@@ -89,11 +89,9 @@ namespace WindowsFormsApplication4
             this.buttonRemoveSelectedSpellHealing = new System.Windows.Forms.Button();
             this.tab_mana = new System.Windows.Forms.TabPage();
             this.groupBoxManaWaster = new System.Windows.Forms.GroupBox();
-            this.buttonUpdateManaWaster = new System.Windows.Forms.Button();
             this.smartManaWasterHotkey = new System.Windows.Forms.ComboBox();
             this.labelManaWasterHotkey = new System.Windows.Forms.Label();
             this.groupBoxSmartManaDrinker = new System.Windows.Forms.GroupBox();
-            this.buttonUpdateSmartManaDrinker = new System.Windows.Forms.Button();
             this.smartManaDrinkerStopManaPercent = new System.Windows.Forms.DomainUpDown();
             this.smartManaDrinkerStartManaPercent = new System.Windows.Forms.DomainUpDown();
             this.smartManaDrinkerHotkey = new System.Windows.Forms.ComboBox();
@@ -1085,7 +1083,6 @@ namespace WindowsFormsApplication4
             this.listBoxSpellHealingActive.Name = "listBoxSpellHealingActive";
             this.listBoxSpellHealingActive.Size = new System.Drawing.Size(170, 69);
             this.listBoxSpellHealingActive.TabIndex = 4;
-            this.listBoxSpellHealingActive.SelectedIndexChanged += new System.EventHandler(this.listBoxSpellHealingActive_SelectedIndexChanged);
             // 
             // labelTopActiveSpells
             // 
@@ -1143,7 +1140,6 @@ namespace WindowsFormsApplication4
             // 
             // groupBoxManaWaster
             // 
-            this.groupBoxManaWaster.Controls.Add(this.buttonUpdateManaWaster);
             this.groupBoxManaWaster.Controls.Add(this.smartManaWasterHotkey);
             this.groupBoxManaWaster.Controls.Add(this.labelManaWasterHotkey);
             this.groupBoxManaWaster.Location = new System.Drawing.Point(89, 202);
@@ -1152,16 +1148,6 @@ namespace WindowsFormsApplication4
             this.groupBoxManaWaster.TabIndex = 1;
             this.groupBoxManaWaster.TabStop = false;
             this.groupBoxManaWaster.Text = "Mana Waster";
-            // 
-            // buttonUpdateManaWaster
-            // 
-            this.buttonUpdateManaWaster.Location = new System.Drawing.Point(85, 75);
-            this.buttonUpdateManaWaster.Name = "buttonUpdateManaWaster";
-            this.buttonUpdateManaWaster.Size = new System.Drawing.Size(82, 21);
-            this.buttonUpdateManaWaster.TabIndex = 10;
-            this.buttonUpdateManaWaster.Text = "Update";
-            this.buttonUpdateManaWaster.UseVisualStyleBackColor = true;
-            this.buttonUpdateManaWaster.Click += new System.EventHandler(this.buttonUpdateManaWaster_Click);
             // 
             // smartManaWasterHotkey
             // 
@@ -1356,7 +1342,6 @@ namespace WindowsFormsApplication4
             // 
             // groupBoxSmartManaDrinker
             // 
-            this.groupBoxSmartManaDrinker.Controls.Add(this.buttonUpdateSmartManaDrinker);
             this.groupBoxSmartManaDrinker.Controls.Add(this.smartManaDrinkerStopManaPercent);
             this.groupBoxSmartManaDrinker.Controls.Add(this.smartManaDrinkerStartManaPercent);
             this.groupBoxSmartManaDrinker.Controls.Add(this.smartManaDrinkerHotkey);
@@ -1370,37 +1355,17 @@ namespace WindowsFormsApplication4
             this.groupBoxSmartManaDrinker.TabStop = false;
             this.groupBoxSmartManaDrinker.Text = "Smart Mana Drinker";
             // 
-            // buttonUpdateSmartManaDrinker
-            // 
-            this.buttonUpdateSmartManaDrinker.Location = new System.Drawing.Point(84, 112);
-            this.buttonUpdateSmartManaDrinker.Name = "buttonUpdateSmartManaDrinker";
-            this.buttonUpdateSmartManaDrinker.Size = new System.Drawing.Size(82, 21);
-            this.buttonUpdateSmartManaDrinker.TabIndex = 9;
-            this.buttonUpdateSmartManaDrinker.Text = "Update";
-            this.buttonUpdateSmartManaDrinker.UseVisualStyleBackColor = true;
-            this.buttonUpdateSmartManaDrinker.Click += new System.EventHandler(this.buttonUpdateSmartManaDrinker_Click);
-            // 
             // smartManaDrinkerStopManaPercent
             // 
-            this.smartManaDrinkerStopManaPercent.Items.Add("95");
-            this.smartManaDrinkerStopManaPercent.Items.Add("90");
-            this.smartManaDrinkerStopManaPercent.Items.Add("85");
-            this.smartManaDrinkerStopManaPercent.Items.Add("80");
-            this.smartManaDrinkerStopManaPercent.Items.Add("75");
-            this.smartManaDrinkerStopManaPercent.Items.Add("70");
-            this.smartManaDrinkerStopManaPercent.Items.Add("65");
-            this.smartManaDrinkerStopManaPercent.Items.Add("60");
-            this.smartManaDrinkerStopManaPercent.Items.Add("55");
-            this.smartManaDrinkerStopManaPercent.Items.Add("50");
-            this.smartManaDrinkerStopManaPercent.Items.Add("45");
-            this.smartManaDrinkerStopManaPercent.Items.Add("40");
-            this.smartManaDrinkerStopManaPercent.Items.Add("35");
-            this.smartManaDrinkerStopManaPercent.Items.Add("30");
-            this.smartManaDrinkerStopManaPercent.Items.Add("25");
-            this.smartManaDrinkerStopManaPercent.Items.Add("20");
-            this.smartManaDrinkerStopManaPercent.Items.Add("15");
-            this.smartManaDrinkerStopManaPercent.Items.Add("10");
             this.smartManaDrinkerStopManaPercent.Items.Add("5");
+            this.smartManaDrinkerStopManaPercent.Items.Add("10");
+            this.smartManaDrinkerStopManaPercent.Items.Add("15");
+            this.smartManaDrinkerStopManaPercent.Items.Add("20");
+            this.smartManaDrinkerStopManaPercent.Items.Add("25");
+            this.smartManaDrinkerStopManaPercent.Items.Add("30");
+            this.smartManaDrinkerStopManaPercent.Items.Add("35");
+            this.smartManaDrinkerStopManaPercent.Items.Add("40");
+            this.smartManaDrinkerStopManaPercent.Items.Add("45");
             this.smartManaDrinkerStopManaPercent.Location = new System.Drawing.Point(129, 53);
             this.smartManaDrinkerStopManaPercent.Name = "smartManaDrinkerStopManaPercent";
             this.smartManaDrinkerStopManaPercent.Size = new System.Drawing.Size(38, 20);
@@ -1419,15 +1384,6 @@ namespace WindowsFormsApplication4
             this.smartManaDrinkerStartManaPercent.Items.Add("60");
             this.smartManaDrinkerStartManaPercent.Items.Add("55");
             this.smartManaDrinkerStartManaPercent.Items.Add("50");
-            this.smartManaDrinkerStartManaPercent.Items.Add("45");
-            this.smartManaDrinkerStartManaPercent.Items.Add("40");
-            this.smartManaDrinkerStartManaPercent.Items.Add("35");
-            this.smartManaDrinkerStartManaPercent.Items.Add("30");
-            this.smartManaDrinkerStartManaPercent.Items.Add("25");
-            this.smartManaDrinkerStartManaPercent.Items.Add("20");
-            this.smartManaDrinkerStartManaPercent.Items.Add("15");
-            this.smartManaDrinkerStartManaPercent.Items.Add("10");
-            this.smartManaDrinkerStartManaPercent.Items.Add("5");
             this.smartManaDrinkerStartManaPercent.Location = new System.Drawing.Point(128, 28);
             this.smartManaDrinkerStartManaPercent.Name = "smartManaDrinkerStartManaPercent";
             this.smartManaDrinkerStartManaPercent.Size = new System.Drawing.Size(38, 20);
@@ -3399,7 +3355,6 @@ namespace WindowsFormsApplication4
             this.checkBoxHealingRing.TabIndex = 3;
             this.checkBoxHealingRing.Text = "Healing Ring";
             this.checkBoxHealingRing.UseVisualStyleBackColor = true;
-            this.checkBoxHealingRing.CheckedChanged += new System.EventHandler(this.checkBoxHealingRing_CheckedChanged);
             // 
             // checkBoxTimeRing
             // 
@@ -4356,8 +4311,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.ComboBox smartManaWasterHotkey;
         private System.Windows.Forms.DomainUpDown smartManaDrinkerStopManaPercent;
         private System.Windows.Forms.DomainUpDown smartManaDrinkerStartManaPercent;
-        private System.Windows.Forms.Button buttonUpdateManaWaster;
-        private System.Windows.Forms.Button buttonUpdateSmartManaDrinker;
         private System.Windows.Forms.ComboBox healingRingHotkey;
         private System.Windows.Forms.ComboBox mightRingHotkey;
         private System.Windows.Forms.ComboBox timeRingHotkey;
