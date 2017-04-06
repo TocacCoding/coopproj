@@ -68,7 +68,7 @@ namespace WindowsFormsApplication4.Structs
             else aux2 = ">";
 
             return "N: " + name + "  HP: " + aux1 + " " + hpPercent + " (" + hpShow.ToString() 
-                + "%)  MP: " + aux2 + " " + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + (Keys)hotkey;
+                + "%)  MP: " + aux2 + " " + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + ((Keys)hotkey).ToString().Replace("D", "");
         }
 
     }

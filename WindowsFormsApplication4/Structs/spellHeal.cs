@@ -53,7 +53,7 @@ namespace WindowsFormsApplication4.Structs
             public override String ToString()
             {
             return "N: " + name + "  HP: < " + hpPercent + " (" + hpShow.ToString() + "%)  MP: > " 
-                + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + (Keys)hotkey;
+                + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + ((Keys)hotkey).ToString().Replace("D", "");
             }
 
     }

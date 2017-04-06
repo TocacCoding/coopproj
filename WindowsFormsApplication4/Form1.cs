@@ -194,7 +194,7 @@ namespace WindowsFormsApplication4
         VirtualKeyCode newSpellHtk;
         private void spellHealingHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            newSpellHealingHotkey.Text = e.KeyCode.ToString();
+            newSpellHealingHotkey.Text = e.KeyCode.ToString().Replace("D", "");
             newSpellHtk = (VirtualKeyCode)e.KeyCode;
         }
 
@@ -363,7 +363,7 @@ namespace WindowsFormsApplication4
         VirtualKeyCode newItemHtk;
         private void itemHealingHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            newItemHealingHotkey.Text = e.KeyCode.ToString();
+            newItemHealingHotkey.Text = e.KeyCode.ToString().Replace("D","");
             newItemHtk = (VirtualKeyCode)e.KeyCode;
         }
 
@@ -615,6 +615,11 @@ namespace WindowsFormsApplication4
                     xmlSerSpell.Serialize(streamSpell, spellHealingList);
                     streamSpell.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Error! No file selected.");
+                    return;
+                }
                 SaveFileDialog sfdItem = new SaveFileDialog();
                 sfdItem.Title = "Save Item Healing cfg as";
                 sfdItem.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
@@ -628,6 +633,13 @@ namespace WindowsFormsApplication4
                     XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
                     xmlSerItem.Serialize(streamItem, itemHealingList);
                     streamItem.Close();
+                }
+                else
+                {
+                    spellHealingList.Clear();
+                    updateSpellList();
+                    MessageBox.Show("Error! No file selected.");
+                    return;
                 }
             }
             else
