@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using WindowsInput.Native;
 
 namespace WindowsFormsApplication4.Structs
@@ -67,7 +68,7 @@ namespace WindowsFormsApplication4.Structs
             else aux2 = ">";
 
             return "N: " + name + "  HP: " + aux1 + " " + hpPercent + " (" + hpShow.ToString() 
-                + "%)  MP: " + aux2 + " " + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + hotkey;
+                + "%)  MP: " + aux2 + " " + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + (Keys)hotkey;
         }
 
     }

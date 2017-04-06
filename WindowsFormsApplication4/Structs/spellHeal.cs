@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
 
@@ -52,7 +53,7 @@ namespace WindowsFormsApplication4.Structs
             public override String ToString()
             {
             return "N: " + name + "  HP: < " + hpPercent + " (" + hpShow.ToString() + "%)  MP: > " 
-                + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + hotkey;
+                + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + (Keys)hotkey;
             }
 
     }

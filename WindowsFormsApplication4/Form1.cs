@@ -190,15 +190,22 @@ namespace WindowsFormsApplication4
             listBoxSpellHealingActive.DataSource = spellHealingList;
             listBoxSpellHealingActive.DisplayMember = "Name";
         }
+        // hotkeys
+        VirtualKeyCode newSpellHtk;
+        private void spellHealingHotkey_KeyDown(object sender, KeyEventArgs e)
+        {
+            newSpellHealingHotkey.Text = e.KeyCode.ToString();
+            newSpellHtk = (VirtualKeyCode)e.KeyCode;
+        }
 
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
             // check hp name mp htk
-            if (textBoxSpellName.Text == "SPELL" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK" 
+            if (textBoxSpellName.Text == "SPELL" || newSpellHealingHotkey.Text.ToString() == "HTK"
                 || spellHealingHpValue.Text.ToString() == "HP" || spellHealingMpValue.Text.ToString() == "MP")
             {
                 if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Select a Name.");
-                else if (comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select Hotkey.");
+                else if (newSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select Hotkey.");
                 else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Error! Select HP.");
                 else if (spellHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Error! Select MP.");
             }
@@ -215,21 +222,21 @@ namespace WindowsFormsApplication4
                     && int.Parse(spellHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(spellHealingHpValue.Text.ToString()) > 0
                     && int.Parse(spellHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(spellHealingMpValue.Text.ToString()) > 0)
                 {
-                    Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text, 
-                        (VirtualKeyCode)comboBoxNewSpellHealingHotkey.SelectedItem, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
+                    Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text,
+                        newSpellHtk, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
                     spellHealingList.Add(newSpell);
                     updateSpellList();
                 }
                 else
                 {
-                    MessageBox.Show("Error! HP not permited.");
+                    MessageBox.Show("Error! HP/MP not permited.");
                 }
             }
         }
 
         private void buttonClearNewSpell_Click(object sender, EventArgs e)
         {
-            comboBoxNewSpellHealingHotkey.Text = "HTK";
+            newSpellHealingHotkey.Text = "HTK";
             textBoxSpellName.Text = "SPELL";
             spellHealingHpValue.Text = "HP";
             spellHealingMpValue.Text = "MP";
@@ -352,37 +359,49 @@ namespace WindowsFormsApplication4
             listBoxItemHealingActive.DisplayMember = "Name";
         }
 
+        // hotkeys
+        VirtualKeyCode newItemHtk;
+        private void itemHealingHotkey_KeyDown(object sender, KeyEventArgs e)
+        {
+            newItemHealingHotkey.Text = e.KeyCode.ToString();
+            newItemHtk = (VirtualKeyCode)e.KeyCode;
+        }
+
         private void buttonAddNewItemHealing_Click(object sender, EventArgs e)
         {
-            int inputMpValid, inputHpValid;
-            int.TryParse(itemHealingMpValue.Text, out inputMpValid);
-            int.TryParse(itemHealingHpValue.Text, out inputHpValid);
-
-            if (textBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || comboBoxNewItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
+            if (textBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || newItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
             {
                 if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Select name.");
                 else if (itemHealingHpValue.Text == "HP") MessageBox.Show("Error! Select HP.");
-                else if (comboBoxNewItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select hotkey.");
+                else if (newItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select hotkey.");
                 else if (itemHealingMpValue.Text == "MP") MessageBox.Show("Error! Select MP.");
-                else if (inputHpValid == 0 || inputMpValid == 0 
-                    || int.Parse(itemHealingHpValue.Text.ToString()) > int.Parse(maxHpInput.Text.ToString()) || int.Parse(itemHealingHpValue.Text.ToString()) < 1 
-                    || int.Parse(itemHealingMpValue.Text.ToString()) > int.Parse(maxMpInput.Text.ToString()) || int.Parse(itemHealingMpValue.Text.ToString()) < 1)
-                {
-                    MessageBox.Show("Error! HP not permited.");
-                }
             }
             else
             {
-                Structs.itemHeal newSpell = new Structs.itemHeal(textBoxItemName.Text, itemHealingHpValue.Text, itemHealingMpValue.Text, 
-                    (VirtualKeyCode)comboBoxNewItemHealingHotkey.SelectedItem, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text, maxHpInput.Text, maxMpInput.Text);
-                itemHealingList.Add(newSpell);
-                updateItemList();
+                int inputHpValid;
+                int inputMpValid;
+                int.TryParse(itemHealingHpValue.Text, out inputHpValid);
+                int.TryParse(itemHealingMpValue.Text, out inputMpValid);
+
+                if (inputMpValid != 0 && inputHpValid != 0 
+                    && int.Parse(itemHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(itemHealingHpValue.Text.ToString()) > 0 
+                    && int.Parse(itemHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(itemHealingMpValue.Text.ToString()) > 0)
+                {
+                    Structs.itemHeal newItem = new Structs.itemHeal(textBoxItemName.Text, itemHealingHpValue.Text, itemHealingMpValue.Text,
+                        newItemHtk, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text, maxHpInput.Text, maxMpInput.Text);
+                    itemHealingList.Add(newItem);
+                    updateItemList();
+                }
+                else
+                {
+                    MessageBox.Show("Error! HP not permited.");
+                }
             }
         }
 
         private void buttonClearNewItem_Click(object sender, EventArgs e)
         {
-            comboBoxNewItemHealingHotkey.Text = "HTK";
+            newItemHealingHotkey.Text = "HTK";
             textBoxItemName.Text = "ITEM";
             itemHealingMpValue.Text = "MP";
             comboBoxHpBelowOver.Text = "BELOW";
@@ -580,32 +599,116 @@ namespace WindowsFormsApplication4
 
         private void buttonSaveCfgHealer_Click(object sender, EventArgs e)
         {
-            if (spellHealingList.Count > 0)
+            if (spellHealingList.Count > 0 && itemHealingList.Count >0)
             {
-                Stream streamSpell = File.OpenWrite(Environment.CurrentDirectory + "\\spellHealer.txt");
-                XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
-                xmlSerSpell.Serialize(streamSpell, spellHealingList);
-                streamSpell.Close();
+                SaveFileDialog sfdSpell = new SaveFileDialog();
+                sfdSpell.Title = "Save Spell Healing cfg as";
+                sfdSpell.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                sfdSpell.DefaultExt = "txt";
+                sfdSpell.AddExtension = true;
+                sfdSpell.FileName = "spellHealerCFG";
+                if (sfdSpell.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string path = sfdSpell.FileName;
+                    Stream streamSpell = File.Create(path);
+                    XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
+                    xmlSerSpell.Serialize(streamSpell, spellHealingList);
+                    streamSpell.Close();
+                }
+                SaveFileDialog sfdItem = new SaveFileDialog();
+                sfdItem.Title = "Save Item Healing cfg as";
+                sfdItem.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                sfdItem.DefaultExt = "txt";
+                sfdItem.AddExtension = true;
+                sfdItem.FileName = "itemHealerCFG";
+                if (sfdItem.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string path = sfdItem.FileName;
+                    Stream streamItem = File.Create(path);
+                    XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
+                    xmlSerItem.Serialize(streamItem, itemHealingList);
+                    streamItem.Close();
+                }
             }
-            if (itemHealingList.Count > 0)
+            else
             {
-                Stream streamItem = File.OpenWrite(Environment.CurrentDirectory + "\\itemHealer.txt");
-                XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
-                xmlSerItem.Serialize(streamItem, itemHealingList);
-                streamItem.Close();
+                if (spellHealingList.Count == 0 && itemHealingList.Count == 0) MessageBox.Show("Error! Nothing to save.");
+                else if (spellHealingList.Count == 0) MessageBox.Show("Error! Spell healer no values.");
+                else if (itemHealingList.Count == 0) MessageBox.Show("Error! Item healer no values.");
             }
         }
 
         private void buttonLoadCfgHealer_Click(object sender, EventArgs e)
         {
+            bool item = false;
+            bool spell = false;
+            // item routine
             try
             {
-                Stream streamItem = File.OpenRead(Environment.CurrentDirectory + "\\itemHealer.txt");
-                XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Load Item Healing cfg from";
+                ofd.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                ofd.DefaultExt = "txt";
+                ofd.AddExtension = true;
+                if(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string path = ofd.FileName;
+                    Stream streamItem = File.OpenRead(path);
+                    XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
+                    itemHealingList.Clear();
+                    itemHealingList = (List<Structs.itemHeal>)xmlSerItem.Deserialize(streamItem);
+                    streamItem.Close();
+                    updateItemList();
+                    item = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error! No file selected.");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error! Corrupt item file.");
+                return;
+            }
+            // spell routine
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Load Spell Healing cfg from";
+                ofd.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                ofd.DefaultExt = "txt";
+                ofd.AddExtension = true;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string path = ofd.FileName;
+                    Stream streamSpell = File.OpenRead(path);
+                    XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
+                    spellHealingList.Clear();
+                    spellHealingList = (List<Structs.spellHeal>)xmlSerSpell.Deserialize(streamSpell);
+                    streamSpell.Close();
+                    updateSpellList();
+                    spell = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error! No file selected.");
+                    itemHealingList.Clear();
+                    updateItemList();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error! Corrupt spell file.");
                 itemHealingList.Clear();
-                itemHealingList = (List<Structs.itemHeal>)xmlSerItem.Deserialize(streamItem);
-                streamItem.Close();
                 updateItemList();
+                return;
+            }
+            if (item && spell)
+            {
+                groupBoxSpellHealing.Visible = true;
                 groupBoxItemHealing.Visible = true;
                 buttonLoadCfgHealer.Visible = false;
                 buttonSaveCfgHealer.Visible = true;
@@ -615,24 +718,6 @@ namespace WindowsFormsApplication4
                 maxMpInput.Text = itemHealingList[0].maxMp.ToString();
                 maxMpInput.ReadOnly = true;
                 maxHpInput.ReadOnly = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            try
-            {
-                Stream streamSpell = File.OpenRead(Environment.CurrentDirectory + "\\spellHealer.txt");
-                XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
-                spellHealingList.Clear();
-                spellHealingList = (List<Structs.spellHeal>)xmlSerSpell.Deserialize(streamSpell);
-                streamSpell.Close();
-                updateSpellList();
-                groupBoxSpellHealing.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
             }
         }
         //

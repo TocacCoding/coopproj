@@ -55,7 +55,10 @@ namespace WindowsFormsApplication4
             this.buttonSaveConfig = new System.Windows.Forms.Button();
             this.buttonLoadConfig = new System.Windows.Forms.Button();
             this.tab_heal = new System.Windows.Forms.TabPage();
+            this.newSpellHealingHotkey = new System.Windows.Forms.TextBox();
             this.groupBoxGeneralInfo = new System.Windows.Forms.GroupBox();
+            this.buttonSaveCfgHealer = new System.Windows.Forms.Button();
+            this.buttonLoadCfgHealer = new System.Windows.Forms.Button();
             this.buttonResetHealing = new System.Windows.Forms.Button();
             this.maxMpInput = new System.Windows.Forms.TextBox();
             this.maxHpInput = new System.Windows.Forms.TextBox();
@@ -70,7 +73,6 @@ namespace WindowsFormsApplication4
             this.itemHealingHpValue = new System.Windows.Forms.TextBox();
             this.labelNewItemMp = new System.Windows.Forms.Label();
             this.buttonClearNewItem = new System.Windows.Forms.Button();
-            this.comboBoxNewItemHealingHotkey = new System.Windows.Forms.ComboBox();
             this.buttonAddNewItemHealing = new System.Windows.Forms.Button();
             this.labelNewItemHp = new System.Windows.Forms.Label();
             this.labelNewHotkeyItem = new System.Windows.Forms.Label();
@@ -85,10 +87,9 @@ namespace WindowsFormsApplication4
             this.groupBoxNewSpellHealing = new System.Windows.Forms.GroupBox();
             this.spellHealingMpValue = new System.Windows.Forms.TextBox();
             this.labelNewSpellMpOver = new System.Windows.Forms.Label();
-            this.spellHealingHpValue = new System.Windows.Forms.TextBox();
             this.buttonClearNewSpell = new System.Windows.Forms.Button();
-            this.comboBoxNewSpellHealingHotkey = new System.Windows.Forms.ComboBox();
             this.buttonAddNewSpellHealing = new System.Windows.Forms.Button();
+            this.spellHealingHpValue = new System.Windows.Forms.TextBox();
             this.labelNewSpellHp = new System.Windows.Forms.Label();
             this.labelNewSpellHotkey = new System.Windows.Forms.Label();
             this.labelNewSpellName = new System.Windows.Forms.Label();
@@ -142,8 +143,7 @@ namespace WindowsFormsApplication4
             this.paralyzeHotkey = new System.Windows.Forms.ComboBox();
             this.checkBoxPoison = new System.Windows.Forms.CheckBox();
             this.checkBoxParalyze = new System.Windows.Forms.CheckBox();
-            this.buttonLoadCfgHealer = new System.Windows.Forms.Button();
-            this.buttonSaveCfgHealer = new System.Windows.Forms.Button();
+            this.newItemHealingHotkey = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tab_account.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -399,6 +399,16 @@ namespace WindowsFormsApplication4
             this.tab_heal.Text = "Heal";
             this.tab_heal.UseVisualStyleBackColor = true;
             // 
+            // newSpellHealingHotkey
+            // 
+            this.newSpellHealingHotkey.Location = new System.Drawing.Point(80, 39);
+            this.newSpellHealingHotkey.Name = "newSpellHealingHotkey";
+            this.newSpellHealingHotkey.ReadOnly = true;
+            this.newSpellHealingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.newSpellHealingHotkey.TabIndex = 3;
+            this.newSpellHealingHotkey.Text = "HTK";
+            this.newSpellHealingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.spellHealingHotkey_KeyDown);
+            // 
             // groupBoxGeneralInfo
             // 
             this.groupBoxGeneralInfo.Controls.Add(this.buttonSaveCfgHealer);
@@ -415,6 +425,27 @@ namespace WindowsFormsApplication4
             this.groupBoxGeneralInfo.TabIndex = 2;
             this.groupBoxGeneralInfo.TabStop = false;
             this.groupBoxGeneralInfo.Text = "General Info";
+            // 
+            // buttonSaveCfgHealer
+            // 
+            this.buttonSaveCfgHealer.Location = new System.Drawing.Point(165, 54);
+            this.buttonSaveCfgHealer.Name = "buttonSaveCfgHealer";
+            this.buttonSaveCfgHealer.Size = new System.Drawing.Size(87, 30);
+            this.buttonSaveCfgHealer.TabIndex = 9;
+            this.buttonSaveCfgHealer.Text = "Save CFG";
+            this.buttonSaveCfgHealer.UseVisualStyleBackColor = true;
+            this.buttonSaveCfgHealer.Visible = false;
+            this.buttonSaveCfgHealer.Click += new System.EventHandler(this.buttonSaveCfgHealer_Click);
+            // 
+            // buttonLoadCfgHealer
+            // 
+            this.buttonLoadCfgHealer.Location = new System.Drawing.Point(165, 55);
+            this.buttonLoadCfgHealer.Name = "buttonLoadCfgHealer";
+            this.buttonLoadCfgHealer.Size = new System.Drawing.Size(87, 30);
+            this.buttonLoadCfgHealer.TabIndex = 8;
+            this.buttonLoadCfgHealer.Text = "Load CFG";
+            this.buttonLoadCfgHealer.UseVisualStyleBackColor = true;
+            this.buttonLoadCfgHealer.Click += new System.EventHandler(this.buttonLoadCfgHealer_Click);
             // 
             // buttonResetHealing
             // 
@@ -488,13 +519,13 @@ namespace WindowsFormsApplication4
             // 
             // groupBoxNewItemHealing
             // 
+            this.groupBoxNewItemHealing.Controls.Add(this.newItemHealingHotkey);
             this.groupBoxNewItemHealing.Controls.Add(this.comboBoxMpBelowOver);
             this.groupBoxNewItemHealing.Controls.Add(this.comboBoxHpBelowOver);
             this.groupBoxNewItemHealing.Controls.Add(this.itemHealingMpValue);
             this.groupBoxNewItemHealing.Controls.Add(this.itemHealingHpValue);
             this.groupBoxNewItemHealing.Controls.Add(this.labelNewItemMp);
             this.groupBoxNewItemHealing.Controls.Add(this.buttonClearNewItem);
-            this.groupBoxNewItemHealing.Controls.Add(this.comboBoxNewItemHealingHotkey);
             this.groupBoxNewItemHealing.Controls.Add(this.buttonAddNewItemHealing);
             this.groupBoxNewItemHealing.Controls.Add(this.labelNewItemHp);
             this.groupBoxNewItemHealing.Controls.Add(this.labelNewHotkeyItem);
@@ -509,6 +540,7 @@ namespace WindowsFormsApplication4
             // 
             // comboBoxMpBelowOver
             // 
+            this.comboBoxMpBelowOver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMpBelowOver.FormattingEnabled = true;
             this.comboBoxMpBelowOver.Items.AddRange(new object[] {
             "BELOW",
@@ -517,10 +549,11 @@ namespace WindowsFormsApplication4
             this.comboBoxMpBelowOver.Name = "comboBoxMpBelowOver";
             this.comboBoxMpBelowOver.Size = new System.Drawing.Size(66, 21);
             this.comboBoxMpBelowOver.TabIndex = 13;
-            this.comboBoxMpBelowOver.Text = "BELOW";
+            this.comboBoxMpBelowOver.SelectedIndex = 0;
             // 
             // comboBoxHpBelowOver
             // 
+            this.comboBoxHpBelowOver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxHpBelowOver.FormattingEnabled = true;
             this.comboBoxHpBelowOver.Items.AddRange(new object[] {
             "BELOW",
@@ -529,7 +562,7 @@ namespace WindowsFormsApplication4
             this.comboBoxHpBelowOver.Name = "comboBoxHpBelowOver";
             this.comboBoxHpBelowOver.Size = new System.Drawing.Size(66, 21);
             this.comboBoxHpBelowOver.TabIndex = 12;
-            this.comboBoxHpBelowOver.Text = "BELOW";
+            this.comboBoxHpBelowOver.SelectedIndex = 0;
             // 
             // itemHealingMpValue
             // 
@@ -567,188 +600,6 @@ namespace WindowsFormsApplication4
             this.buttonClearNewItem.Text = "Clear";
             this.buttonClearNewItem.UseVisualStyleBackColor = true;
             this.buttonClearNewItem.Click += new System.EventHandler(this.buttonClearNewItem_Click);
-            // 
-            // comboBoxNewItemHealingHotkey
-            // 
-            this.comboBoxNewItemHealingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.comboBoxNewItemHealingHotkey.Location = new System.Drawing.Point(70, 39);
-            this.comboBoxNewItemHealingHotkey.Name = "comboBoxNewItemHealingHotkey";
-            this.comboBoxNewItemHealingHotkey.Size = new System.Drawing.Size(86, 21);
-            this.comboBoxNewItemHealingHotkey.TabIndex = 5;
-            this.comboBoxNewItemHealingHotkey.Text = "HTK";
             // 
             // buttonAddNewItemHealing
             // 
@@ -869,6 +720,7 @@ namespace WindowsFormsApplication4
             // 
             // groupBoxNewSpellHealing
             // 
+            this.groupBoxNewSpellHealing.Controls.Add(this.newSpellHealingHotkey);
             this.groupBoxNewSpellHealing.Controls.Add(this.spellHealingMpValue);
             this.groupBoxNewSpellHealing.Controls.Add(this.labelNewSpellMpOver);
             this.groupBoxNewSpellHealing.Controls.Add(this.buttonClearNewSpell);
@@ -877,7 +729,6 @@ namespace WindowsFormsApplication4
             this.groupBoxNewSpellHealing.Controls.Add(this.labelNewSpellHp);
             this.groupBoxNewSpellHealing.Controls.Add(this.labelNewSpellHotkey);
             this.groupBoxNewSpellHealing.Controls.Add(this.labelNewSpellName);
-            this.groupBoxNewSpellHealing.Controls.Add(this.comboBoxNewSpellHealingHotkey);
             this.groupBoxNewSpellHealing.Controls.Add(this.textBoxSpellName);
             this.groupBoxNewSpellHealing.Location = new System.Drawing.Point(355, 13);
             this.groupBoxNewSpellHealing.Name = "groupBoxNewSpellHealing";
@@ -904,14 +755,6 @@ namespace WindowsFormsApplication4
             this.labelNewSpellMpOver.TabIndex = 9;
             this.labelNewSpellMpOver.Text = "Mana over";
             // 
-            // spellHealingHpValue
-            // 
-            this.spellHealingHpValue.Location = new System.Drawing.Point(74, 61);
-            this.spellHealingHpValue.Name = "spellHealingHpValue";
-            this.spellHealingHpValue.Size = new System.Drawing.Size(43, 20);
-            this.spellHealingHpValue.TabIndex = 8;
-            this.spellHealingHpValue.Text = "HP";
-            // 
             // buttonClearNewSpell
             // 
             this.buttonClearNewSpell.ForeColor = System.Drawing.Color.Red;
@@ -923,188 +766,6 @@ namespace WindowsFormsApplication4
             this.buttonClearNewSpell.UseVisualStyleBackColor = true;
             this.buttonClearNewSpell.Click += new System.EventHandler(this.buttonClearNewSpell_Click);
             // 
-            // comboBoxNewSpellHealingHotkey
-            // 
-            this.comboBoxNewSpellHealingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.comboBoxNewSpellHealingHotkey.Location = new System.Drawing.Point(51, 39);
-            this.comboBoxNewSpellHealingHotkey.Name = "comboBoxNewSpellHealingHotkey";
-            this.comboBoxNewSpellHealingHotkey.Size = new System.Drawing.Size(66, 21);
-            this.comboBoxNewSpellHealingHotkey.TabIndex = 5;
-            this.comboBoxNewSpellHealingHotkey.Text = "HTK";
-            // 
             // buttonAddNewSpellHealing
             // 
             this.buttonAddNewSpellHealing.ForeColor = System.Drawing.Color.Green;
@@ -1115,6 +776,14 @@ namespace WindowsFormsApplication4
             this.buttonAddNewSpellHealing.Text = "Add";
             this.buttonAddNewSpellHealing.UseVisualStyleBackColor = true;
             this.buttonAddNewSpellHealing.Click += new System.EventHandler(this.buttonAddNewSpellHealing_Click);
+            // 
+            // spellHealingHpValue
+            // 
+            this.spellHealingHpValue.Location = new System.Drawing.Point(74, 61);
+            this.spellHealingHpValue.Name = "spellHealingHpValue";
+            this.spellHealingHpValue.Size = new System.Drawing.Size(43, 20);
+            this.spellHealingHpValue.TabIndex = 8;
+            this.spellHealingHpValue.Text = "HP";
             // 
             // labelNewSpellHp
             // 
@@ -4283,26 +3952,15 @@ namespace WindowsFormsApplication4
             this.checkBoxParalyze.UseVisualStyleBackColor = true;
             this.checkBoxParalyze.CheckedChanged += new System.EventHandler(this.checkBoxParalyze_CheckedChanged);
             // 
-            // buttonLoadCfgHealer
+            // newItemHealingHotkey
             // 
-            this.buttonLoadCfgHealer.Location = new System.Drawing.Point(165, 55);
-            this.buttonLoadCfgHealer.Name = "buttonLoadCfgHealer";
-            this.buttonLoadCfgHealer.Size = new System.Drawing.Size(87, 30);
-            this.buttonLoadCfgHealer.TabIndex = 8;
-            this.buttonLoadCfgHealer.Text = "Load CFG";
-            this.buttonLoadCfgHealer.UseVisualStyleBackColor = true;
-            this.buttonLoadCfgHealer.Click += new System.EventHandler(this.buttonLoadCfgHealer_Click);
-            // 
-            // buttonSaveCfgHealer
-            // 
-            this.buttonSaveCfgHealer.Location = new System.Drawing.Point(165, 54);
-            this.buttonSaveCfgHealer.Name = "buttonSaveCfgHealer";
-            this.buttonSaveCfgHealer.Size = new System.Drawing.Size(87, 30);
-            this.buttonSaveCfgHealer.TabIndex = 9;
-            this.buttonSaveCfgHealer.Text = "Save CFG";
-            this.buttonSaveCfgHealer.UseVisualStyleBackColor = true;
-            this.buttonSaveCfgHealer.Visible = false;
-            this.buttonSaveCfgHealer.Click += new System.EventHandler(this.buttonSaveCfgHealer_Click);
+            this.newItemHealingHotkey.Location = new System.Drawing.Point(119, 39);
+            this.newItemHealingHotkey.Name = "newItemHealingHotkey";
+            this.newItemHealingHotkey.ReadOnly = true;
+            this.newItemHealingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.newItemHealingHotkey.TabIndex = 14;
+            this.newItemHealingHotkey.Text = "HTK";
+            this.newItemHealingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itemHealingHotkey_KeyDown);
             // 
             // Form1
             // 
@@ -4399,7 +4057,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.TextBox textBoxSpellName;
         private System.Windows.Forms.GroupBox groupBoxActiveSpellsHealing;
         private System.Windows.Forms.Button buttonRemoveSelectedSpellHealing;
-        private System.Windows.Forms.ComboBox comboBoxNewSpellHealingHotkey;
         private System.Windows.Forms.Button buttonClearNewSpell;
         private System.Windows.Forms.ListBox listBoxSpellHealingActive;
         private System.Windows.Forms.Button buttonDownSpellHealing;
@@ -4435,7 +4092,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.GroupBox groupBoxItemHealing;
         private System.Windows.Forms.GroupBox groupBoxNewItemHealing;
         private System.Windows.Forms.Button buttonClearNewItem;
-        private System.Windows.Forms.ComboBox comboBoxNewItemHealingHotkey;
         private System.Windows.Forms.Button buttonAddNewItemHealing;
         private System.Windows.Forms.Label labelNewItemHp;
         private System.Windows.Forms.Label labelNewHotkeyItem;
@@ -4468,6 +4124,8 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.TextBox spellHealingMpValue;
         private System.Windows.Forms.Button buttonSaveCfgHealer;
         private System.Windows.Forms.Button buttonLoadCfgHealer;
+        private System.Windows.Forms.TextBox newSpellHealingHotkey;
+        private System.Windows.Forms.TextBox newItemHealingHotkey;
     }
 }
 
