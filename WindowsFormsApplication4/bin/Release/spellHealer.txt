@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfSpellHeal xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spellHeal>
+    <name>456</name>
+    <hpPercent>565</hpPercent>
+    <mpPercent>66</mpPercent>
+    <hpPixel>261</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hpShow>7</hpShow>
+    <mpShow>1</mpShow>
+    <hotkey>RBUTTON</hotkey>
+    <maxHp>8000</maxHp>
+    <maxMp>4000</maxMp>
+  </spellHeal>
+  <spellHeal>
+    <name>456</name>
+    <hpPercent>5655</hpPercent>
+    <mpPercent>666</mpPercent>
+    <hpPixel>728</hpPixel>
+    <mpPixel>1651</mpPixel>
+    <hpShow>70</hpShow>
+    <mpShow>8</mpShow>
+    <hotkey>RBUTTON</hotkey>
+    <maxHp>8000</maxHp>
+    <maxMp>4000</maxMp>
+  </spellHeal>
+</ArrayOfSpellHeal>

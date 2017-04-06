@@ -7,30 +7,52 @@ using WindowsInput.Native;
 
 namespace WindowsFormsApplication4.Structs
 {
-        public struct spellHeal
+    [Serializable]
+        public class spellHeal
         {
             public string name;
             public string hpPercent;
+            public string mpPercent;
             public int hpPixel;
+            public int mpPixel;
+            public int hpShow;
+            public int mpShow;
             public VirtualKeyCode hotkey;
+            public string maxHp;
+            public string maxMp;
 
-            public spellHeal (string NAME, string HP, VirtualKeyCode HTK, string MAXHP)
+        public spellHeal() { }
+
+        public spellHeal (string NAME, string HP, VirtualKeyCode HTK, string MAXHP, string MP, string MAXMP)
             {
                 name = NAME;
                 hotkey = HTK;
                 hpPercent = HP;
-                int aux = (int.Parse(HP) * 100) / int.Parse(MAXHP);
-                if (aux == 0 || aux == 100)
+                mpPercent = MP;
+                int auxHP = (int.Parse(HP) * 100) / int.Parse(MAXHP);
+                if (auxHP == 0 || auxHP == 100)
                 {
-                    if (aux == 0) aux = 1;
-                 else if (aux == 100) aux = 99;
+                    if (auxHP == 0) auxHP = 1;
+                 else if (auxHP == 100) auxHP = 99;
                 }
-                hpPixel = 210 + ((int.Parse(aux.ToString()) * 74) / 10);
+                    int auxMP = (int.Parse(MP) * 100) / int.Parse(MAXHP);
+                    if (auxMP == 0 || auxMP == 100)
+                  {
+                if (auxMP == 0) auxMP = 1;
+                else if (auxMP == 100) auxMP = 99;
+                 }
+                mpShow = auxMP;
+                hpShow = auxHP;
+                mpPixel = 1710 - ((auxMP * 74) / 10);
+                hpPixel = 210 + ((auxHP * 74) / 10);
+                maxHp = MAXHP;
+                maxMp = MAXMP;
             }
 
             public override String ToString()
             {
-            return "N: " + this.name + "     HP: < " + this.hpPercent + "     HT: " + this.hotkey;
+            return "N: " + name + "  HP: < " + hpPercent + " (" + hpShow.ToString() + "%)  MP: > " 
+                + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + hotkey;
             }
 
     }

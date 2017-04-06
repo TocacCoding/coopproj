@@ -12,6 +12,8 @@ using System.Runtime.InteropServices;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Threading;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApplication4
 {
@@ -43,7 +45,7 @@ namespace WindowsFormsApplication4
             {
                 foreach (Structs.spellHeal spell in spellHealingList)
                 {
-                    if (Functions.Window.GetPixel(spell.hpPixel, healthY) == emptyBarAux)
+                    if (Functions.Window.GetPixel(spell.hpPixel, healthY) == emptyBarAux && Functions.Window.GetPixel(spell.mpPixel, healthY) != emptyBarAux)
                     {
                         Functions.Heal.spellHeal(spell.hotkey);
                         return; // usou heal its over
@@ -191,29 +193,36 @@ namespace WindowsFormsApplication4
 
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
-            // no name no htk no hp
-            if (textBoxSpellName.Text == "SPELL" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK" || spellHealingHpValue.Text.ToString() == "HP")
+            // check hp name mp htk
+            if (textBoxSpellName.Text == "SPELL" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK" 
+                || spellHealingHpValue.Text.ToString() == "HP" || spellHealingMpValue.Text.ToString() == "MP")
             {
                 if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Select a Name.");
                 else if (comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select Hotkey.");
                 else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Error! Select HP.");
+                else if (spellHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Error! Select MP.");
             }
-            // not numeric, > maxhp, < 1
-            else if (spellHealingHpValue.Text.ToString() != "HP")
+            // check numeric input
+            else
             {
-                int inputValid;
-                int.TryParse(spellHealingHpValue.Text, out inputValid);
-                if (inputValid == 0 || int.Parse(spellHealingHpValue.Text.ToString()) > int.Parse(maxHpInput.Text.ToString()) || int.Parse(spellHealingHpValue.Text.ToString()) < 1)
+                int inputHpValid;
+                int inputMpValid;
+                int.TryParse(spellHealingHpValue.Text, out inputHpValid);
+                int.TryParse(spellHealingMpValue.Text, out inputMpValid);
+
+                // create if valid
+                if (inputMpValid != 0 && inputHpValid != 0 
+                    && int.Parse(spellHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(spellHealingHpValue.Text.ToString()) > 0
+                    && int.Parse(spellHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(spellHealingMpValue.Text.ToString()) > 0)
                 {
-                    MessageBox.Show("Error! HP not permited.");
-                }
-                // all ok create new
-                else
-                {
-                    Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text
-                        , (VirtualKeyCode)comboBoxNewSpellHealingHotkey.SelectedItem, maxHpInput.Text);
+                    Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text, 
+                        (VirtualKeyCode)comboBoxNewSpellHealingHotkey.SelectedItem, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
                     spellHealingList.Add(newSpell);
                     updateSpellList();
+                }
+                else
+                {
+                    MessageBox.Show("Error! HP not permited.");
                 }
             }
         }
@@ -223,6 +232,7 @@ namespace WindowsFormsApplication4
             comboBoxNewSpellHealingHotkey.Text = "HTK";
             textBoxSpellName.Text = "SPELL";
             spellHealingHpValue.Text = "HP";
+            spellHealingMpValue.Text = "MP";
         }
 
         private void buttonRemoveSelectedSpellHealing_Click(object sender, EventArgs e)
@@ -538,6 +548,8 @@ namespace WindowsFormsApplication4
                     maxMpInput.ReadOnly = true;
                     buttonResetHealing.Visible = true;
                     buttonApplyMaxValues.Visible = false;
+                    buttonLoadCfgHealer.Visible = false;
+                    buttonSaveCfgHealer.Visible = true;
                 }
                 else
                 {
@@ -562,6 +574,66 @@ namespace WindowsFormsApplication4
             groupBoxSpellHealing.Visible = false;
             buttonApplyMaxValues.Visible = true;
             buttonResetHealing.Visible = false;
+            buttonLoadCfgHealer.Visible = true;
+            buttonSaveCfgHealer.Visible = false;
+        }
+
+        private void buttonSaveCfgHealer_Click(object sender, EventArgs e)
+        {
+            if (spellHealingList.Count > 0)
+            {
+                Stream streamSpell = File.OpenWrite(Environment.CurrentDirectory + "\\spellHealer.txt");
+                XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
+                xmlSerSpell.Serialize(streamSpell, spellHealingList);
+                streamSpell.Close();
+            }
+            if (itemHealingList.Count > 0)
+            {
+                Stream streamItem = File.OpenWrite(Environment.CurrentDirectory + "\\itemHealer.txt");
+                XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
+                xmlSerItem.Serialize(streamItem, itemHealingList);
+                streamItem.Close();
+            }
+        }
+
+        private void buttonLoadCfgHealer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Stream streamItem = File.OpenRead(Environment.CurrentDirectory + "\\itemHealer.txt");
+                XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
+                itemHealingList.Clear();
+                itemHealingList = (List<Structs.itemHeal>)xmlSerItem.Deserialize(streamItem);
+                streamItem.Close();
+                updateItemList();
+                groupBoxItemHealing.Visible = true;
+                buttonLoadCfgHealer.Visible = false;
+                buttonSaveCfgHealer.Visible = true;
+                buttonApplyMaxValues.Visible = false;
+                buttonResetHealing.Visible = true;
+                maxHpInput.Text = itemHealingList[0].maxHp.ToString();
+                maxMpInput.Text = itemHealingList[0].maxMp.ToString();
+                maxMpInput.ReadOnly = true;
+                maxHpInput.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            try
+            {
+                Stream streamSpell = File.OpenRead(Environment.CurrentDirectory + "\\spellHealer.txt");
+                XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
+                spellHealingList.Clear();
+                spellHealingList = (List<Structs.spellHeal>)xmlSerSpell.Deserialize(streamSpell);
+                streamSpell.Close();
+                updateSpellList();
+                groupBoxSpellHealing.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         //
     }

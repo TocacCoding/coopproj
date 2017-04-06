@@ -6,7 +6,8 @@ using WindowsInput.Native;
 
 namespace WindowsFormsApplication4.Structs
 {
-    public struct itemHeal
+    [Serializable]
+    public class itemHeal
     {
         public string name;
         public string hpPercent;
@@ -16,6 +17,12 @@ namespace WindowsFormsApplication4.Structs
         public VirtualKeyCode hotkey;
         public string operatorHp;
         public string operatorMp;
+        public int hpShow;
+        public int mpShow;
+        public int maxHp;
+        public int maxMp;
+
+        public itemHeal() { }
 
         public itemHeal(string NAME, string HP, string MP, VirtualKeyCode HTK, string OPERATORHP, string OPERATORMP, string MAXHP, string MAXMP)
         {
@@ -35,27 +42,32 @@ namespace WindowsFormsApplication4.Structs
                 if (auxMP == 0) auxMP = 1;
                 else if (auxMP == 100) auxMP = 99;
             }
+            mpShow = auxMP;
+            hpShow = auxHP;
             hpPixel = 210 + ((auxHP * 74) / 10);
             mpPixel = 1710 - ((auxMP * 74) / 10);
             operatorHp = OPERATORHP;
             operatorMp = OPERATORMP;
+            maxHp = int.Parse(MAXHP);
+            maxMp = int.Parse(MAXMP);
         }
 
         public override String ToString()
         {
             string aux1, aux2;
-            if (this.operatorHp == "BELOW")
+            if (operatorHp == "BELOW")
             {
                 aux1 = "<";
             }
             else aux1 = ">";
-            if (this.operatorMp == "BELOW")
+            if (operatorMp == "BELOW")
             {
                 aux2 = "<";
             }
             else aux2 = ">";
 
-            return "N: " + this.name + "     HP: " + aux1 + " " + this.hpPercent + "     MP: " + aux2 + " " + this.mpPercent + "     HT: " + this.hotkey;
+            return "N: " + name + "  HP: " + aux1 + " " + hpPercent + " (" + hpShow.ToString() 
+                + "%)  MP: " + aux2 + " " + mpPercent + " (" + mpShow.ToString() + "%)  HK: " + hotkey;
         }
 
     }
