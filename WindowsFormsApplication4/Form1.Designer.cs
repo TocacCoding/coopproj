@@ -64,12 +64,12 @@ namespace WindowsFormsApplication4
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxItemHealing = new System.Windows.Forms.GroupBox();
             this.groupBoxNewItemHealing = new System.Windows.Forms.GroupBox();
+            this.comboBoxMpBelowOver = new System.Windows.Forms.ComboBox();
+            this.comboBoxHpBelowOver = new System.Windows.Forms.ComboBox();
             this.itemHealingMpValue = new System.Windows.Forms.TextBox();
             this.itemHealingHpValue = new System.Windows.Forms.TextBox();
-            this.newItemHealingMpBelow = new System.Windows.Forms.DomainUpDown();
             this.labelNewItemMp = new System.Windows.Forms.Label();
             this.buttonClearNewItem = new System.Windows.Forms.Button();
-            this.newItemHealingHpBelow = new System.Windows.Forms.DomainUpDown();
             this.comboBoxNewItemHealingHotkey = new System.Windows.Forms.ComboBox();
             this.buttonAddNewItemHealing = new System.Windows.Forms.Button();
             this.labelNewItemHp = new System.Windows.Forms.Label();
@@ -85,7 +85,6 @@ namespace WindowsFormsApplication4
             this.groupBoxNewSpellHealing = new System.Windows.Forms.GroupBox();
             this.spellHealingHpValue = new System.Windows.Forms.TextBox();
             this.buttonClearNewSpell = new System.Windows.Forms.Button();
-            this.newSpellHealingHpBelow = new System.Windows.Forms.DomainUpDown();
             this.comboBoxNewSpellHealingHotkey = new System.Windows.Forms.ComboBox();
             this.buttonAddNewSpellHealing = new System.Windows.Forms.Button();
             this.labelNewSpellHp = new System.Windows.Forms.Label();
@@ -141,8 +140,6 @@ namespace WindowsFormsApplication4
             this.paralyzeHotkey = new System.Windows.Forms.ComboBox();
             this.checkBoxPoison = new System.Windows.Forms.CheckBox();
             this.checkBoxParalyze = new System.Windows.Forms.CheckBox();
-            this.comboBoxHpBelowOver = new System.Windows.Forms.ComboBox();
-            this.comboBoxMpBelowOver = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tab_account.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -208,7 +205,7 @@ namespace WindowsFormsApplication4
             this.tab_account.Location = new System.Drawing.Point(4, 22);
             this.tab_account.Name = "tab_account";
             this.tab_account.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_account.Size = new System.Drawing.Size(475, 444);
+            this.tab_account.Size = new System.Drawing.Size(624, 454);
             this.tab_account.TabIndex = 0;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
@@ -350,7 +347,7 @@ namespace WindowsFormsApplication4
             this.tab_main.Location = new System.Drawing.Point(4, 22);
             this.tab_main.Name = "tab_main";
             this.tab_main.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_main.Size = new System.Drawing.Size(475, 444);
+            this.tab_main.Size = new System.Drawing.Size(624, 454);
             this.tab_main.TabIndex = 1;
             this.tab_main.Text = "Main";
             this.tab_main.UseVisualStyleBackColor = true;
@@ -489,10 +486,8 @@ namespace WindowsFormsApplication4
             this.groupBoxNewItemHealing.Controls.Add(this.comboBoxHpBelowOver);
             this.groupBoxNewItemHealing.Controls.Add(this.itemHealingMpValue);
             this.groupBoxNewItemHealing.Controls.Add(this.itemHealingHpValue);
-            this.groupBoxNewItemHealing.Controls.Add(this.newItemHealingMpBelow);
             this.groupBoxNewItemHealing.Controls.Add(this.labelNewItemMp);
             this.groupBoxNewItemHealing.Controls.Add(this.buttonClearNewItem);
-            this.groupBoxNewItemHealing.Controls.Add(this.newItemHealingHpBelow);
             this.groupBoxNewItemHealing.Controls.Add(this.comboBoxNewItemHealingHotkey);
             this.groupBoxNewItemHealing.Controls.Add(this.buttonAddNewItemHealing);
             this.groupBoxNewItemHealing.Controls.Add(this.labelNewItemHp);
@@ -506,9 +501,33 @@ namespace WindowsFormsApplication4
             this.groupBoxNewItemHealing.TabStop = false;
             this.groupBoxNewItemHealing.Text = "New Item";
             // 
+            // comboBoxMpBelowOver
+            // 
+            this.comboBoxMpBelowOver.FormattingEnabled = true;
+            this.comboBoxMpBelowOver.Items.AddRange(new object[] {
+            "BELOW",
+            "OVER"});
+            this.comboBoxMpBelowOver.Location = new System.Drawing.Point(52, 93);
+            this.comboBoxMpBelowOver.Name = "comboBoxMpBelowOver";
+            this.comboBoxMpBelowOver.Size = new System.Drawing.Size(66, 21);
+            this.comboBoxMpBelowOver.TabIndex = 13;
+            this.comboBoxMpBelowOver.Text = "BELOW";
+            // 
+            // comboBoxHpBelowOver
+            // 
+            this.comboBoxHpBelowOver.FormattingEnabled = true;
+            this.comboBoxHpBelowOver.Items.AddRange(new object[] {
+            "BELOW",
+            "OVER"});
+            this.comboBoxHpBelowOver.Location = new System.Drawing.Point(52, 70);
+            this.comboBoxHpBelowOver.Name = "comboBoxHpBelowOver";
+            this.comboBoxHpBelowOver.Size = new System.Drawing.Size(66, 21);
+            this.comboBoxHpBelowOver.TabIndex = 12;
+            this.comboBoxHpBelowOver.Text = "BELOW";
+            // 
             // itemHealingMpValue
             // 
-            this.itemHealingMpValue.Location = new System.Drawing.Point(168, 94);
+            this.itemHealingMpValue.Location = new System.Drawing.Point(141, 93);
             this.itemHealingMpValue.Name = "itemHealingMpValue";
             this.itemHealingMpValue.Size = new System.Drawing.Size(43, 20);
             this.itemHealingMpValue.TabIndex = 11;
@@ -516,39 +535,11 @@ namespace WindowsFormsApplication4
             // 
             // itemHealingHpValue
             // 
-            this.itemHealingHpValue.Location = new System.Drawing.Point(168, 71);
+            this.itemHealingHpValue.Location = new System.Drawing.Point(141, 68);
             this.itemHealingHpValue.Name = "itemHealingHpValue";
             this.itemHealingHpValue.Size = new System.Drawing.Size(43, 20);
             this.itemHealingHpValue.TabIndex = 10;
             this.itemHealingHpValue.Text = "HP";
-            // 
-            // newItemHealingMpBelow
-            // 
-            this.newItemHealingMpBelow.Items.Add("100");
-            this.newItemHealingMpBelow.Items.Add("95");
-            this.newItemHealingMpBelow.Items.Add("90");
-            this.newItemHealingMpBelow.Items.Add("85");
-            this.newItemHealingMpBelow.Items.Add("80");
-            this.newItemHealingMpBelow.Items.Add("75");
-            this.newItemHealingMpBelow.Items.Add("70");
-            this.newItemHealingMpBelow.Items.Add("65");
-            this.newItemHealingMpBelow.Items.Add("60");
-            this.newItemHealingMpBelow.Items.Add("55");
-            this.newItemHealingMpBelow.Items.Add("50");
-            this.newItemHealingMpBelow.Items.Add("45");
-            this.newItemHealingMpBelow.Items.Add("40");
-            this.newItemHealingMpBelow.Items.Add("35");
-            this.newItemHealingMpBelow.Items.Add("30");
-            this.newItemHealingMpBelow.Items.Add("25");
-            this.newItemHealingMpBelow.Items.Add("20");
-            this.newItemHealingMpBelow.Items.Add("15");
-            this.newItemHealingMpBelow.Items.Add("10");
-            this.newItemHealingMpBelow.Items.Add("5");
-            this.newItemHealingMpBelow.Location = new System.Drawing.Point(124, 94);
-            this.newItemHealingMpBelow.Name = "newItemHealingMpBelow";
-            this.newItemHealingMpBelow.Size = new System.Drawing.Size(38, 20);
-            this.newItemHealingMpBelow.TabIndex = 9;
-            this.newItemHealingMpBelow.Text = "MP";
             // 
             // labelNewItemMp
             // 
@@ -570,34 +561,6 @@ namespace WindowsFormsApplication4
             this.buttonClearNewItem.Text = "Clear Fields";
             this.buttonClearNewItem.UseVisualStyleBackColor = true;
             this.buttonClearNewItem.Click += new System.EventHandler(this.buttonClearNewItem_Click);
-            // 
-            // newItemHealingHpBelow
-            // 
-            this.newItemHealingHpBelow.Items.Add("100");
-            this.newItemHealingHpBelow.Items.Add("95");
-            this.newItemHealingHpBelow.Items.Add("90");
-            this.newItemHealingHpBelow.Items.Add("85");
-            this.newItemHealingHpBelow.Items.Add("80");
-            this.newItemHealingHpBelow.Items.Add("75");
-            this.newItemHealingHpBelow.Items.Add("70");
-            this.newItemHealingHpBelow.Items.Add("65");
-            this.newItemHealingHpBelow.Items.Add("60");
-            this.newItemHealingHpBelow.Items.Add("55");
-            this.newItemHealingHpBelow.Items.Add("50");
-            this.newItemHealingHpBelow.Items.Add("45");
-            this.newItemHealingHpBelow.Items.Add("40");
-            this.newItemHealingHpBelow.Items.Add("35");
-            this.newItemHealingHpBelow.Items.Add("30");
-            this.newItemHealingHpBelow.Items.Add("25");
-            this.newItemHealingHpBelow.Items.Add("20");
-            this.newItemHealingHpBelow.Items.Add("15");
-            this.newItemHealingHpBelow.Items.Add("10");
-            this.newItemHealingHpBelow.Items.Add("5");
-            this.newItemHealingHpBelow.Location = new System.Drawing.Point(124, 71);
-            this.newItemHealingHpBelow.Name = "newItemHealingHpBelow";
-            this.newItemHealingHpBelow.Size = new System.Drawing.Size(38, 20);
-            this.newItemHealingHpBelow.TabIndex = 6;
-            this.newItemHealingHpBelow.Text = "HP";
             // 
             // comboBoxNewItemHealingHotkey
             // 
@@ -902,7 +865,6 @@ namespace WindowsFormsApplication4
             // 
             this.groupBoxNewSpellHealing.Controls.Add(this.spellHealingHpValue);
             this.groupBoxNewSpellHealing.Controls.Add(this.buttonClearNewSpell);
-            this.groupBoxNewSpellHealing.Controls.Add(this.newSpellHealingHpBelow);
             this.groupBoxNewSpellHealing.Controls.Add(this.comboBoxNewSpellHealingHotkey);
             this.groupBoxNewSpellHealing.Controls.Add(this.buttonAddNewSpellHealing);
             this.groupBoxNewSpellHealing.Controls.Add(this.labelNewSpellHp);
@@ -918,7 +880,7 @@ namespace WindowsFormsApplication4
             // 
             // spellHealingHpValue
             // 
-            this.spellHealingHpValue.Location = new System.Drawing.Point(141, 73);
+            this.spellHealingHpValue.Location = new System.Drawing.Point(98, 71);
             this.spellHealingHpValue.Name = "spellHealingHpValue";
             this.spellHealingHpValue.Size = new System.Drawing.Size(43, 20);
             this.spellHealingHpValue.TabIndex = 8;
@@ -934,33 +896,6 @@ namespace WindowsFormsApplication4
             this.buttonClearNewSpell.Text = "Clear Fields";
             this.buttonClearNewSpell.UseVisualStyleBackColor = true;
             this.buttonClearNewSpell.Click += new System.EventHandler(this.buttonClearNewSpell_Click);
-            // 
-            // newSpellHealingHpBelow
-            // 
-            this.newSpellHealingHpBelow.Items.Add("95");
-            this.newSpellHealingHpBelow.Items.Add("90");
-            this.newSpellHealingHpBelow.Items.Add("85");
-            this.newSpellHealingHpBelow.Items.Add("80");
-            this.newSpellHealingHpBelow.Items.Add("75");
-            this.newSpellHealingHpBelow.Items.Add("70");
-            this.newSpellHealingHpBelow.Items.Add("65");
-            this.newSpellHealingHpBelow.Items.Add("60");
-            this.newSpellHealingHpBelow.Items.Add("55");
-            this.newSpellHealingHpBelow.Items.Add("50");
-            this.newSpellHealingHpBelow.Items.Add("45");
-            this.newSpellHealingHpBelow.Items.Add("40");
-            this.newSpellHealingHpBelow.Items.Add("35");
-            this.newSpellHealingHpBelow.Items.Add("30");
-            this.newSpellHealingHpBelow.Items.Add("25");
-            this.newSpellHealingHpBelow.Items.Add("20");
-            this.newSpellHealingHpBelow.Items.Add("15");
-            this.newSpellHealingHpBelow.Items.Add("10");
-            this.newSpellHealingHpBelow.Items.Add("5");
-            this.newSpellHealingHpBelow.Location = new System.Drawing.Point(98, 73);
-            this.newSpellHealingHpBelow.Name = "newSpellHealingHpBelow";
-            this.newSpellHealingHpBelow.Size = new System.Drawing.Size(38, 20);
-            this.newSpellHealingHpBelow.TabIndex = 6;
-            this.newSpellHealingHpBelow.Text = "HP";
             // 
             // comboBoxNewSpellHealingHotkey
             // 
@@ -1253,7 +1188,7 @@ namespace WindowsFormsApplication4
             this.tab_mana.Controls.Add(this.groupBoxSmartManaDrinker);
             this.tab_mana.Location = new System.Drawing.Point(4, 22);
             this.tab_mana.Name = "tab_mana";
-            this.tab_mana.Size = new System.Drawing.Size(475, 444);
+            this.tab_mana.Size = new System.Drawing.Size(624, 454);
             this.tab_mana.TabIndex = 3;
             this.tab_mana.Text = "Mana";
             this.tab_mana.UseVisualStyleBackColor = true;
@@ -1525,7 +1460,7 @@ namespace WindowsFormsApplication4
             this.tab_actions.Controls.Add(this.groupboxRings);
             this.tab_actions.Location = new System.Drawing.Point(4, 22);
             this.tab_actions.Name = "tab_actions";
-            this.tab_actions.Size = new System.Drawing.Size(475, 444);
+            this.tab_actions.Size = new System.Drawing.Size(624, 454);
             this.tab_actions.TabIndex = 4;
             this.tab_actions.Text = "Actions";
             this.tab_actions.UseVisualStyleBackColor = true;
@@ -3515,7 +3450,7 @@ namespace WindowsFormsApplication4
             this.tab_support.Controls.Add(this.groupBoxConditionHealer);
             this.tab_support.Location = new System.Drawing.Point(4, 22);
             this.tab_support.Name = "tab_support";
-            this.tab_support.Size = new System.Drawing.Size(475, 444);
+            this.tab_support.Size = new System.Drawing.Size(624, 454);
             this.tab_support.TabIndex = 5;
             this.tab_support.Text = "Support";
             this.tab_support.UseVisualStyleBackColor = true;
@@ -4322,30 +4257,6 @@ namespace WindowsFormsApplication4
             this.checkBoxParalyze.UseVisualStyleBackColor = true;
             this.checkBoxParalyze.CheckedChanged += new System.EventHandler(this.checkBoxParalyze_CheckedChanged);
             // 
-            // comboBoxHpBelowOver
-            // 
-            this.comboBoxHpBelowOver.FormattingEnabled = true;
-            this.comboBoxHpBelowOver.Items.AddRange(new object[] {
-            "BELOW",
-            "OVER"});
-            this.comboBoxHpBelowOver.Location = new System.Drawing.Point(52, 70);
-            this.comboBoxHpBelowOver.Name = "comboBoxHpBelowOver";
-            this.comboBoxHpBelowOver.Size = new System.Drawing.Size(66, 21);
-            this.comboBoxHpBelowOver.TabIndex = 12;
-            this.comboBoxHpBelowOver.Text = "BELOW";
-            // 
-            // comboBoxMpBelowOver
-            // 
-            this.comboBoxMpBelowOver.FormattingEnabled = true;
-            this.comboBoxMpBelowOver.Items.AddRange(new object[] {
-            "BELOW",
-            "OVER"});
-            this.comboBoxMpBelowOver.Location = new System.Drawing.Point(52, 93);
-            this.comboBoxMpBelowOver.Name = "comboBoxMpBelowOver";
-            this.comboBoxMpBelowOver.Size = new System.Drawing.Size(66, 21);
-            this.comboBoxMpBelowOver.TabIndex = 13;
-            this.comboBoxMpBelowOver.Text = "BELOW";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4442,7 +4353,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.GroupBox groupBoxActiveSpellsHealing;
         private System.Windows.Forms.Button buttonRemoveSelectedSpellHealing;
         private System.Windows.Forms.ComboBox comboBoxNewSpellHealingHotkey;
-        private System.Windows.Forms.DomainUpDown newSpellHealingHpBelow;
         private System.Windows.Forms.Button buttonClearNewSpell;
         private System.Windows.Forms.ListBox listBoxSpellHealingActive;
         private System.Windows.Forms.Button buttonDownSpellHealing;
@@ -4478,7 +4388,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.GroupBox groupBoxItemHealing;
         private System.Windows.Forms.GroupBox groupBoxNewItemHealing;
         private System.Windows.Forms.Button buttonClearNewItem;
-        private System.Windows.Forms.DomainUpDown newItemHealingHpBelow;
         private System.Windows.Forms.ComboBox comboBoxNewItemHealingHotkey;
         private System.Windows.Forms.Button buttonAddNewItemHealing;
         private System.Windows.Forms.Label labelNewItemHp;
@@ -4491,7 +4400,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.Button buttonUpItemHealing;
         private System.Windows.Forms.Button buttonRemoveSelectedItemHealing;
         private System.Windows.Forms.Label labelNewItemMp;
-        private System.Windows.Forms.DomainUpDown newItemHealingMpBelow;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBoxManaWaster;
@@ -4502,13 +4410,13 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.TextBox spellHealingHpValue;
         private System.Windows.Forms.Label labelMaxMp;
         private System.Windows.Forms.Button buttonApplyMaxValues;
-        private System.Windows.Forms.TextBox maxMpInput;
-        private System.Windows.Forms.TextBox maxHpInput;
         private System.Windows.Forms.Button buttonResetHealing;
         private System.Windows.Forms.TextBox itemHealingMpValue;
         private System.Windows.Forms.TextBox itemHealingHpValue;
         private System.Windows.Forms.ComboBox comboBoxMpBelowOver;
         private System.Windows.Forms.ComboBox comboBoxHpBelowOver;
+        public System.Windows.Forms.TextBox maxMpInput;
+        public System.Windows.Forms.TextBox maxHpInput;
     }
 }
 

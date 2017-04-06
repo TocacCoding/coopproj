@@ -191,25 +191,38 @@ namespace WindowsFormsApplication4
 
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
-            if (textBoxSpellName.Text == "SPELL" || newSpellHealingHpBelow.Text == "HP" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK")
+            // no name no htk no hp
+            if (textBoxSpellName.Text == "SPELL" || comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK" || spellHealingHpValue.Text.ToString() == "HP")
             {
-                if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Please select a Name.");
-                else if (newSpellHealingHpBelow.Text == "HP") MessageBox.Show("Error! Please select a HP Below value.");
-                else if (comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Please select a Hotkey.");
+                if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Select a Name.");
+                else if (comboBoxNewSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select Hotkey.");
+                else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Error! Select HP.");
             }
-             else
+            // not numeric, > maxhp, < 1
+            else if (spellHealingHpValue.Text.ToString() != "HP")
             {
-                Structs.spellHeal newSpell = new Structs.spellHeal(this.textBoxSpellName.Text, this.newSpellHealingHpBelow.Text, (VirtualKeyCode)comboBoxNewSpellHealingHotkey.SelectedItem);
-                spellHealingList.Add(newSpell);
-                updateSpellList();
+                int inputValid;
+                int.TryParse(spellHealingHpValue.Text, out inputValid);
+                if (inputValid == 0 || int.Parse(spellHealingHpValue.Text.ToString()) > int.Parse(maxHpInput.Text.ToString()) || int.Parse(spellHealingHpValue.Text.ToString()) < 1)
+                {
+                    MessageBox.Show("Error! HP not permited.");
+                }
+                // all ok create new
+                else
+                {
+                    Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text
+                        , (VirtualKeyCode)comboBoxNewSpellHealingHotkey.SelectedItem, maxHpInput.Text);
+                    spellHealingList.Add(newSpell);
+                    updateSpellList();
+                }
             }
         }
 
         private void buttonClearNewSpell_Click(object sender, EventArgs e)
         {
-            this.newSpellHealingHpBelow.Text = "HP";
-            this.comboBoxNewSpellHealingHotkey.Text = "HTK";
-            this.textBoxSpellName.Text = "SPELL";
+            comboBoxNewSpellHealingHotkey.Text = "HTK";
+            textBoxSpellName.Text = "SPELL";
+            spellHealingHpValue.Text = "HP";
         }
 
         private void buttonRemoveSelectedSpellHealing_Click(object sender, EventArgs e)
@@ -331,17 +344,27 @@ namespace WindowsFormsApplication4
 
         private void buttonAddNewItemHealing_Click(object sender, EventArgs e)
         {
-            if (textBoxItemName.Text == "ITEM" || newItemHealingHpBelow.Text == "HP" || comboBoxNewItemHealingHotkey.Text.ToString() == "HTK" || newItemHealingMpBelow.Text == "MP")
+            int inputMpValid, inputHpValid;
+            int.TryParse(itemHealingMpValue.Text, out inputMpValid);
+            int.TryParse(itemHealingHpValue.Text, out inputHpValid);
+
+            if (textBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || comboBoxNewItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
             {
-                if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Please select a Name.");
-                else if (newItemHealingHpBelow.Text == "HP") MessageBox.Show("Error! Please select a HP Below value.");
-                else if (comboBoxNewItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Please select a Hotkey.");
-                else if (newItemHealingMpBelow.Text == "MP") MessageBox.Show("Error! Please select a MP Below value.");
+                if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Select name.");
+                else if (itemHealingHpValue.Text == "HP") MessageBox.Show("Error! Select HP.");
+                else if (comboBoxNewItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select hotkey.");
+                else if (itemHealingMpValue.Text == "MP") MessageBox.Show("Error! Select MP.");
+                else if (inputHpValid == 0 || inputMpValid == 0 
+                    || int.Parse(itemHealingHpValue.Text.ToString()) > int.Parse(maxHpInput.Text.ToString()) || int.Parse(itemHealingHpValue.Text.ToString()) < 1 
+                    || int.Parse(itemHealingMpValue.Text.ToString()) > int.Parse(maxMpInput.Text.ToString()) || int.Parse(itemHealingMpValue.Text.ToString()) < 1)
+                {
+                    MessageBox.Show("Error! HP not permited.");
+                }
             }
             else
             {
-                Structs.itemHeal newSpell = new Structs.itemHeal(textBoxItemName.Text, newItemHealingHpBelow.Text, 
-                    newItemHealingMpBelow.Text, (VirtualKeyCode)comboBoxNewItemHealingHotkey.SelectedItem, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text);
+                Structs.itemHeal newSpell = new Structs.itemHeal(textBoxItemName.Text, itemHealingHpValue.Text, itemHealingMpValue.Text, 
+                    (VirtualKeyCode)comboBoxNewItemHealingHotkey.SelectedItem, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text, maxHpInput.Text, maxMpInput.Text);
                 itemHealingList.Add(newSpell);
                 updateItemList();
             }
@@ -349,12 +372,12 @@ namespace WindowsFormsApplication4
 
         private void buttonClearNewItem_Click(object sender, EventArgs e)
         {
-            newItemHealingHpBelow.Text = "HP";
             comboBoxNewItemHealingHotkey.Text = "HTK";
             textBoxItemName.Text = "ITEM";
-            newItemHealingMpBelow.Text = "MP";
+            itemHealingMpValue.Text = "MP";
             comboBoxHpBelowOver.Text = "BELOW";
             comboBoxMpBelowOver.Text = "BELOW";
+            itemHealingHpValue.Text = "HP";
         }
 
         private void buttonRemoveSelectedItemHealing_Click(object sender, EventArgs e)
@@ -533,6 +556,8 @@ namespace WindowsFormsApplication4
             updateSpellList();
             maxHpInput.ReadOnly = false;
             maxMpInput.ReadOnly = false;
+            maxHpInput.Text = "";
+            maxMpInput.Text = "";
             groupBoxItemHealing.Visible = false;
             groupBoxSpellHealing.Visible = false;
             buttonApplyMaxValues.Visible = true;
