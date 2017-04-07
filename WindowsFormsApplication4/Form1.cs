@@ -190,11 +190,12 @@ namespace WindowsFormsApplication4
             listBoxSpellHealingActive.DataSource = spellHealingList;
             listBoxSpellHealingActive.DisplayMember = "Name";
         }
-        // hotkeys
+        // hotkey geter
         VirtualKeyCode newSpellHtk;
         private void spellHealingHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            newSpellHealingHotkey.Text = e.KeyCode.ToString().Replace("D", "");
+            if (e.KeyCode.ToString() != "D") newSpellHealingHotkey.Text = e.KeyCode.ToString().Replace("D", "");
+            else newSpellHealingHotkey.Text = e.KeyCode.ToString();
             newSpellHtk = (VirtualKeyCode)e.KeyCode;
         }
 
@@ -204,8 +205,8 @@ namespace WindowsFormsApplication4
             if (textBoxSpellName.Text == "SPELL" || newSpellHealingHotkey.Text.ToString() == "HTK"
                 || spellHealingHpValue.Text.ToString() == "HP" || spellHealingMpValue.Text.ToString() == "MP")
             {
-                if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Select a Name.");
-                else if (newSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select Hotkey.");
+                if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Select NAME.");
+                else if (newSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select HOTKEY.");
                 else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Error! Select HP.");
                 else if (spellHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Error! Select MP.");
             }
@@ -229,7 +230,7 @@ namespace WindowsFormsApplication4
                 }
                 else
                 {
-                    MessageBox.Show("Error! HP/MP not permited.");
+                    MessageBox.Show("Error! Invalid values.");
                 }
             }
         }
@@ -363,7 +364,8 @@ namespace WindowsFormsApplication4
         VirtualKeyCode newItemHtk;
         private void itemHealingHotkey_KeyDown(object sender, KeyEventArgs e)
         {
-            newItemHealingHotkey.Text = e.KeyCode.ToString().Replace("D","");
+            if (e.KeyCode.ToString() != "D") newItemHealingHotkey.Text = e.KeyCode.ToString().Replace("D", "");
+            else newItemHealingHotkey.Text = e.KeyCode.ToString();
             newItemHtk = (VirtualKeyCode)e.KeyCode;
         }
 
@@ -371,9 +373,9 @@ namespace WindowsFormsApplication4
         {
             if (textBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || newItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
             {
-                if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Select name.");
+                if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Select NAME.");
                 else if (itemHealingHpValue.Text == "HP") MessageBox.Show("Error! Select HP.");
-                else if (newItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select hotkey.");
+                else if (newItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select HOTKEY.");
                 else if (itemHealingMpValue.Text == "MP") MessageBox.Show("Error! Select MP.");
             }
             else
@@ -394,7 +396,7 @@ namespace WindowsFormsApplication4
                 }
                 else
                 {
-                    MessageBox.Show("Error! HP not permited.");
+                    MessageBox.Show("Error! Invalid HP.");
                 }
             }
         }
@@ -572,7 +574,7 @@ namespace WindowsFormsApplication4
                 }
                 else
                 {
-                    MessageBox.Show("Error! Values out of range.");
+                    MessageBox.Show("Error! Invalid values.");
                     groupBoxItemHealing.Visible = false;
                     groupBoxSpellHealing.Visible = false;
                 }
@@ -599,127 +601,136 @@ namespace WindowsFormsApplication4
 
         private void buttonSaveCfgHealer_Click(object sender, EventArgs e)
         {
+            // check if spell+item exists
             if (spellHealingList.Count > 0 && itemHealingList.Count >0)
             {
+                // init spell
+                bool spellValidLocation = false;
                 SaveFileDialog sfdSpell = new SaveFileDialog();
-                sfdSpell.Title = "Save Spell Healing cfg as";
+                sfdSpell.Title = "SAVE SPELL IN..";
                 sfdSpell.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
                 sfdSpell.DefaultExt = "txt";
                 sfdSpell.AddExtension = true;
-                sfdSpell.FileName = "spellHealerCFG";
+                sfdSpell.FileName = "SPELL";
+                // init item 
+                bool itemValidLocation = false;
+                SaveFileDialog sfdItem = new SaveFileDialog();
+                sfdItem.Title = "SAVE ITEM IN..";
+                sfdItem.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                sfdItem.DefaultExt = "txt";
+                sfdItem.AddExtension = true;
+                sfdItem.FileName = "ITEM";
+                // check spell folder + name
                 if (sfdSpell.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    string path = sfdSpell.FileName;
-                    Stream streamSpell = File.Create(path);
+                    spellValidLocation = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error! No SPELL location.");
+                    return;
+                }
+                // check item folder+name
+                if (sfdItem.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    itemValidLocation = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error! No ITEM location.");
+                    return;
+                }
+                // all ok
+                if (itemValidLocation && spellValidLocation)
+                {
+                    // save item
+                    string pathItem = sfdItem.FileName;
+                    Stream streamItem = File.Create(pathItem);
+                    XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
+                    xmlSerItem.Serialize(streamItem, itemHealingList);
+                    streamItem.Close();
+                    // save spell
+                    string pathSpell = sfdSpell.FileName;
+                    Stream streamSpell = File.Create(pathSpell);
                     XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
                     xmlSerSpell.Serialize(streamSpell, spellHealingList);
                     streamSpell.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Error! No file selected.");
-                    return;
-                }
-                SaveFileDialog sfdItem = new SaveFileDialog();
-                sfdItem.Title = "Save Item Healing cfg as";
-                sfdItem.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
-                sfdItem.DefaultExt = "txt";
-                sfdItem.AddExtension = true;
-                sfdItem.FileName = "itemHealerCFG";
-                if (sfdItem.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    string path = sfdItem.FileName;
-                    Stream streamItem = File.Create(path);
-                    XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
-                    xmlSerItem.Serialize(streamItem, itemHealingList);
-                    streamItem.Close();
-                }
-                else
-                {
-                    spellHealingList.Clear();
-                    updateSpellList();
-                    MessageBox.Show("Error! No file selected.");
-                    return;
-                }
             }
+            // error messages first if fails
             else
             {
                 if (spellHealingList.Count == 0 && itemHealingList.Count == 0) MessageBox.Show("Error! Nothing to save.");
-                else if (spellHealingList.Count == 0) MessageBox.Show("Error! Spell healer no values.");
-                else if (itemHealingList.Count == 0) MessageBox.Show("Error! Item healer no values.");
+                else if (spellHealingList.Count == 0) MessageBox.Show("Error! No SPELLS to save.");
+                else if (itemHealingList.Count == 0) MessageBox.Show("Error! No ITEMS to save.");
             }
         }
 
         private void buttonLoadCfgHealer_Click(object sender, EventArgs e)
         {
-            bool item = false;
-            bool spell = false;
-            // item routine
+            // init 
+            bool itemLoadOk = false;
+            bool spellLoadOk = false;
+            List<Structs.itemHeal> auxItemList;
+            List<Structs.spellHeal> auxSpellList;
             try
             {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Title = "Load Item Healing cfg from";
-                ofd.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
-                ofd.DefaultExt = "txt";
-                ofd.AddExtension = true;
-                if(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                // init item
+                OpenFileDialog ofdItem = new OpenFileDialog();
+                ofdItem.Title = "LOAD ITEM FROM..";
+                ofdItem.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                ofdItem.DefaultExt = "txt";
+                ofdItem.AddExtension = true;
+                // init spell
+                OpenFileDialog ofdSpell = new OpenFileDialog();
+                ofdSpell.Title = "LOAD SPELL FROM..";
+                ofdSpell.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
+                ofdSpell.DefaultExt = "txt";
+                ofdSpell.AddExtension = true;
+                // popup dialogs
+                if (ofdItem.ShowDialog() == System.Windows.Forms.DialogResult.OK && ofdSpell.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    string path = ofd.FileName;
-                    Stream streamItem = File.OpenRead(path);
+                    // item load
+                    string pathItem = ofdItem.FileName;
+                    Stream streamItem = File.OpenRead(pathItem);
                     XmlSerializer xmlSerItem = new XmlSerializer(typeof(List<Structs.itemHeal>));
-                    itemHealingList.Clear();
-                    itemHealingList = (List<Structs.itemHeal>)xmlSerItem.Deserialize(streamItem);
+                    // load to aux list
+                    auxItemList = (List<Structs.itemHeal>)xmlSerItem.Deserialize(streamItem);
                     streamItem.Close();
-                    updateItemList();
-                    item = true;
-                }
-                else
-                {
-                    MessageBox.Show("Error! No file selected.");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error! Corrupt item file.");
-                return;
-            }
-            // spell routine
-            try
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Title = "Load Spell Healing cfg from";
-                ofd.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configs";
-                ofd.DefaultExt = "txt";
-                ofd.AddExtension = true;
-                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    string path = ofd.FileName;
-                    Stream streamSpell = File.OpenRead(path);
+                    // spell load
+                    string pathSpell = ofdSpell.FileName;
+                    Stream streamSpell = File.OpenRead(pathSpell);
                     XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.spellHeal>));
-                    spellHealingList.Clear();
-                    spellHealingList = (List<Structs.spellHeal>)xmlSerSpell.Deserialize(streamSpell);
+                    // load to aux list
+                    auxSpellList = (List<Structs.spellHeal>)xmlSerSpell.Deserialize(streamSpell);
                     streamSpell.Close();
-                    updateSpellList();
-                    spell = true;
+                    // success item+spell
+                    spellLoadOk = true;
+                    itemLoadOk = true;
                 }
                 else
                 {
-                    MessageBox.Show("Error! No file selected.");
-                    itemHealingList.Clear();
-                    updateItemList();
+                    MessageBox.Show("Error! Select BOTH locations.");
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error! Corrupt spell file.");
-                itemHealingList.Clear();
-                updateItemList();
+                MessageBox.Show("Error! Corrupt/Invalid FILE.");
                 return;
             }
-            if (item && spell)
+            // all ok
+            if (itemLoadOk && spellLoadOk)
             {
+                // spell aux to real
+                spellHealingList.Clear();
+                spellHealingList = auxSpellList;
+                updateSpellList();
+                // item aux to real
+                itemHealingList.Clear();
+                itemHealingList = auxItemList;
+                updateItemList();
+                // window manipulation hiding/showing stuff on menus
                 groupBoxSpellHealing.Visible = true;
                 groupBoxItemHealing.Visible = true;
                 buttonLoadCfgHealer.Visible = false;

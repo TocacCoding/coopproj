@@ -1,39 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfSpellHeal xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spellHeal>
-    <name>teste 1</name>
-    <hpPercent>234</hpPercent>
-    <mpPercent>43</mpPercent>
-    <hpPixel>291</hpPixel>
-    <mpPixel>1696</mpPixel>
-    <hpShow>11</hpShow>
-    <mpShow>2</mpShow>
-    <hotkey>VK_1</hotkey>
-    <maxHp>2000</maxHp>
-    <maxMp>2000</maxMp>
-  </spellHeal>
-  <spellHeal>
-    <name>teste 12</name>
-    <hpPercent>1555</hpPercent>
-    <mpPercent>45</mpPercent>
-    <hpPixel>779</hpPixel>
-    <mpPixel>1696</mpPixel>
-    <hpShow>77</hpShow>
-    <mpShow>2</mpShow>
-    <hotkey>VK_2</hotkey>
-    <maxHp>2000</maxHp>
-    <maxMp>2000</maxMp>
-  </spellHeal>
-  <spellHeal>
-    <name>teste 123</name>
-    <hpPercent>1555</hpPercent>
-    <mpPercent>455</mpPercent>
-    <hpPixel>779</hpPixel>
-    <mpPixel>1548</mpPixel>
-    <hpShow>77</hpShow>
-    <mpShow>22</mpShow>
-    <hotkey>VK_2</hotkey>
-    <maxHp>2000</maxHp>
-    <maxMp>2000</maxMp>
+    <name>789L</name>
+    <hpPercent>798</hpPercent>
+    <mpPercent>789</mpPercent>
+    <hpPixel>217</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hpShow>1</hpShow>
+    <mpShow>1</mpShow>
+    <hotkey>VK_9</hotkey>
+    <maxHp>89998</maxHp>
+    <maxMp>8988</maxMp>
   </spellHeal>
 </ArrayOfSpellHeal>
