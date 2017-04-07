@@ -19,3 +19,13 @@ C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Release\WindowsFor
 C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.Properties.Resources.resources
 C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csproj.GenerateResource.Cache
 C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csprojResolveAssemblyReference.cache
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.exe
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.pdb
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\bin\Release\WindowsFormsApplication4.exe
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\bin\Release\WindowsFormsApplication4.pdb
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\bin\Release\WindowsInput.dll
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\bin\Release\WindowsInput.xml
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csprojResolveAssemblyReference.cache
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.Form1.resources
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.Properties.Resources.resources
+C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csproj.GenerateResource.Cache

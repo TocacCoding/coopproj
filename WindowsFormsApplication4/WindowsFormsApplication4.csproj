@@ -80,6 +80,7 @@
     <Compile Include="Functions\Window.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structs\Hotkeys.cs" />
     <Compile Include="Structs\itemHeal.cs" />
     <Compile Include="Structs\spellHeal.cs" />
     <EmbeddedResource Include="Form1.resx">

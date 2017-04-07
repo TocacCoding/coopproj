@@ -213,6 +213,24 @@ namespace WindowsFormsApplication4
             // check numeric input
             else
             {
+                //codigo beta de validaçao de hotkeys
+                var checkforhotkey1 = Structs.Hotkeys.AllInstances.FirstOrDefault(md => md.hotkey == newItemHtk);
+                if (checkforhotkey1 != null && checkforhotkey1.identifier != textBoxSpellName.Text)
+                {
+                    MessageBox.Show("This hotkey is already asigned to a spell named: " + checkforhotkey1.identifier);
+                }
+                else if (checkforhotkey1 != null && checkforhotkey1.identifier == textBoxSpellName.Text)
+                {
+                    checkforhotkey1.hotkey = newItemHtk;
+                }
+                else
+                {
+                    var createHotkey = Structs.Hotkeys.Create();
+                    createHotkey.hotkey = newItemHtk;
+                    createHotkey.identifier = textBoxSpellName.Text;
+                    Functions.Actions.mountHotkey = newItemHtk;
+                }
+
                 int inputHpValid;
                 int inputMpValid;
                 int.TryParse(spellHealingHpValue.Text, out inputHpValid);
