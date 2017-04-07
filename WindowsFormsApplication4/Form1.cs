@@ -213,43 +213,25 @@ namespace WindowsFormsApplication4
             // check numeric input
             else
             {
-                //codigo beta de validaçao de hotkeys
-                var checkforhotkey1 = Structs.Hotkeys.AllInstances.FirstOrDefault(md => md.hotkey == newItemHtk);
-                if (checkforhotkey1 != null && checkforhotkey1.identifier != textBoxSpellName.Text)
-                {
-                    MessageBox.Show("This hotkey is already asigned to a spell named: " + checkforhotkey1.identifier);
-                }
-                else if (checkforhotkey1 != null && checkforhotkey1.identifier == textBoxSpellName.Text)
-                {
-                    checkforhotkey1.hotkey = newItemHtk;
-                }
-                else
-                {
-                    var createHotkey = Structs.Hotkeys.Create();
-                    createHotkey.hotkey = newItemHtk;
-                    createHotkey.identifier = textBoxSpellName.Text;
-                    Functions.Actions.mountHotkey = newItemHtk;
-                }
+                    int inputHpValid;
+                    int inputMpValid;
+                    int.TryParse(spellHealingHpValue.Text, out inputHpValid);
+                    int.TryParse(spellHealingMpValue.Text, out inputMpValid);
 
-                int inputHpValid;
-                int inputMpValid;
-                int.TryParse(spellHealingHpValue.Text, out inputHpValid);
-                int.TryParse(spellHealingMpValue.Text, out inputMpValid);
-
-                // create if valid
-                if (inputMpValid != 0 && inputHpValid != 0 
-                    && int.Parse(spellHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(spellHealingHpValue.Text.ToString()) > 0
-                    && int.Parse(spellHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(spellHealingMpValue.Text.ToString()) > 0)
-                {
-                    Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text,
-                        newSpellHtk, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
-                    spellHealingList.Add(newSpell);
-                    updateSpellList();
-                }
-                else
-                {
-                    MessageBox.Show("Error! Invalid values.");
-                }
+                    // create if valid
+                    if (inputMpValid != 0 && inputHpValid != 0
+                        && int.Parse(spellHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(spellHealingHpValue.Text.ToString()) > 0
+                        && int.Parse(spellHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(spellHealingMpValue.Text.ToString()) > 0)
+                    {
+                        Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text,
+                               newSpellHtk, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
+                        spellHealingList.Add(newSpell);
+                        updateSpellList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error! Invalid values.");
+                    }
             }
         }
 

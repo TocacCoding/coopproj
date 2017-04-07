@@ -7,8 +7,6 @@ C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\obj\Release\
 C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csproj.GenerateResource.Cache
 C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.exe
 C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.pdb
-C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\bin\Release\WindowsFormsApplication4.exe.CodeAnalysisLog.xml
-C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\bin\Release\WindowsFormsApplication4.exe.lastcodeanalysissucceeded
 C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.exe
 C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.pdb
 C:\Users\Vitória\Desktop\Newbot\WindowsFormsApplication4\bin\Release\WindowsFormsApplication4.exe
@@ -29,3 +27,4 @@ C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\R
 C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.Form1.resources
 C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.Properties.Resources.resources
 C:\Users\Wipul_000\Desktop\Latest\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csproj.GenerateResource.Cache
+C:\Users\Wipul_000\Desktop\coopproj-master\WindowsFormsApplication4\obj\Release\WindowsFormsApplication4.csprojResolveAssemblyReference.cache

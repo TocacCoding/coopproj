@@ -17,8 +17,8 @@ namespace WindowsFormsApplication4.Structs
         public string identifier { get; set; }
         public VirtualKeyCode hotkey { get; set; }
 
-        private Hotkeys() // Private ctor ensures only a member 
-        {                // function can create a new MyData
+        private Hotkeys() // Tem de ser privado se n ha 1 list ke nunca pode ser lida 
+        {                
         }
         public static Hotkeys Create()
         {
