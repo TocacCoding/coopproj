@@ -55,7 +55,6 @@ namespace WindowsFormsApplication4
             this.buttonSaveConfig = new System.Windows.Forms.Button();
             this.buttonLoadConfig = new System.Windows.Forms.Button();
             this.tab_heal = new System.Windows.Forms.TabPage();
-            this.newSpellHealingHotkey = new System.Windows.Forms.TextBox();
             this.groupBoxGeneralInfo = new System.Windows.Forms.GroupBox();
             this.buttonSaveCfgHealer = new System.Windows.Forms.Button();
             this.buttonLoadCfgHealer = new System.Windows.Forms.Button();
@@ -67,6 +66,7 @@ namespace WindowsFormsApplication4
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxItemHealing = new System.Windows.Forms.GroupBox();
             this.groupBoxNewItemHealing = new System.Windows.Forms.GroupBox();
+            this.newItemHealingHotkey = new System.Windows.Forms.TextBox();
             this.comboBoxMpBelowOver = new System.Windows.Forms.ComboBox();
             this.comboBoxHpBelowOver = new System.Windows.Forms.ComboBox();
             this.itemHealingMpValue = new System.Windows.Forms.TextBox();
@@ -85,6 +85,7 @@ namespace WindowsFormsApplication4
             this.buttonRemoveSelectedItemHealing = new System.Windows.Forms.Button();
             this.groupBoxSpellHealing = new System.Windows.Forms.GroupBox();
             this.groupBoxNewSpellHealing = new System.Windows.Forms.GroupBox();
+            this.newSpellHealingHotkey = new System.Windows.Forms.TextBox();
             this.spellHealingMpValue = new System.Windows.Forms.TextBox();
             this.labelNewSpellMpOver = new System.Windows.Forms.Label();
             this.buttonClearNewSpell = new System.Windows.Forms.Button();
@@ -109,24 +110,24 @@ namespace WindowsFormsApplication4
             this.labelSmartManaDrinkerStartMana = new System.Windows.Forms.Label();
             this.tab_actions = new System.Windows.Forms.TabPage();
             this.groupBoxManaWaster = new System.Windows.Forms.GroupBox();
-            this.smartManaWasterHotkey = new System.Windows.Forms.ComboBox();
-            this.labelManaWasterHotkey = new System.Windows.Forms.Label();
+            this.checkBoxManaWaster = new System.Windows.Forms.CheckBox();
+            this.manaWasterHotkey = new System.Windows.Forms.TextBox();
             this.groupBoxSpells = new System.Windows.Forms.GroupBox();
-            this.utamoVitaHotkey = new System.Windows.Forms.ComboBox();
-            this.utanaVidHotkey = new System.Windows.Forms.ComboBox();
+            this.utanaVidHotkey = new System.Windows.Forms.TextBox();
+            this.utamoVitaHotkey = new System.Windows.Forms.TextBox();
             this.checkBoxUtana = new System.Windows.Forms.CheckBox();
             this.checkBoxUtamo = new System.Windows.Forms.CheckBox();
             this.groupBoxRoutine = new System.Windows.Forms.GroupBox();
-            this.mountHtk = new System.Windows.Forms.ComboBox();
-            this.eaterHtk = new System.Windows.Forms.ComboBox();
+            this.mountHtk = new System.Windows.Forms.TextBox();
+            this.eaterHotkey = new System.Windows.Forms.TextBox();
             this.checkBoxMount = new System.Windows.Forms.CheckBox();
             this.checkBoxEater = new System.Windows.Forms.CheckBox();
             this.groupboxRings = new System.Windows.Forms.GroupBox();
-            this.healingRingHotkey = new System.Windows.Forms.ComboBox();
-            this.mightRingHotkey = new System.Windows.Forms.ComboBox();
-            this.timeRingHotkey = new System.Windows.Forms.ComboBox();
-            this.energyRingHotkey = new System.Windows.Forms.ComboBox();
-            this.lifeRingHotkey = new System.Windows.Forms.ComboBox();
+            this.healingRingHotkey = new System.Windows.Forms.TextBox();
+            this.mightRingHotkey = new System.Windows.Forms.TextBox();
+            this.timeRingHotkey = new System.Windows.Forms.TextBox();
+            this.energyRingHotkey = new System.Windows.Forms.TextBox();
+            this.lifeRingHotkey = new System.Windows.Forms.TextBox();
             this.checkBoxMightRing = new System.Windows.Forms.CheckBox();
             this.checkBoxHealingRing = new System.Windows.Forms.CheckBox();
             this.checkBoxTimeRing = new System.Windows.Forms.CheckBox();
@@ -134,16 +135,15 @@ namespace WindowsFormsApplication4
             this.checkBoxLifeRing = new System.Windows.Forms.CheckBox();
             this.tab_support = new System.Windows.Forms.TabPage();
             this.groupBoxStatusHolder = new System.Windows.Forms.GroupBox();
-            this.uturaHotkey = new System.Windows.Forms.ComboBox();
-            this.hasteHotkey = new System.Windows.Forms.ComboBox();
             this.checkBoxUtura = new System.Windows.Forms.CheckBox();
             this.checkBoxHaste = new System.Windows.Forms.CheckBox();
             this.groupBoxConditionHealer = new System.Windows.Forms.GroupBox();
-            this.poisonHotkey = new System.Windows.Forms.ComboBox();
-            this.paralyzeHotkey = new System.Windows.Forms.ComboBox();
             this.checkBoxPoison = new System.Windows.Forms.CheckBox();
             this.checkBoxParalyze = new System.Windows.Forms.CheckBox();
-            this.newItemHealingHotkey = new System.Windows.Forms.TextBox();
+            this.paralyzeHotkey = new System.Windows.Forms.TextBox();
+            this.poisonHotkey = new System.Windows.Forms.TextBox();
+            this.hasteHotkey = new System.Windows.Forms.TextBox();
+            this.uturaHotkey = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tab_account.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -399,16 +399,6 @@ namespace WindowsFormsApplication4
             this.tab_heal.Text = "Heal";
             this.tab_heal.UseVisualStyleBackColor = true;
             // 
-            // newSpellHealingHotkey
-            // 
-            this.newSpellHealingHotkey.Location = new System.Drawing.Point(80, 39);
-            this.newSpellHealingHotkey.Name = "newSpellHealingHotkey";
-            this.newSpellHealingHotkey.ReadOnly = true;
-            this.newSpellHealingHotkey.Size = new System.Drawing.Size(37, 20);
-            this.newSpellHealingHotkey.TabIndex = 3;
-            this.newSpellHealingHotkey.Text = "HTK";
-            this.newSpellHealingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.spellHealingHotkey_KeyDown);
-            // 
             // groupBoxGeneralInfo
             // 
             this.groupBoxGeneralInfo.Controls.Add(this.buttonSaveCfgHealer);
@@ -538,6 +528,16 @@ namespace WindowsFormsApplication4
             this.groupBoxNewItemHealing.TabStop = false;
             this.groupBoxNewItemHealing.Text = "New Item";
             // 
+            // newItemHealingHotkey
+            // 
+            this.newItemHealingHotkey.Location = new System.Drawing.Point(119, 39);
+            this.newItemHealingHotkey.Name = "newItemHealingHotkey";
+            this.newItemHealingHotkey.ReadOnly = true;
+            this.newItemHealingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.newItemHealingHotkey.TabIndex = 14;
+            this.newItemHealingHotkey.Text = "HTK";
+            this.newItemHealingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itemHealingHotkey_KeyDown);
+            // 
             // comboBoxMpBelowOver
             // 
             this.comboBoxMpBelowOver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -549,7 +549,6 @@ namespace WindowsFormsApplication4
             this.comboBoxMpBelowOver.Name = "comboBoxMpBelowOver";
             this.comboBoxMpBelowOver.Size = new System.Drawing.Size(66, 21);
             this.comboBoxMpBelowOver.TabIndex = 13;
-            this.comboBoxMpBelowOver.SelectedIndex = 0;
             // 
             // comboBoxHpBelowOver
             // 
@@ -562,7 +561,6 @@ namespace WindowsFormsApplication4
             this.comboBoxHpBelowOver.Name = "comboBoxHpBelowOver";
             this.comboBoxHpBelowOver.Size = new System.Drawing.Size(66, 21);
             this.comboBoxHpBelowOver.TabIndex = 12;
-            this.comboBoxHpBelowOver.SelectedIndex = 0;
             // 
             // itemHealingMpValue
             // 
@@ -736,6 +734,16 @@ namespace WindowsFormsApplication4
             this.groupBoxNewSpellHealing.TabIndex = 2;
             this.groupBoxNewSpellHealing.TabStop = false;
             this.groupBoxNewSpellHealing.Text = "New Spell";
+            // 
+            // newSpellHealingHotkey
+            // 
+            this.newSpellHealingHotkey.Location = new System.Drawing.Point(80, 39);
+            this.newSpellHealingHotkey.Name = "newSpellHealingHotkey";
+            this.newSpellHealingHotkey.ReadOnly = true;
+            this.newSpellHealingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.newSpellHealingHotkey.TabIndex = 3;
+            this.newSpellHealingHotkey.Text = "HTK";
+            this.newSpellHealingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.spellHealingHotkey_KeyDown);
             // 
             // spellHealingMpValue
             // 
@@ -1162,8 +1170,8 @@ namespace WindowsFormsApplication4
             // 
             // groupBoxManaWaster
             // 
-            this.groupBoxManaWaster.Controls.Add(this.smartManaWasterHotkey);
-            this.groupBoxManaWaster.Controls.Add(this.labelManaWasterHotkey);
+            this.groupBoxManaWaster.Controls.Add(this.checkBoxManaWaster);
+            this.groupBoxManaWaster.Controls.Add(this.manaWasterHotkey);
             this.groupBoxManaWaster.Location = new System.Drawing.Point(9, 144);
             this.groupBoxManaWaster.Name = "groupBoxManaWaster";
             this.groupBoxManaWaster.Size = new System.Drawing.Size(187, 116);
@@ -1171,201 +1179,31 @@ namespace WindowsFormsApplication4
             this.groupBoxManaWaster.TabStop = false;
             this.groupBoxManaWaster.Text = "Mana Waster";
             // 
-            // smartManaWasterHotkey
+            // checkBoxManaWaster
             // 
-            this.smartManaWasterHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.smartManaWasterHotkey.Location = new System.Drawing.Point(85, 48);
-            this.smartManaWasterHotkey.Name = "smartManaWasterHotkey";
-            this.smartManaWasterHotkey.Size = new System.Drawing.Size(77, 21);
-            this.smartManaWasterHotkey.TabIndex = 5;
-            this.smartManaWasterHotkey.Text = "HTK";
+            this.checkBoxManaWaster.AutoSize = true;
+            this.checkBoxManaWaster.Location = new System.Drawing.Point(27, 27);
+            this.checkBoxManaWaster.Name = "checkBoxManaWaster";
+            this.checkBoxManaWaster.Size = new System.Drawing.Size(144, 17);
+            this.checkBoxManaWaster.TabIndex = 13;
+            this.checkBoxManaWaster.Text = "Mana Waster (mana=full)";
+            this.checkBoxManaWaster.UseVisualStyleBackColor = true;
+            this.checkBoxManaWaster.CheckedChanged += new System.EventHandler(this.checkBoxManaWaster_CheckedChanged);
             // 
-            // labelManaWasterHotkey
+            // manaWasterHotkey
             // 
-            this.labelManaWasterHotkey.AutoSize = true;
-            this.labelManaWasterHotkey.Location = new System.Drawing.Point(25, 50);
-            this.labelManaWasterHotkey.Name = "labelManaWasterHotkey";
-            this.labelManaWasterHotkey.Size = new System.Drawing.Size(44, 13);
-            this.labelManaWasterHotkey.TabIndex = 0;
-            this.labelManaWasterHotkey.Text = "Hotkey:";
+            this.manaWasterHotkey.Location = new System.Drawing.Point(82, 50);
+            this.manaWasterHotkey.Name = "manaWasterHotkey";
+            this.manaWasterHotkey.ReadOnly = true;
+            this.manaWasterHotkey.Size = new System.Drawing.Size(37, 20);
+            this.manaWasterHotkey.TabIndex = 12;
+            this.manaWasterHotkey.Text = "HTK";
+            this.manaWasterHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manaWasterHotkey_KeyDown);
             // 
             // groupBoxSpells
             // 
-            this.groupBoxSpells.Controls.Add(this.utamoVitaHotkey);
             this.groupBoxSpells.Controls.Add(this.utanaVidHotkey);
+            this.groupBoxSpells.Controls.Add(this.utamoVitaHotkey);
             this.groupBoxSpells.Controls.Add(this.checkBoxUtana);
             this.groupBoxSpells.Controls.Add(this.checkBoxUtamo);
             this.groupBoxSpells.Location = new System.Drawing.Point(209, 24);
@@ -1375,376 +1213,34 @@ namespace WindowsFormsApplication4
             this.groupBoxSpells.TabStop = false;
             this.groupBoxSpells.Text = "Spells";
             // 
-            // utamoVitaHotkey
-            // 
-            this.utamoVitaHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.utamoVitaHotkey.Location = new System.Drawing.Point(93, 25);
-            this.utamoVitaHotkey.Name = "utamoVitaHotkey";
-            this.utamoVitaHotkey.Size = new System.Drawing.Size(77, 21);
-            this.utamoVitaHotkey.TabIndex = 10;
-            // 
             // utanaVidHotkey
             // 
-            this.utanaVidHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.utanaVidHotkey.Location = new System.Drawing.Point(93, 52);
+            this.utanaVidHotkey.Location = new System.Drawing.Point(108, 49);
             this.utanaVidHotkey.Name = "utanaVidHotkey";
-            this.utanaVidHotkey.Size = new System.Drawing.Size(77, 21);
-            this.utanaVidHotkey.TabIndex = 9;
+            this.utanaVidHotkey.ReadOnly = true;
+            this.utanaVidHotkey.Size = new System.Drawing.Size(37, 20);
+            this.utanaVidHotkey.TabIndex = 11;
+            this.utanaVidHotkey.Text = "HTK";
+            this.utanaVidHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.utanaVidHotkey_KeyDown);
+            // 
+            // utamoVitaHotkey
+            // 
+            this.utamoVitaHotkey.Location = new System.Drawing.Point(108, 20);
+            this.utamoVitaHotkey.Name = "utamoVitaHotkey";
+            this.utamoVitaHotkey.ReadOnly = true;
+            this.utamoVitaHotkey.Size = new System.Drawing.Size(37, 20);
+            this.utamoVitaHotkey.TabIndex = 7;
+            this.utamoVitaHotkey.Text = "HTK";
+            this.utamoVitaHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.utamoVitaHotkey_KeyDown);
             // 
             // checkBoxUtana
             // 
             this.checkBoxUtana.AutoSize = true;
             this.checkBoxUtana.Location = new System.Drawing.Point(14, 52);
             this.checkBoxUtana.Name = "checkBoxUtana";
-            this.checkBoxUtana.Size = new System.Drawing.Size(73, 17);
+            this.checkBoxUtana.Size = new System.Drawing.Size(89, 17);
             this.checkBoxUtana.TabIndex = 1;
-            this.checkBoxUtana.Text = "Utana Vid";
+            this.checkBoxUtana.Text = "Utana Vid (X)";
             this.checkBoxUtana.UseVisualStyleBackColor = true;
             // 
             // checkBoxUtamo
@@ -1752,15 +1248,15 @@ namespace WindowsFormsApplication4
             this.checkBoxUtamo.AutoSize = true;
             this.checkBoxUtamo.Location = new System.Drawing.Point(14, 25);
             this.checkBoxUtamo.Name = "checkBoxUtamo";
-            this.checkBoxUtamo.Size = new System.Drawing.Size(78, 17);
+            this.checkBoxUtamo.Size = new System.Drawing.Size(94, 17);
             this.checkBoxUtamo.TabIndex = 0;
-            this.checkBoxUtamo.Text = "Utamo Vita";
+            this.checkBoxUtamo.Text = "Utamo Vita (X)";
             this.checkBoxUtamo.UseVisualStyleBackColor = true;
             // 
             // groupBoxRoutine
             // 
             this.groupBoxRoutine.Controls.Add(this.mountHtk);
-            this.groupBoxRoutine.Controls.Add(this.eaterHtk);
+            this.groupBoxRoutine.Controls.Add(this.eaterHotkey);
             this.groupBoxRoutine.Controls.Add(this.checkBoxMount);
             this.groupBoxRoutine.Controls.Add(this.checkBoxEater);
             this.groupBoxRoutine.Location = new System.Drawing.Point(17, 24);
@@ -1772,369 +1268,23 @@ namespace WindowsFormsApplication4
             // 
             // mountHtk
             // 
-            this.mountHtk.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.mountHtk.Location = new System.Drawing.Point(91, 48);
+            this.mountHtk.Location = new System.Drawing.Point(102, 49);
             this.mountHtk.Name = "mountHtk";
-            this.mountHtk.Size = new System.Drawing.Size(77, 21);
-            this.mountHtk.TabIndex = 4;
+            this.mountHtk.ReadOnly = true;
+            this.mountHtk.Size = new System.Drawing.Size(37, 20);
+            this.mountHtk.TabIndex = 6;
             this.mountHtk.Text = "HTK";
-            this.mountHtk.SelectedIndexChanged += new System.EventHandler(this.mountHtk_SelectedIndexChanged);
+            this.mountHtk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mountHtk_KeyDown);
             // 
-            // eaterHtk
+            // eaterHotkey
             // 
-            this.eaterHtk.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.eaterHtk.Location = new System.Drawing.Point(91, 23);
-            this.eaterHtk.Name = "eaterHtk";
-            this.eaterHtk.Size = new System.Drawing.Size(77, 21);
-            this.eaterHtk.TabIndex = 3;
-            this.eaterHtk.Text = "HTK";
-            this.eaterHtk.SelectedIndexChanged += new System.EventHandler(this.eaterHtk_SelectedIndexChanged);
+            this.eaterHotkey.Location = new System.Drawing.Point(102, 22);
+            this.eaterHotkey.Name = "eaterHotkey";
+            this.eaterHotkey.ReadOnly = true;
+            this.eaterHotkey.Size = new System.Drawing.Size(37, 20);
+            this.eaterHotkey.TabIndex = 5;
+            this.eaterHotkey.Text = "HTK";
+            this.eaterHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.eaterHotkey_KeyDown);
             // 
             // checkBoxMount
             // 
@@ -2172,929 +1322,69 @@ namespace WindowsFormsApplication4
             this.groupboxRings.Controls.Add(this.checkBoxLifeRing);
             this.groupboxRings.Location = new System.Drawing.Point(197, 144);
             this.groupboxRings.Name = "groupboxRings";
-            this.groupboxRings.Size = new System.Drawing.Size(188, 145);
+            this.groupboxRings.Size = new System.Drawing.Size(173, 145);
             this.groupboxRings.TabIndex = 0;
             this.groupboxRings.TabStop = false;
             this.groupboxRings.Text = "Rings";
             // 
             // healingRingHotkey
             // 
-            this.healingRingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.healingRingHotkey.Location = new System.Drawing.Point(102, 113);
+            this.healingRingHotkey.Location = new System.Drawing.Point(107, 117);
             this.healingRingHotkey.Name = "healingRingHotkey";
-            this.healingRingHotkey.Size = new System.Drawing.Size(77, 21);
-            this.healingRingHotkey.TabIndex = 9;
-            this.healingRingHotkey.SelectedIndexChanged += new System.EventHandler(this.healingRingHotkey_SelectedIndexChanged);
+            this.healingRingHotkey.ReadOnly = true;
+            this.healingRingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.healingRingHotkey.TabIndex = 14;
+            this.healingRingHotkey.Text = "HTK";
+            this.healingRingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.healingRingHotkey_KeyDown);
             // 
             // mightRingHotkey
             // 
-            this.mightRingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.mightRingHotkey.Location = new System.Drawing.Point(102, 90);
+            this.mightRingHotkey.Location = new System.Drawing.Point(107, 94);
             this.mightRingHotkey.Name = "mightRingHotkey";
-            this.mightRingHotkey.Size = new System.Drawing.Size(77, 21);
-            this.mightRingHotkey.TabIndex = 8;
+            this.mightRingHotkey.ReadOnly = true;
+            this.mightRingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.mightRingHotkey.TabIndex = 13;
+            this.mightRingHotkey.Text = "HTK";
+            this.mightRingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mightRingHotkey_KeyDown);
             // 
             // timeRingHotkey
             // 
-            this.timeRingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.timeRingHotkey.Location = new System.Drawing.Point(102, 67);
+            this.timeRingHotkey.Location = new System.Drawing.Point(107, 71);
             this.timeRingHotkey.Name = "timeRingHotkey";
-            this.timeRingHotkey.Size = new System.Drawing.Size(77, 21);
-            this.timeRingHotkey.TabIndex = 7;
+            this.timeRingHotkey.ReadOnly = true;
+            this.timeRingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.timeRingHotkey.TabIndex = 12;
+            this.timeRingHotkey.Text = "HTK";
+            this.timeRingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.timeRingHotkey_KeyDown);
             // 
             // energyRingHotkey
             // 
-            this.energyRingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.energyRingHotkey.Location = new System.Drawing.Point(102, 46);
+            this.energyRingHotkey.Location = new System.Drawing.Point(107, 48);
             this.energyRingHotkey.Name = "energyRingHotkey";
-            this.energyRingHotkey.Size = new System.Drawing.Size(77, 21);
-            this.energyRingHotkey.TabIndex = 6;
+            this.energyRingHotkey.ReadOnly = true;
+            this.energyRingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.energyRingHotkey.TabIndex = 11;
             this.energyRingHotkey.Text = "HTK";
-            this.energyRingHotkey.SelectedIndexChanged += new System.EventHandler(this.energyRingHotkey_SelectedIndexChanged);
+            this.energyRingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.energyRingHotkey_KeyDown);
             // 
             // lifeRingHotkey
             // 
-            this.lifeRingHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.lifeRingHotkey.Location = new System.Drawing.Point(102, 23);
+            this.lifeRingHotkey.Location = new System.Drawing.Point(107, 22);
             this.lifeRingHotkey.Name = "lifeRingHotkey";
-            this.lifeRingHotkey.Size = new System.Drawing.Size(77, 21);
-            this.lifeRingHotkey.TabIndex = 5;
+            this.lifeRingHotkey.ReadOnly = true;
+            this.lifeRingHotkey.Size = new System.Drawing.Size(37, 20);
+            this.lifeRingHotkey.TabIndex = 10;
             this.lifeRingHotkey.Text = "HTK";
-            this.lifeRingHotkey.SelectedIndexChanged += new System.EventHandler(this.lifeRingHotkey_SelectedIndexChanged);
+            this.lifeRingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lifeRingHotkey_KeyDown);
             // 
             // checkBoxMightRing
             // 
             this.checkBoxMightRing.AutoSize = true;
             this.checkBoxMightRing.Location = new System.Drawing.Point(14, 94);
             this.checkBoxMightRing.Name = "checkBoxMightRing";
-            this.checkBoxMightRing.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxMightRing.Size = new System.Drawing.Size(96, 17);
             this.checkBoxMightRing.TabIndex = 4;
-            this.checkBoxMightRing.Text = "Might Ring";
+            this.checkBoxMightRing.Text = "Might Ring  (X)";
             this.checkBoxMightRing.UseVisualStyleBackColor = true;
             // 
             // checkBoxHealingRing
@@ -3102,9 +1392,9 @@ namespace WindowsFormsApplication4
             this.checkBoxHealingRing.AutoSize = true;
             this.checkBoxHealingRing.Location = new System.Drawing.Point(14, 117);
             this.checkBoxHealingRing.Name = "checkBoxHealingRing";
-            this.checkBoxHealingRing.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxHealingRing.Size = new System.Drawing.Size(103, 17);
             this.checkBoxHealingRing.TabIndex = 3;
-            this.checkBoxHealingRing.Text = "Healing Ring";
+            this.checkBoxHealingRing.Text = "Healing Ring (X)";
             this.checkBoxHealingRing.UseVisualStyleBackColor = true;
             // 
             // checkBoxTimeRing
@@ -3112,9 +1402,9 @@ namespace WindowsFormsApplication4
             this.checkBoxTimeRing.AutoSize = true;
             this.checkBoxTimeRing.Location = new System.Drawing.Point(14, 71);
             this.checkBoxTimeRing.Name = "checkBoxTimeRing";
-            this.checkBoxTimeRing.Size = new System.Drawing.Size(74, 17);
+            this.checkBoxTimeRing.Size = new System.Drawing.Size(93, 17);
             this.checkBoxTimeRing.TabIndex = 2;
-            this.checkBoxTimeRing.Text = "Time Ring";
+            this.checkBoxTimeRing.Text = "Time Ring  (X)";
             this.checkBoxTimeRing.UseVisualStyleBackColor = true;
             // 
             // checkBoxEnergyRing
@@ -3163,372 +1453,6 @@ namespace WindowsFormsApplication4
             this.groupBoxStatusHolder.TabStop = false;
             this.groupBoxStatusHolder.Text = "Status Holder";
             // 
-            // uturaHotkey
-            // 
-            this.uturaHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.uturaHotkey.Location = new System.Drawing.Point(78, 47);
-            this.uturaHotkey.Name = "uturaHotkey";
-            this.uturaHotkey.Size = new System.Drawing.Size(77, 21);
-            this.uturaHotkey.TabIndex = 8;
-            this.uturaHotkey.Text = "HTK";
-            this.uturaHotkey.SelectedIndexChanged += new System.EventHandler(this.uturaHotkey_SelectedIndexChanged);
-            // 
-            // hasteHotkey
-            // 
-            this.hasteHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.hasteHotkey.Location = new System.Drawing.Point(78, 24);
-            this.hasteHotkey.Name = "hasteHotkey";
-            this.hasteHotkey.Size = new System.Drawing.Size(77, 21);
-            this.hasteHotkey.TabIndex = 7;
-            this.hasteHotkey.Text = "HTK";
-            this.hasteHotkey.SelectedIndexChanged += new System.EventHandler(this.hasteHotkey_SelectedIndexChanged);
-            // 
             // checkBoxUtura
             // 
             this.checkBoxUtura.AutoSize = true;
@@ -3564,372 +1488,6 @@ namespace WindowsFormsApplication4
             this.groupBoxConditionHealer.TabStop = false;
             this.groupBoxConditionHealer.Text = "Condition Healer";
             // 
-            // poisonHotkey
-            // 
-            this.poisonHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.poisonHotkey.Location = new System.Drawing.Point(92, 47);
-            this.poisonHotkey.Name = "poisonHotkey";
-            this.poisonHotkey.Size = new System.Drawing.Size(77, 21);
-            this.poisonHotkey.TabIndex = 7;
-            this.poisonHotkey.Text = "HTK";
-            this.poisonHotkey.SelectedIndexChanged += new System.EventHandler(this.poisonHotkey_SelectedIndexChanged);
-            // 
-            // paralyzeHotkey
-            // 
-            this.paralyzeHotkey.Items.AddRange(new object[] {
-            WindowsInput.Native.VirtualKeyCode.LBUTTON,
-            WindowsInput.Native.VirtualKeyCode.RBUTTON,
-            WindowsInput.Native.VirtualKeyCode.CANCEL,
-            WindowsInput.Native.VirtualKeyCode.MBUTTON,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON1,
-            WindowsInput.Native.VirtualKeyCode.XBUTTON2,
-            WindowsInput.Native.VirtualKeyCode.BACK,
-            WindowsInput.Native.VirtualKeyCode.TAB,
-            WindowsInput.Native.VirtualKeyCode.CLEAR,
-            WindowsInput.Native.VirtualKeyCode.RETURN,
-            WindowsInput.Native.VirtualKeyCode.SHIFT,
-            WindowsInput.Native.VirtualKeyCode.CONTROL,
-            WindowsInput.Native.VirtualKeyCode.MENU,
-            WindowsInput.Native.VirtualKeyCode.PAUSE,
-            WindowsInput.Native.VirtualKeyCode.CAPITAL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.HANGUL,
-            WindowsInput.Native.VirtualKeyCode.JUNJA,
-            WindowsInput.Native.VirtualKeyCode.FINAL,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.HANJA,
-            WindowsInput.Native.VirtualKeyCode.ESCAPE,
-            WindowsInput.Native.VirtualKeyCode.CONVERT,
-            WindowsInput.Native.VirtualKeyCode.NONCONVERT,
-            WindowsInput.Native.VirtualKeyCode.ACCEPT,
-            WindowsInput.Native.VirtualKeyCode.MODECHANGE,
-            WindowsInput.Native.VirtualKeyCode.SPACE,
-            WindowsInput.Native.VirtualKeyCode.PRIOR,
-            WindowsInput.Native.VirtualKeyCode.NEXT,
-            WindowsInput.Native.VirtualKeyCode.END,
-            WindowsInput.Native.VirtualKeyCode.HOME,
-            WindowsInput.Native.VirtualKeyCode.LEFT,
-            WindowsInput.Native.VirtualKeyCode.UP,
-            WindowsInput.Native.VirtualKeyCode.RIGHT,
-            WindowsInput.Native.VirtualKeyCode.DOWN,
-            WindowsInput.Native.VirtualKeyCode.SELECT,
-            WindowsInput.Native.VirtualKeyCode.PRINT,
-            WindowsInput.Native.VirtualKeyCode.EXECUTE,
-            WindowsInput.Native.VirtualKeyCode.SNAPSHOT,
-            WindowsInput.Native.VirtualKeyCode.INSERT,
-            WindowsInput.Native.VirtualKeyCode.DELETE,
-            WindowsInput.Native.VirtualKeyCode.HELP,
-            WindowsInput.Native.VirtualKeyCode.VK_0,
-            WindowsInput.Native.VirtualKeyCode.VK_1,
-            WindowsInput.Native.VirtualKeyCode.VK_2,
-            WindowsInput.Native.VirtualKeyCode.VK_3,
-            WindowsInput.Native.VirtualKeyCode.VK_4,
-            WindowsInput.Native.VirtualKeyCode.VK_5,
-            WindowsInput.Native.VirtualKeyCode.VK_6,
-            WindowsInput.Native.VirtualKeyCode.VK_7,
-            WindowsInput.Native.VirtualKeyCode.VK_8,
-            WindowsInput.Native.VirtualKeyCode.VK_9,
-            WindowsInput.Native.VirtualKeyCode.VK_A,
-            WindowsInput.Native.VirtualKeyCode.VK_B,
-            WindowsInput.Native.VirtualKeyCode.VK_C,
-            WindowsInput.Native.VirtualKeyCode.VK_D,
-            WindowsInput.Native.VirtualKeyCode.VK_E,
-            WindowsInput.Native.VirtualKeyCode.VK_F,
-            WindowsInput.Native.VirtualKeyCode.VK_G,
-            WindowsInput.Native.VirtualKeyCode.VK_H,
-            WindowsInput.Native.VirtualKeyCode.VK_I,
-            WindowsInput.Native.VirtualKeyCode.VK_J,
-            WindowsInput.Native.VirtualKeyCode.VK_K,
-            WindowsInput.Native.VirtualKeyCode.VK_L,
-            WindowsInput.Native.VirtualKeyCode.VK_M,
-            WindowsInput.Native.VirtualKeyCode.VK_N,
-            WindowsInput.Native.VirtualKeyCode.VK_O,
-            WindowsInput.Native.VirtualKeyCode.VK_P,
-            WindowsInput.Native.VirtualKeyCode.VK_Q,
-            WindowsInput.Native.VirtualKeyCode.VK_R,
-            WindowsInput.Native.VirtualKeyCode.VK_S,
-            WindowsInput.Native.VirtualKeyCode.VK_T,
-            WindowsInput.Native.VirtualKeyCode.VK_U,
-            WindowsInput.Native.VirtualKeyCode.VK_V,
-            WindowsInput.Native.VirtualKeyCode.VK_W,
-            WindowsInput.Native.VirtualKeyCode.VK_X,
-            WindowsInput.Native.VirtualKeyCode.VK_Y,
-            WindowsInput.Native.VirtualKeyCode.VK_Z,
-            WindowsInput.Native.VirtualKeyCode.LWIN,
-            WindowsInput.Native.VirtualKeyCode.RWIN,
-            WindowsInput.Native.VirtualKeyCode.APPS,
-            WindowsInput.Native.VirtualKeyCode.SLEEP,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD0,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD1,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD2,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD3,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD4,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD5,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD6,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD7,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD8,
-            WindowsInput.Native.VirtualKeyCode.NUMPAD9,
-            WindowsInput.Native.VirtualKeyCode.MULTIPLY,
-            WindowsInput.Native.VirtualKeyCode.ADD,
-            WindowsInput.Native.VirtualKeyCode.SEPARATOR,
-            WindowsInput.Native.VirtualKeyCode.SUBTRACT,
-            WindowsInput.Native.VirtualKeyCode.DECIMAL,
-            WindowsInput.Native.VirtualKeyCode.DIVIDE,
-            WindowsInput.Native.VirtualKeyCode.F1,
-            WindowsInput.Native.VirtualKeyCode.F2,
-            WindowsInput.Native.VirtualKeyCode.F3,
-            WindowsInput.Native.VirtualKeyCode.F4,
-            WindowsInput.Native.VirtualKeyCode.F5,
-            WindowsInput.Native.VirtualKeyCode.F6,
-            WindowsInput.Native.VirtualKeyCode.F7,
-            WindowsInput.Native.VirtualKeyCode.F8,
-            WindowsInput.Native.VirtualKeyCode.F9,
-            WindowsInput.Native.VirtualKeyCode.F10,
-            WindowsInput.Native.VirtualKeyCode.F11,
-            WindowsInput.Native.VirtualKeyCode.F12,
-            WindowsInput.Native.VirtualKeyCode.F13,
-            WindowsInput.Native.VirtualKeyCode.F14,
-            WindowsInput.Native.VirtualKeyCode.F15,
-            WindowsInput.Native.VirtualKeyCode.F16,
-            WindowsInput.Native.VirtualKeyCode.F17,
-            WindowsInput.Native.VirtualKeyCode.F18,
-            WindowsInput.Native.VirtualKeyCode.F19,
-            WindowsInput.Native.VirtualKeyCode.F20,
-            WindowsInput.Native.VirtualKeyCode.F21,
-            WindowsInput.Native.VirtualKeyCode.F22,
-            WindowsInput.Native.VirtualKeyCode.F23,
-            WindowsInput.Native.VirtualKeyCode.F24,
-            WindowsInput.Native.VirtualKeyCode.NUMLOCK,
-            WindowsInput.Native.VirtualKeyCode.SCROLL,
-            WindowsInput.Native.VirtualKeyCode.LSHIFT,
-            WindowsInput.Native.VirtualKeyCode.RSHIFT,
-            WindowsInput.Native.VirtualKeyCode.LCONTROL,
-            WindowsInput.Native.VirtualKeyCode.RCONTROL,
-            WindowsInput.Native.VirtualKeyCode.LMENU,
-            WindowsInput.Native.VirtualKeyCode.RMENU,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_BACK,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FORWARD,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_REFRESH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_STOP,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_SEARCH,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_FAVORITES,
-            WindowsInput.Native.VirtualKeyCode.BROWSER_HOME,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_MUTE,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_DOWN,
-            WindowsInput.Native.VirtualKeyCode.VOLUME_UP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_NEXT_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PREV_TRACK,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_STOP,
-            WindowsInput.Native.VirtualKeyCode.MEDIA_PLAY_PAUSE,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MAIL,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_MEDIA_SELECT,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP1,
-            WindowsInput.Native.VirtualKeyCode.LAUNCH_APP2,
-            WindowsInput.Native.VirtualKeyCode.OEM_1,
-            WindowsInput.Native.VirtualKeyCode.OEM_PLUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_COMMA,
-            WindowsInput.Native.VirtualKeyCode.OEM_MINUS,
-            WindowsInput.Native.VirtualKeyCode.OEM_PERIOD,
-            WindowsInput.Native.VirtualKeyCode.OEM_2,
-            WindowsInput.Native.VirtualKeyCode.OEM_3,
-            WindowsInput.Native.VirtualKeyCode.OEM_4,
-            WindowsInput.Native.VirtualKeyCode.OEM_5,
-            WindowsInput.Native.VirtualKeyCode.OEM_6,
-            WindowsInput.Native.VirtualKeyCode.OEM_7,
-            WindowsInput.Native.VirtualKeyCode.OEM_8,
-            WindowsInput.Native.VirtualKeyCode.OEM_102,
-            WindowsInput.Native.VirtualKeyCode.PROCESSKEY,
-            WindowsInput.Native.VirtualKeyCode.PACKET,
-            WindowsInput.Native.VirtualKeyCode.ATTN,
-            WindowsInput.Native.VirtualKeyCode.CRSEL,
-            WindowsInput.Native.VirtualKeyCode.EXSEL,
-            WindowsInput.Native.VirtualKeyCode.EREOF,
-            WindowsInput.Native.VirtualKeyCode.PLAY,
-            WindowsInput.Native.VirtualKeyCode.ZOOM,
-            WindowsInput.Native.VirtualKeyCode.NONAME,
-            WindowsInput.Native.VirtualKeyCode.PA1,
-            WindowsInput.Native.VirtualKeyCode.OEM_CLEAR});
-            this.paralyzeHotkey.Location = new System.Drawing.Point(92, 24);
-            this.paralyzeHotkey.Name = "paralyzeHotkey";
-            this.paralyzeHotkey.Size = new System.Drawing.Size(77, 21);
-            this.paralyzeHotkey.TabIndex = 6;
-            this.paralyzeHotkey.Text = "HTK";
-            this.paralyzeHotkey.SelectedIndexChanged += new System.EventHandler(this.paralyzeHotkey_SelectedIndexChanged);
-            // 
             // checkBoxPoison
             // 
             this.checkBoxPoison.AutoSize = true;
@@ -3952,15 +1510,45 @@ namespace WindowsFormsApplication4
             this.checkBoxParalyze.UseVisualStyleBackColor = true;
             this.checkBoxParalyze.CheckedChanged += new System.EventHandler(this.checkBoxParalyze_CheckedChanged);
             // 
-            // newItemHealingHotkey
+            // paralyzeHotkey
             // 
-            this.newItemHealingHotkey.Location = new System.Drawing.Point(119, 39);
-            this.newItemHealingHotkey.Name = "newItemHealingHotkey";
-            this.newItemHealingHotkey.ReadOnly = true;
-            this.newItemHealingHotkey.Size = new System.Drawing.Size(37, 20);
-            this.newItemHealingHotkey.TabIndex = 14;
-            this.newItemHealingHotkey.Text = "HTK";
-            this.newItemHealingHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itemHealingHotkey_KeyDown);
+            this.paralyzeHotkey.Location = new System.Drawing.Point(128, 24);
+            this.paralyzeHotkey.Name = "paralyzeHotkey";
+            this.paralyzeHotkey.ReadOnly = true;
+            this.paralyzeHotkey.Size = new System.Drawing.Size(37, 20);
+            this.paralyzeHotkey.TabIndex = 6;
+            this.paralyzeHotkey.Text = "HTK";
+            this.paralyzeHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.paralyzeHotkey_KeyDown);
+            // 
+            // poisonHotkey
+            // 
+            this.poisonHotkey.Location = new System.Drawing.Point(128, 46);
+            this.poisonHotkey.Name = "poisonHotkey";
+            this.poisonHotkey.ReadOnly = true;
+            this.poisonHotkey.Size = new System.Drawing.Size(37, 20);
+            this.poisonHotkey.TabIndex = 7;
+            this.poisonHotkey.Text = "HTK";
+            this.poisonHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.poisonHotkey_KeyDown);
+            // 
+            // hasteHotkey
+            // 
+            this.hasteHotkey.Location = new System.Drawing.Point(97, 26);
+            this.hasteHotkey.Name = "hasteHotkey";
+            this.hasteHotkey.ReadOnly = true;
+            this.hasteHotkey.Size = new System.Drawing.Size(37, 20);
+            this.hasteHotkey.TabIndex = 6;
+            this.hasteHotkey.Text = "HTK";
+            this.hasteHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.hasteHotkey_KeyDown);
+            // 
+            // uturaHotkey
+            // 
+            this.uturaHotkey.Location = new System.Drawing.Point(97, 52);
+            this.uturaHotkey.Name = "uturaHotkey";
+            this.uturaHotkey.ReadOnly = true;
+            this.uturaHotkey.Size = new System.Drawing.Size(37, 20);
+            this.uturaHotkey.TabIndex = 7;
+            this.uturaHotkey.Text = "HTK";
+            this.uturaHotkey.KeyDown += new System.Windows.Forms.KeyEventHandler(this.uturaHotkey_KeyDown);
             // 
             // Form1
             // 
@@ -4046,8 +1634,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.CheckBox checkBoxUtana;
         private System.Windows.Forms.CheckBox checkBoxUtamo;
         private System.Windows.Forms.CheckBox checkBoxMount;
-        private System.Windows.Forms.ComboBox eaterHtk;
-        private System.Windows.Forms.ComboBox mountHtk;
         private System.Windows.Forms.GroupBox groupBoxSpellHealing;
         private System.Windows.Forms.GroupBox groupBoxNewSpellHealing;
         private System.Windows.Forms.Button buttonAddNewSpellHealing;
@@ -4069,23 +1655,12 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.ComboBox smartManaDrinkerHotkey;
         private System.Windows.Forms.DomainUpDown smartManaDrinkerStopManaPercent;
         private System.Windows.Forms.DomainUpDown smartManaDrinkerStartManaPercent;
-        private System.Windows.Forms.ComboBox healingRingHotkey;
-        private System.Windows.Forms.ComboBox mightRingHotkey;
-        private System.Windows.Forms.ComboBox timeRingHotkey;
-        private System.Windows.Forms.ComboBox energyRingHotkey;
-        private System.Windows.Forms.ComboBox lifeRingHotkey;
-        private System.Windows.Forms.ComboBox utamoVitaHotkey;
-        private System.Windows.Forms.ComboBox utanaVidHotkey;
         private System.Windows.Forms.GroupBox groupBoxConditionHealer;
         private System.Windows.Forms.CheckBox checkBoxParalyze;
         private System.Windows.Forms.CheckBox checkBoxPoison;
         private System.Windows.Forms.GroupBox groupBoxStatusHolder;
         private System.Windows.Forms.CheckBox checkBoxUtura;
         private System.Windows.Forms.CheckBox checkBoxHaste;
-        private System.Windows.Forms.ComboBox uturaHotkey;
-        private System.Windows.Forms.ComboBox hasteHotkey;
-        private System.Windows.Forms.ComboBox poisonHotkey;
-        private System.Windows.Forms.ComboBox paralyzeHotkey;
         private System.Windows.Forms.GroupBox groupBoxConfigManager;
         private System.Windows.Forms.Button buttonSaveConfig;
         private System.Windows.Forms.Button buttonLoadConfig;
@@ -4106,8 +1681,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBoxManaWaster;
-        private System.Windows.Forms.ComboBox smartManaWasterHotkey;
-        private System.Windows.Forms.Label labelManaWasterHotkey;
         private System.Windows.Forms.GroupBox groupBoxGeneralInfo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox spellHealingHpValue;
@@ -4126,6 +1699,21 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.Button buttonLoadCfgHealer;
         private System.Windows.Forms.TextBox newSpellHealingHotkey;
         private System.Windows.Forms.TextBox newItemHealingHotkey;
+        private System.Windows.Forms.TextBox manaWasterHotkey;
+        private System.Windows.Forms.TextBox utanaVidHotkey;
+        private System.Windows.Forms.TextBox utamoVitaHotkey;
+        private System.Windows.Forms.TextBox eaterHotkey;
+        private System.Windows.Forms.TextBox healingRingHotkey;
+        private System.Windows.Forms.TextBox mightRingHotkey;
+        private System.Windows.Forms.TextBox timeRingHotkey;
+        private System.Windows.Forms.TextBox energyRingHotkey;
+        private System.Windows.Forms.TextBox lifeRingHotkey;
+        private System.Windows.Forms.TextBox mountHtk;
+        private System.Windows.Forms.CheckBox checkBoxManaWaster;
+        private System.Windows.Forms.TextBox uturaHotkey;
+        private System.Windows.Forms.TextBox hasteHotkey;
+        private System.Windows.Forms.TextBox poisonHotkey;
+        private System.Windows.Forms.TextBox paralyzeHotkey;
     }
 }
 

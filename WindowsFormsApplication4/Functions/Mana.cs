@@ -13,6 +13,8 @@ namespace WindowsFormsApplication4.Functions
 {
     class Mana
     {
+        // init htks
+        public static VirtualKeyCode manaWasterHotkey;
         static InputSimulator s = new InputSimulator();
 
         public static void manaDrinker(VirtualKeyCode hotkey)
@@ -20,9 +22,9 @@ namespace WindowsFormsApplication4.Functions
             s.Keyboard.KeyPress(hotkey);
         }
 
-        public static void manaWaster(VirtualKeyCode hotkey)
+        public static void manaWaster()
         {
-            s.Keyboard.KeyPress(hotkey);
+            s.Keyboard.KeyPress(manaWasterHotkey);
         }
     }
 }
