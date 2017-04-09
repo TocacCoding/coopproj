@@ -138,11 +138,7 @@ namespace WindowsFormsApplication4
                         && int.Parse(spellHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(spellHealingHpValue.Text.ToString()) > 0
                         && int.Parse(spellHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(spellHealingMpValue.Text.ToString()) > 0)
                     {
-<<<<<<< HEAD
                         Structs.Spell newSpell = new Structs.Spell(textBoxSpellName.Text, spellHealingHpValue.Text,
-=======
-                        Structs.spellHeal newSpell = new Structs.spellHeal(textBoxSpellName.Text, spellHealingHpValue.Text,
->>>>>>> origin/master
                                newSpellHtk, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
                         spellHealingList.Add(newSpell);
                         updateSpellList();
@@ -422,7 +418,6 @@ namespace WindowsFormsApplication4
                 }
             }
         }
-
         private void buttonResetHealing_Click(object sender, EventArgs e)
         {
             spellHealingList.Clear();
