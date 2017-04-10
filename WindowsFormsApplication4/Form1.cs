@@ -142,10 +142,10 @@ namespace WindowsFormsApplication4
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
             // check hp name mp htk
-            if (comboBoxSpellName.Text == "SPELL" || newSpellHealingHotkey.Text.ToString() == "HTK"
+            if (comboBoxSpellName.Text.ToString() == "" || newSpellHealingHotkey.Text.ToString() == "HTK"
                 || spellHealingHpValue.Text.ToString() == "HP" || spellHealingMpValue.Text.ToString() == "MP")
             {
-                if (comboBoxSpellName.Text == "SPELL") MessageBox.Show("Select NAME.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (comboBoxSpellName.Text.ToString() == "") MessageBox.Show("Select NAME.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else if (newSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Select HOTKEY.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Select HP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else if (spellHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Select MP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -246,12 +246,15 @@ namespace WindowsFormsApplication4
         }
         private void buttonAddNewItemHealing_Click(object sender, EventArgs e)
         {
-            if (comboBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || newItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
+            if (comboBoxItemName.Text.ToString() == "" || itemHealingHpValue.Text == "HP" || newItemHealingHotkey.Text.ToString() == "HTK" 
+                || itemHealingMpValue.Text.ToString() == "MP" || comboBoxHpBelowOver.Text.ToString() == "" || comboBoxMpBelowOver.Text.ToString() == "" )
             {
-                if (comboBoxItemName.Text == "ITEM") MessageBox.Show("Select NAME.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else if (itemHealingHpValue.Text == "HP") MessageBox.Show("Select HP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (comboBoxItemName.Text.ToString() == "") MessageBox.Show("Select NAME.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (itemHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Select HP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else if (newItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Select HOTKEY.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else if (itemHealingMpValue.Text == "MP") MessageBox.Show("Select MP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (itemHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Select MP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (comboBoxHpBelowOver.Text.ToString() == "") MessageBox.Show("Select HP BELOW/OVER.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (comboBoxMpBelowOver.Text.ToString() == "") MessageBox.Show("Select MP BELOW/OVER.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {

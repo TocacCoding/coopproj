@@ -36,7 +36,7 @@ namespace WindowsFormsApplication4.Structs
                     if (auxHP == 0) auxHP = 1;
                  else if (auxHP == 100) auxHP = 99;
                 }
-                    int auxMP = (int.Parse(MP) * 100) / int.Parse(MAXHP);
+                    int auxMP = (int.Parse(MP) * 100) / int.Parse(MAXMP);
                     if (auxMP == 0 || auxMP == 100)
                   {
                 if (auxMP == 0) auxMP = 1;

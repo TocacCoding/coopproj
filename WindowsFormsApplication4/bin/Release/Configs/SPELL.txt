@@ -1,51 +1,39 @@
 <?xml version="1.0"?>
 <ArrayOfSpell xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Spell>
-    <name>4</name>
-    <hpPercent>45</hpPercent>
-    <mpPercent>345</mpPercent>
-    <hpPixel>217</hpPixel>
-    <mpPixel>1636</mpPixel>
-    <hpShow>1</hpShow>
-    <mpShow>10</mpShow>
-    <hotkey>VK_4</hotkey>
-    <maxHp>3434</maxHp>
-    <maxMp>3434</maxMp>
+    <name>Exura Vita / Sio</name>
+    <hpPercent>550</hpPercent>
+    <mpPercent>160</mpPercent>
+    <hpPixel>639</hpPixel>
+    <mpPixel>1688</mpPixel>
+    <hpShow>58</hpShow>
+    <mpShow>3</mpShow>
+    <hotkey>VK_0</hotkey>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
   </Spell>
   <Spell>
-    <name>4</name>
-    <hpPercent>45</hpPercent>
-    <mpPercent>345</mpPercent>
-    <hpPixel>217</hpPixel>
-    <mpPixel>1636</mpPixel>
-    <hpShow>1</hpShow>
-    <mpShow>10</mpShow>
-    <hotkey>VK_4</hotkey>
-    <maxHp>3434</maxHp>
-    <maxMp>3434</maxMp>
+    <name>Exura Gran</name>
+    <hpPercent>710</hpPercent>
+    <mpPercent>70</mpPercent>
+    <hpPixel>765</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hpShow>75</hpShow>
+    <mpShow>1</mpShow>
+    <hotkey>VK_9</hotkey>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
   </Spell>
   <Spell>
-    <name>4</name>
-    <hpPercent>45</hpPercent>
-    <mpPercent>345</mpPercent>
-    <hpPixel>217</hpPixel>
-    <mpPixel>1636</mpPixel>
-    <hpShow>1</hpShow>
-    <mpShow>10</mpShow>
-    <hotkey>VK_4</hotkey>
-    <maxHp>3434</maxHp>
-    <maxMp>3434</maxMp>
-  </Spell>
-  <Spell>
-    <name>4</name>
-    <hpPercent>45</hpPercent>
-    <mpPercent>345</mpPercent>
-    <hpPixel>217</hpPixel>
-    <mpPixel>1636</mpPixel>
-    <hpShow>1</hpShow>
-    <mpShow>10</mpShow>
-    <hotkey>VK_4</hotkey>
-    <maxHp>3434</maxHp>
-    <maxMp>3434</maxMp>
+    <name>Exura</name>
+    <hpPercent>835</hpPercent>
+    <mpPercent>20</mpPercent>
+    <hpPixel>868</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hpShow>89</hpShow>
+    <mpShow>1</mpShow>
+    <hotkey>VK_8</hotkey>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
   </Spell>
 </ArrayOfSpell>
