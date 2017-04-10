@@ -39,7 +39,7 @@ namespace WindowsFormsApplication4.Functions
                 }
                 else
                 {
-                    MessageBox.Show("Error! No SPELL location.");
+                    MessageBox.Show("NO SPELL FILE SELECTED.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 // check item folder+name
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication4.Functions
                 }
                 else
                 {
-                    MessageBox.Show("Error! No ITEM location.");
+                    MessageBox.Show("NO ITEM FILE SELECTED", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 // all ok
@@ -72,9 +72,9 @@ namespace WindowsFormsApplication4.Functions
             // error messages first if fails
             else
             {
-                if (spellHealingList.Count == 0 && itemHealingList.Count == 0) MessageBox.Show("Error! Nothing to save.");
-                else if (spellHealingList.Count == 0) MessageBox.Show("Error! No SPELLS to save.");
-                else if (itemHealingList.Count == 0) MessageBox.Show("Error! No ITEMS to save.");
+                if (spellHealingList.Count == 0 && itemHealingList.Count == 0) MessageBox.Show("Nothing to save.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else if (spellHealingList.Count == 0) MessageBox.Show("No SPELLS to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (itemHealingList.Count == 0) MessageBox.Show("No ITEMS to save.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -154,7 +154,7 @@ namespace WindowsFormsApplication4.Functions
                 }
                 else
                 {
-                    MessageBox.Show("Error! Select BOTH locations.");
+                    MessageBox.Show("Select 2 files. (SPELL + ITEM)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     loadedItemList = null;
                     loadedSpellList = null;
                     return;
@@ -162,7 +162,7 @@ namespace WindowsFormsApplication4.Functions
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error! Corrupt/Invalid FILE.");
+                MessageBox.Show("CORRUPT/INVALID FILE.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 loadedItemList = null;
                 loadedSpellList = null;
                 return;

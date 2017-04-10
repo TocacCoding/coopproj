@@ -26,7 +26,9 @@ namespace WindowsFormsApplication4
         private void Form1_Load(object sender, EventArgs e)
         {
             //Thread.Sleep(7000);
-            //MessageBox.Show(GetPixel(943, 76).ToString());
+            //MessageBox.Show("error msg", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show("warning msg", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //MessageBox.Show("information msg", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // --- VARS ---
@@ -78,7 +80,20 @@ namespace WindowsFormsApplication4
         // --- ACCOUNT TAB ---
         private void login_button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("sou o login button!");
+            if (username_input.Text.ToString() == "admin@mail.com" && password_input.Text.ToString() == "pass")
+            {
+                this.tabControl1.TabPages.Insert(1, this.tab_main);
+                this.tabControl1.TabPages.Insert(2, this.tab_heal);
+                this.tabControl1.TabPages.Insert(3, this.tab_actions);
+                this.tabControl1.TabPages.Insert(4, this.tab_support);
+                this.groupBoxAccountStatus.Visible = true;
+                this.groupBoxLogin.Visible = false;
+                MessageBox.Show("Welcome " + username_input.Text.ToString() + ".","Log In Success!");
+            }
+            else
+            {
+                MessageBox.Show("Invalid USER/PASSWORD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
         private void buttonPurchase_Click(object sender, EventArgs e)
         {
@@ -87,6 +102,16 @@ namespace WindowsFormsApplication4
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             MessageBox.Show("sou o register button!");
+        }
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.TabPages.Remove(this.tab_main);
+            this.tabControl1.TabPages.Remove(this.tab_heal);
+            this.tabControl1.TabPages.Remove(this.tab_actions);
+            this.tabControl1.TabPages.Remove(this.tab_support);
+            this.groupBoxAccountStatus.Visible = false;
+            this.groupBoxLogin.Visible = true;
+            MessageBox.Show("See you soon " + username_input.Text.ToString() + ".", "Log Out Sucess!");
         }
         // --- /ACCOUNT ---
 
@@ -117,13 +142,13 @@ namespace WindowsFormsApplication4
         private void buttonAddNewSpellHealing_Click(object sender, EventArgs e)
         {
             // check hp name mp htk
-            if (textBoxSpellName.Text == "SPELL" || newSpellHealingHotkey.Text.ToString() == "HTK"
+            if (comboBoxSpellName.Text == "SPELL" || newSpellHealingHotkey.Text.ToString() == "HTK"
                 || spellHealingHpValue.Text.ToString() == "HP" || spellHealingMpValue.Text.ToString() == "MP")
             {
-                if (textBoxSpellName.Text == "SPELL") MessageBox.Show("Error! Select NAME.");
-                else if (newSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select HOTKEY.");
-                else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Error! Select HP.");
-                else if (spellHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Error! Select MP.");
+                if (comboBoxSpellName.Text == "SPELL") MessageBox.Show("Select NAME.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (newSpellHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Select HOTKEY.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (spellHealingHpValue.Text.ToString() == "HP") MessageBox.Show("Select HP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (spellHealingMpValue.Text.ToString() == "MP") MessageBox.Show("Select MP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             // check numeric input
             else
@@ -138,21 +163,37 @@ namespace WindowsFormsApplication4
                         && int.Parse(spellHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(spellHealingHpValue.Text.ToString()) > 0
                         && int.Parse(spellHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(spellHealingMpValue.Text.ToString()) > 0)
                     {
-                        Structs.Spell newSpell = new Structs.Spell(textBoxSpellName.Text, spellHealingHpValue.Text,
-                               newSpellHtk, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
+                        int auxHotkeyValid = Functions.Window.HotkeyValidation(newSpellHtk, comboBoxSpellName.Text);
+                        if (auxHotkeyValid == 1)
+                    {
+                        Structs.Spell newSpell = new Structs.Spell(comboBoxSpellName.Text, spellHealingHpValue.Text,
+                            newSpellHtk, maxHpInput.Text, spellHealingMpValue.Text, maxMpInput.Text);
                         spellHealingList.Add(newSpell);
                         updateSpellList();
+
+                    }
+                        else 
+                        {
+                        MessageBox.Show("Invalid HOTKEY.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
+                {
+                    if (inputMpValid == 0 || int.Parse(spellHealingMpValue.Text.ToString()) > int.Parse(maxMpInput.Text.ToString()) || int.Parse(spellHealingMpValue.Text.ToString()) < 0)
                     {
-                        MessageBox.Show("Error! Invalid values.");
+                        MessageBox.Show("Invalid MP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    else if (inputHpValid == 0 || int.Parse(spellHealingHpValue.Text.ToString()) > int.Parse(maxHpInput.Text.ToString()) || int.Parse(spellHealingHpValue.Text.ToString()) < 0)
+                    {
+                        MessageBox.Show("Invalid HP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
         private void buttonClearNewSpell_Click(object sender, EventArgs e)
         {
             newSpellHealingHotkey.Text = "HTK";
-            textBoxSpellName.Text = "SPELL";
+            comboBoxSpellName.Text = "SPELL";
             spellHealingHpValue.Text = "HP";
             spellHealingMpValue.Text = "MP";
         }
@@ -205,12 +246,12 @@ namespace WindowsFormsApplication4
         }
         private void buttonAddNewItemHealing_Click(object sender, EventArgs e)
         {
-            if (textBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || newItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
+            if (comboBoxItemName.Text == "ITEM" || itemHealingHpValue.Text == "HP" || newItemHealingHotkey.Text.ToString() == "HTK" || itemHealingMpValue.Text == "MP")
             {
-                if (textBoxItemName.Text == "ITEM") MessageBox.Show("Error! Select NAME.");
-                else if (itemHealingHpValue.Text == "HP") MessageBox.Show("Error! Select HP.");
-                else if (newItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Error! Select HOTKEY.");
-                else if (itemHealingMpValue.Text == "MP") MessageBox.Show("Error! Select MP.");
+                if (comboBoxItemName.Text == "ITEM") MessageBox.Show("Select NAME.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (itemHealingHpValue.Text == "HP") MessageBox.Show("Select HP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (newItemHealingHotkey.Text.ToString() == "HTK") MessageBox.Show("Select HOTKEY.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else if (itemHealingMpValue.Text == "MP") MessageBox.Show("Select MP.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -219,25 +260,40 @@ namespace WindowsFormsApplication4
                 int.TryParse(itemHealingHpValue.Text, out inputHpValid);
                 int.TryParse(itemHealingMpValue.Text, out inputMpValid);
 
-                if (inputMpValid != 0 && inputHpValid != 0
-                    && int.Parse(itemHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(itemHealingHpValue.Text.ToString()) > 0
+                if (inputMpValid != 0 && inputHpValid != 0 
+                    && int.Parse(itemHealingHpValue.Text.ToString()) < int.Parse(maxHpInput.Text.ToString()) && int.Parse(itemHealingHpValue.Text.ToString()) > 0 
                     && int.Parse(itemHealingMpValue.Text.ToString()) < int.Parse(maxMpInput.Text.ToString()) && int.Parse(itemHealingMpValue.Text.ToString()) > 0)
                 {
-                    Structs.Item newItem = new Structs.Item(textBoxItemName.Text, itemHealingHpValue.Text, itemHealingMpValue.Text,
-                        newItemHtk, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text, maxHpInput.Text, maxMpInput.Text);
-                    itemHealingList.Add(newItem);
-                    updateItemList();
+                    int auxHotkeyValid = Functions.Window.HotkeyValidation(newItemHtk, comboBoxItemName.Text);
+                    if (auxHotkeyValid == 1)
+                    {
+                        Structs.Item newItem = new Structs.Item(comboBoxItemName.Text, itemHealingHpValue.Text, itemHealingMpValue.Text
+                            , newItemHtk, comboBoxHpBelowOver.Text, comboBoxMpBelowOver.Text, maxHpInput.Text, maxMpInput.Text);
+                        itemHealingList.Add(newItem);
+                        updateItemList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid HOTKEY.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error! Invalid HP.");
+                    if (inputMpValid == 0 || int.Parse(itemHealingMpValue.Text.ToString()) > int.Parse(maxMpInput.Text.ToString()) || int.Parse(itemHealingMpValue.Text.ToString()) < 0)
+                    {
+                        MessageBox.Show("Invalid MP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (inputHpValid == 0 || int.Parse(itemHealingHpValue.Text.ToString()) > int.Parse(maxHpInput.Text.ToString()) || int.Parse(itemHealingHpValue.Text.ToString()) < 0)
+                    {
+                        MessageBox.Show("Invalid HP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
         private void buttonClearNewItem_Click(object sender, EventArgs e)
         {
             newItemHealingHotkey.Text = "HTK";
-            textBoxItemName.Text = "ITEM";
+            comboBoxItemName.Text = "ITEM";
             itemHealingMpValue.Text = "MP";
             comboBoxHpBelowOver.Text = "BELOW";
             comboBoxMpBelowOver.Text = "BELOW";
@@ -412,7 +468,8 @@ namespace WindowsFormsApplication4
                 }
                 else
                 {
-                    MessageBox.Show("Error! Invalid values.");
+                    if (hpValid == 0) MessageBox.Show("Invalid HP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else if (mpValid == 0) MessageBox.Show("Invalid MP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     groupBoxItemHealing.Visible = false;
                     groupBoxSpellHealing.Visible = false;
                 }
@@ -573,6 +630,5 @@ namespace WindowsFormsApplication4
         {
             // eu nao faço nada é só para a lixarada que crio nos graphs aparecer under me e nao foder o resto do codigo
         }
-
     } // no del
 }
