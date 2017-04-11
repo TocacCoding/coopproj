@@ -38,6 +38,7 @@ namespace WindowsFormsApplication4
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_account = new System.Windows.Forms.TabPage();
             this.groupBoxAccountStatus = new System.Windows.Forms.GroupBox();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.label_daysLeftShow = new System.Windows.Forms.Label();
             this.label_accountStatusShow = new System.Windows.Forms.Label();
             this.buttonPurchase = new System.Windows.Forms.Button();
@@ -136,7 +137,6 @@ namespace WindowsFormsApplication4
             this.paralyzeHotkey = new System.Windows.Forms.TextBox();
             this.checkBoxPoison = new System.Windows.Forms.CheckBox();
             this.checkBoxParalyze = new System.Windows.Forms.CheckBox();
-            this.buttonLogOut = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_account.SuspendLayout();
             this.groupBoxAccountStatus.SuspendLayout();
@@ -182,10 +182,14 @@ namespace WindowsFormsApplication4
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tab_account);
-            this.tabControl1.Location = new System.Drawing.Point(3, 5);
+            this.tabControl1.Controls.Add(this.tab_main);
+            this.tabControl1.Controls.Add(this.tab_heal);
+            this.tabControl1.Controls.Add(this.tab_actions);
+            this.tabControl1.Controls.Add(this.tab_support);
+            this.tabControl1.Location = new System.Drawing.Point(3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(544, 470);
+            this.tabControl1.Size = new System.Drawing.Size(542, 449);
             this.tabControl1.TabIndex = 0;
             // 
             // tab_account
@@ -195,7 +199,7 @@ namespace WindowsFormsApplication4
             this.tab_account.Location = new System.Drawing.Point(4, 22);
             this.tab_account.Name = "tab_account";
             this.tab_account.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_account.Size = new System.Drawing.Size(536, 444);
+            this.tab_account.Size = new System.Drawing.Size(534, 413);
             this.tab_account.TabIndex = 0;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
@@ -208,13 +212,23 @@ namespace WindowsFormsApplication4
             this.groupBoxAccountStatus.Controls.Add(this.buttonPurchase);
             this.groupBoxAccountStatus.Controls.Add(this.label_daysLeft);
             this.groupBoxAccountStatus.Controls.Add(this.label_accountStatus);
-            this.groupBoxAccountStatus.Location = new System.Drawing.Point(44, 27);
+            this.groupBoxAccountStatus.Location = new System.Drawing.Point(116, 92);
             this.groupBoxAccountStatus.Name = "groupBoxAccountStatus";
             this.groupBoxAccountStatus.Size = new System.Drawing.Size(270, 140);
             this.groupBoxAccountStatus.TabIndex = 12;
             this.groupBoxAccountStatus.TabStop = false;
             this.groupBoxAccountStatus.Text = "Account Status";
             this.groupBoxAccountStatus.Visible = false;
+            // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(181, 76);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(70, 24);
+            this.buttonLogOut.TabIndex = 10;
+            this.buttonLogOut.Text = "Log Out";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // label_daysLeftShow
             // 
@@ -272,7 +286,7 @@ namespace WindowsFormsApplication4
             this.groupBoxLogin.Controls.Add(this.username_input);
             this.groupBoxLogin.Controls.Add(this.label_password);
             this.groupBoxLogin.Controls.Add(this.label_username);
-            this.groupBoxLogin.Location = new System.Drawing.Point(44, 27);
+            this.groupBoxLogin.Location = new System.Drawing.Point(116, 92);
             this.groupBoxLogin.Name = "groupBoxLogin";
             this.groupBoxLogin.Size = new System.Drawing.Size(270, 140);
             this.groupBoxLogin.TabIndex = 11;
@@ -339,7 +353,7 @@ namespace WindowsFormsApplication4
             this.tab_main.Location = new System.Drawing.Point(4, 22);
             this.tab_main.Name = "tab_main";
             this.tab_main.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_main.Size = new System.Drawing.Size(536, 444);
+            this.tab_main.Size = new System.Drawing.Size(534, 423);
             this.tab_main.TabIndex = 1;
             this.tab_main.Text = "Main";
             this.tab_main.UseVisualStyleBackColor = true;
@@ -348,7 +362,7 @@ namespace WindowsFormsApplication4
             // 
             this.groupBoxConfigManager.Controls.Add(this.buttonSaveConfig);
             this.groupBoxConfigManager.Controls.Add(this.buttonLoadConfig);
-            this.groupBoxConfigManager.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxConfigManager.Location = new System.Drawing.Point(37, 57);
             this.groupBoxConfigManager.Name = "groupBoxConfigManager";
             this.groupBoxConfigManager.Size = new System.Drawing.Size(109, 94);
             this.groupBoxConfigManager.TabIndex = 0;
@@ -382,7 +396,7 @@ namespace WindowsFormsApplication4
             this.tab_heal.Controls.Add(this.groupBoxSpellHealing);
             this.tab_heal.Location = new System.Drawing.Point(4, 22);
             this.tab_heal.Name = "tab_heal";
-            this.tab_heal.Size = new System.Drawing.Size(536, 444);
+            this.tab_heal.Size = new System.Drawing.Size(534, 423);
             this.tab_heal.TabIndex = 2;
             this.tab_heal.Text = "Heal";
             this.tab_heal.UseVisualStyleBackColor = true;
@@ -397,16 +411,17 @@ namespace WindowsFormsApplication4
             this.groupBoxGeneralInfo.Controls.Add(this.buttonApplyMaxValues);
             this.groupBoxGeneralInfo.Controls.Add(this.labelMaxMp);
             this.groupBoxGeneralInfo.Controls.Add(this.label1);
-            this.groupBoxGeneralInfo.Location = new System.Drawing.Point(139, 4);
+            this.groupBoxGeneralInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxGeneralInfo.Location = new System.Drawing.Point(3, 4);
             this.groupBoxGeneralInfo.Name = "groupBoxGeneralInfo";
-            this.groupBoxGeneralInfo.Size = new System.Drawing.Size(303, 88);
+            this.groupBoxGeneralInfo.Size = new System.Drawing.Size(528, 59);
             this.groupBoxGeneralInfo.TabIndex = 2;
             this.groupBoxGeneralInfo.TabStop = false;
             this.groupBoxGeneralInfo.Text = "General Info";
             // 
             // buttonSaveCfgHealer
             // 
-            this.buttonSaveCfgHealer.Location = new System.Drawing.Point(165, 54);
+            this.buttonSaveCfgHealer.Location = new System.Drawing.Point(432, 19);
             this.buttonSaveCfgHealer.Name = "buttonSaveCfgHealer";
             this.buttonSaveCfgHealer.Size = new System.Drawing.Size(87, 30);
             this.buttonSaveCfgHealer.TabIndex = 9;
@@ -417,7 +432,7 @@ namespace WindowsFormsApplication4
             // 
             // buttonLoadCfgHealer
             // 
-            this.buttonLoadCfgHealer.Location = new System.Drawing.Point(165, 55);
+            this.buttonLoadCfgHealer.Location = new System.Drawing.Point(432, 18);
             this.buttonLoadCfgHealer.Name = "buttonLoadCfgHealer";
             this.buttonLoadCfgHealer.Size = new System.Drawing.Size(87, 30);
             this.buttonLoadCfgHealer.TabIndex = 8;
@@ -428,7 +443,7 @@ namespace WindowsFormsApplication4
             // buttonResetHealing
             // 
             this.buttonResetHealing.ForeColor = System.Drawing.Color.Red;
-            this.buttonResetHealing.Location = new System.Drawing.Point(165, 19);
+            this.buttonResetHealing.Location = new System.Drawing.Point(327, 19);
             this.buttonResetHealing.Name = "buttonResetHealing";
             this.buttonResetHealing.Size = new System.Drawing.Size(87, 30);
             this.buttonResetHealing.TabIndex = 7;
@@ -439,7 +454,7 @@ namespace WindowsFormsApplication4
             // 
             // maxMpInput
             // 
-            this.maxMpInput.Location = new System.Drawing.Point(79, 51);
+            this.maxMpInput.Location = new System.Drawing.Point(209, 23);
             this.maxMpInput.Name = "maxMpInput";
             this.maxMpInput.Size = new System.Drawing.Size(70, 20);
             this.maxMpInput.TabIndex = 6;
@@ -454,7 +469,7 @@ namespace WindowsFormsApplication4
             // buttonApplyMaxValues
             // 
             this.buttonApplyMaxValues.ForeColor = System.Drawing.Color.Green;
-            this.buttonApplyMaxValues.Location = new System.Drawing.Point(165, 19);
+            this.buttonApplyMaxValues.Location = new System.Drawing.Point(327, 18);
             this.buttonApplyMaxValues.Name = "buttonApplyMaxValues";
             this.buttonApplyMaxValues.Size = new System.Drawing.Size(87, 30);
             this.buttonApplyMaxValues.TabIndex = 4;
@@ -466,7 +481,7 @@ namespace WindowsFormsApplication4
             // 
             this.labelMaxMp.AutoSize = true;
             this.labelMaxMp.ForeColor = System.Drawing.Color.Blue;
-            this.labelMaxMp.Location = new System.Drawing.Point(24, 54);
+            this.labelMaxMp.Location = new System.Drawing.Point(154, 26);
             this.labelMaxMp.Name = "labelMaxMp";
             this.labelMaxMp.Size = new System.Drawing.Size(49, 13);
             this.labelMaxMp.TabIndex = 1;
@@ -486,14 +501,14 @@ namespace WindowsFormsApplication4
             // 
             this.groupBoxItemHealing.Controls.Add(this.groupBoxNewItemHealing);
             this.groupBoxItemHealing.Controls.Add(this.groupBoxActiveItems);
+            this.groupBoxItemHealing.Enabled = false;
             this.groupBoxItemHealing.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBoxItemHealing.Location = new System.Drawing.Point(3, 262);
+            this.groupBoxItemHealing.Location = new System.Drawing.Point(3, 233);
             this.groupBoxItemHealing.Name = "groupBoxItemHealing";
             this.groupBoxItemHealing.Size = new System.Drawing.Size(528, 178);
             this.groupBoxItemHealing.TabIndex = 1;
             this.groupBoxItemHealing.TabStop = false;
             this.groupBoxItemHealing.Text = "Item Healing";
-            this.groupBoxItemHealing.Visible = false;
             // 
             // groupBoxNewItemHealing
             // 
@@ -710,14 +725,14 @@ namespace WindowsFormsApplication4
             // 
             this.groupBoxSpellHealing.Controls.Add(this.groupBoxNewSpellHealing);
             this.groupBoxSpellHealing.Controls.Add(this.groupBoxActiveSpellsHealing);
+            this.groupBoxSpellHealing.Enabled = false;
             this.groupBoxSpellHealing.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBoxSpellHealing.Location = new System.Drawing.Point(3, 98);
+            this.groupBoxSpellHealing.Location = new System.Drawing.Point(3, 69);
             this.groupBoxSpellHealing.Name = "groupBoxSpellHealing";
             this.groupBoxSpellHealing.Size = new System.Drawing.Size(528, 158);
             this.groupBoxSpellHealing.TabIndex = 0;
             this.groupBoxSpellHealing.TabStop = false;
             this.groupBoxSpellHealing.Text = "Spell Healing";
-            this.groupBoxSpellHealing.Visible = false;
             // 
             // groupBoxNewSpellHealing
             // 
@@ -906,7 +921,7 @@ namespace WindowsFormsApplication4
             this.tab_actions.Controls.Add(this.groupboxRings);
             this.tab_actions.Location = new System.Drawing.Point(4, 22);
             this.tab_actions.Name = "tab_actions";
-            this.tab_actions.Size = new System.Drawing.Size(536, 444);
+            this.tab_actions.Size = new System.Drawing.Size(534, 413);
             this.tab_actions.TabIndex = 4;
             this.tab_actions.Text = "Actions";
             this.tab_actions.UseVisualStyleBackColor = true;
@@ -915,9 +930,9 @@ namespace WindowsFormsApplication4
             // 
             this.groupBoxManaWaster.Controls.Add(this.checkBoxManaWaster);
             this.groupBoxManaWaster.Controls.Add(this.manaWasterHotkey);
-            this.groupBoxManaWaster.Location = new System.Drawing.Point(9, 144);
+            this.groupBoxManaWaster.Location = new System.Drawing.Point(17, 177);
             this.groupBoxManaWaster.Name = "groupBoxManaWaster";
-            this.groupBoxManaWaster.Size = new System.Drawing.Size(187, 116);
+            this.groupBoxManaWaster.Size = new System.Drawing.Size(179, 116);
             this.groupBoxManaWaster.TabIndex = 4;
             this.groupBoxManaWaster.TabStop = false;
             this.groupBoxManaWaster.Text = "Mana Waster";
@@ -925,7 +940,7 @@ namespace WindowsFormsApplication4
             // checkBoxManaWaster
             // 
             this.checkBoxManaWaster.AutoSize = true;
-            this.checkBoxManaWaster.Location = new System.Drawing.Point(27, 27);
+            this.checkBoxManaWaster.Location = new System.Drawing.Point(12, 25);
             this.checkBoxManaWaster.Name = "checkBoxManaWaster";
             this.checkBoxManaWaster.Size = new System.Drawing.Size(144, 17);
             this.checkBoxManaWaster.TabIndex = 13;
@@ -935,7 +950,7 @@ namespace WindowsFormsApplication4
             // 
             // manaWasterHotkey
             // 
-            this.manaWasterHotkey.Location = new System.Drawing.Point(82, 50);
+            this.manaWasterHotkey.Location = new System.Drawing.Point(62, 74);
             this.manaWasterHotkey.Name = "manaWasterHotkey";
             this.manaWasterHotkey.ReadOnly = true;
             this.manaWasterHotkey.Size = new System.Drawing.Size(37, 20);
@@ -951,7 +966,7 @@ namespace WindowsFormsApplication4
             this.groupBoxSpells.Controls.Add(this.checkBoxUtamo);
             this.groupBoxSpells.Location = new System.Drawing.Point(209, 24);
             this.groupBoxSpells.Name = "groupBoxSpells";
-            this.groupBoxSpells.Size = new System.Drawing.Size(179, 99);
+            this.groupBoxSpells.Size = new System.Drawing.Size(173, 99);
             this.groupBoxSpells.TabIndex = 3;
             this.groupBoxSpells.TabStop = false;
             this.groupBoxSpells.Text = "Spells";
@@ -1004,7 +1019,7 @@ namespace WindowsFormsApplication4
             this.groupBoxRoutine.Controls.Add(this.checkBoxEater);
             this.groupBoxRoutine.Location = new System.Drawing.Point(17, 24);
             this.groupBoxRoutine.Name = "groupBoxRoutine";
-            this.groupBoxRoutine.Size = new System.Drawing.Size(179, 99);
+            this.groupBoxRoutine.Size = new System.Drawing.Size(179, 147);
             this.groupBoxRoutine.TabIndex = 2;
             this.groupBoxRoutine.TabStop = false;
             this.groupBoxRoutine.Text = "Routine";
@@ -1063,16 +1078,16 @@ namespace WindowsFormsApplication4
             this.groupboxRings.Controls.Add(this.checkBoxTimeRing);
             this.groupboxRings.Controls.Add(this.checkBoxEnergyRing);
             this.groupboxRings.Controls.Add(this.checkBoxLifeRing);
-            this.groupboxRings.Location = new System.Drawing.Point(197, 144);
+            this.groupboxRings.Location = new System.Drawing.Point(209, 129);
             this.groupboxRings.Name = "groupboxRings";
-            this.groupboxRings.Size = new System.Drawing.Size(173, 145);
+            this.groupboxRings.Size = new System.Drawing.Size(173, 164);
             this.groupboxRings.TabIndex = 0;
             this.groupboxRings.TabStop = false;
             this.groupboxRings.Text = "Rings";
             // 
             // healingRingHotkey
             // 
-            this.healingRingHotkey.Location = new System.Drawing.Point(107, 117);
+            this.healingRingHotkey.Location = new System.Drawing.Point(123, 115);
             this.healingRingHotkey.Name = "healingRingHotkey";
             this.healingRingHotkey.ReadOnly = true;
             this.healingRingHotkey.Size = new System.Drawing.Size(37, 20);
@@ -1082,7 +1097,7 @@ namespace WindowsFormsApplication4
             // 
             // mightRingHotkey
             // 
-            this.mightRingHotkey.Location = new System.Drawing.Point(107, 94);
+            this.mightRingHotkey.Location = new System.Drawing.Point(123, 94);
             this.mightRingHotkey.Name = "mightRingHotkey";
             this.mightRingHotkey.ReadOnly = true;
             this.mightRingHotkey.Size = new System.Drawing.Size(37, 20);
@@ -1092,7 +1107,7 @@ namespace WindowsFormsApplication4
             // 
             // timeRingHotkey
             // 
-            this.timeRingHotkey.Location = new System.Drawing.Point(107, 71);
+            this.timeRingHotkey.Location = new System.Drawing.Point(123, 71);
             this.timeRingHotkey.Name = "timeRingHotkey";
             this.timeRingHotkey.ReadOnly = true;
             this.timeRingHotkey.Size = new System.Drawing.Size(37, 20);
@@ -1102,7 +1117,7 @@ namespace WindowsFormsApplication4
             // 
             // energyRingHotkey
             // 
-            this.energyRingHotkey.Location = new System.Drawing.Point(107, 48);
+            this.energyRingHotkey.Location = new System.Drawing.Point(123, 48);
             this.energyRingHotkey.Name = "energyRingHotkey";
             this.energyRingHotkey.ReadOnly = true;
             this.energyRingHotkey.Size = new System.Drawing.Size(37, 20);
@@ -1112,7 +1127,7 @@ namespace WindowsFormsApplication4
             // 
             // lifeRingHotkey
             // 
-            this.lifeRingHotkey.Location = new System.Drawing.Point(107, 22);
+            this.lifeRingHotkey.Location = new System.Drawing.Point(123, 25);
             this.lifeRingHotkey.Name = "lifeRingHotkey";
             this.lifeRingHotkey.ReadOnly = true;
             this.lifeRingHotkey.Size = new System.Drawing.Size(37, 20);
@@ -1178,7 +1193,7 @@ namespace WindowsFormsApplication4
             this.tab_support.Controls.Add(this.groupBoxConditionHealer);
             this.tab_support.Location = new System.Drawing.Point(4, 22);
             this.tab_support.Name = "tab_support";
-            this.tab_support.Size = new System.Drawing.Size(536, 444);
+            this.tab_support.Size = new System.Drawing.Size(534, 413);
             this.tab_support.TabIndex = 5;
             this.tab_support.Text = "Support";
             this.tab_support.UseVisualStyleBackColor = true;
@@ -1293,21 +1308,11 @@ namespace WindowsFormsApplication4
             this.checkBoxParalyze.UseVisualStyleBackColor = true;
             this.checkBoxParalyze.CheckedChanged += new System.EventHandler(this.checkBoxParalyze_CheckedChanged);
             // 
-            // buttonLogOut
-            // 
-            this.buttonLogOut.Location = new System.Drawing.Point(181, 76);
-            this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(70, 24);
-            this.buttonLogOut.TabIndex = 10;
-            this.buttonLogOut.Text = "Log Out";
-            this.buttonLogOut.UseVisualStyleBackColor = true;
-            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 475);
+            this.ClientSize = new System.Drawing.Size(540, 438);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.ShowIcon = false;

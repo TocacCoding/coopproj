@@ -14,11 +14,11 @@
   </Spell>
   <Spell>
     <name>Exura Gran</name>
-    <hpPercent>710</hpPercent>
+    <hpPercent>680</hpPercent>
     <mpPercent>70</mpPercent>
-    <hpPixel>765</hpPixel>
+    <hpPixel>742</hpPixel>
     <mpPixel>1703</mpPixel>
-    <hpShow>75</hpShow>
+    <hpShow>72</hpShow>
     <mpShow>1</mpShow>
     <hotkey>VK_9</hotkey>
     <maxHp>935</maxHp>
@@ -26,11 +26,11 @@
   </Spell>
   <Spell>
     <name>Exura</name>
-    <hpPercent>835</hpPercent>
+    <hpPercent>820</hpPercent>
     <mpPercent>20</mpPercent>
-    <hpPixel>868</hpPixel>
+    <hpPixel>853</hpPixel>
     <mpPixel>1703</mpPixel>
-    <hpShow>89</hpShow>
+    <hpShow>87</hpShow>
     <mpShow>1</mpShow>
     <hotkey>VK_8</hotkey>
     <maxHp>935</maxHp>

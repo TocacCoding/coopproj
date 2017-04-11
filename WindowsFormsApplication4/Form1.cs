@@ -82,13 +82,9 @@ namespace WindowsFormsApplication4
         {
             if (username_input.Text.ToString() == "admin@mail.com" && password_input.Text.ToString() == "pass")
             {
-                this.tabControl1.TabPages.Insert(1, this.tab_main);
-                this.tabControl1.TabPages.Insert(2, this.tab_heal);
-                this.tabControl1.TabPages.Insert(3, this.tab_actions);
-                this.tabControl1.TabPages.Insert(4, this.tab_support);
+                MessageBox.Show("Welcome " + username_input.Text.ToString() + ".","Log In Success!");
                 this.groupBoxAccountStatus.Visible = true;
                 this.groupBoxLogin.Visible = false;
-                MessageBox.Show("Welcome " + username_input.Text.ToString() + ".","Log In Success!");
             }
             else
             {
@@ -105,10 +101,6 @@ namespace WindowsFormsApplication4
         }
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            this.tabControl1.TabPages.Remove(this.tab_main);
-            this.tabControl1.TabPages.Remove(this.tab_heal);
-            this.tabControl1.TabPages.Remove(this.tab_actions);
-            this.tabControl1.TabPages.Remove(this.tab_support);
             this.groupBoxAccountStatus.Visible = false;
             this.groupBoxLogin.Visible = true;
             MessageBox.Show("See you soon " + username_input.Text.ToString() + ".", "Log Out Sucess!");
@@ -448,95 +440,6 @@ namespace WindowsFormsApplication4
         }
         // --- /STATUS/SUPPORT CHECKBOX EVENT---
 
-        // --- MAX HP MP TAB ---
-        private void buttonApplyMaxValues_Click(object sender, EventArgs e)
-        {
-            if (maxHpInput != null && maxMpInput !=null)
-            {
-                int hpValid;
-                int mpValid;
-                int.TryParse(maxHpInput.Text, out hpValid);
-                int.TryParse(maxMpInput.Text, out mpValid);
-
-                if (hpValid > 0 && mpValid > 0)
-                {
-                    groupBoxItemHealing.Visible = true;
-                    groupBoxSpellHealing.Visible = true;
-                    maxHpInput.ReadOnly = true;
-                    maxMpInput.ReadOnly = true;
-                    buttonResetHealing.Visible = true;
-                    buttonApplyMaxValues.Visible = false;
-                    buttonLoadCfgHealer.Visible = false;
-                    buttonSaveCfgHealer.Visible = true;
-                }
-                else
-                {
-                    if (hpValid == 0) MessageBox.Show("Invalid HP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else if (mpValid == 0) MessageBox.Show("Invalid MP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    groupBoxItemHealing.Visible = false;
-                    groupBoxSpellHealing.Visible = false;
-                }
-            }
-        }
-        private void buttonResetHealing_Click(object sender, EventArgs e)
-        {
-            spellHealingList.Clear();
-            itemHealingList.Clear();
-            updateItemList();
-            updateSpellList();
-            maxHpInput.ReadOnly = false;
-            maxMpInput.ReadOnly = false;
-            maxHpInput.Text = "";
-            maxMpInput.Text = "";
-            groupBoxItemHealing.Visible = false;
-            groupBoxSpellHealing.Visible = false;
-            buttonApplyMaxValues.Visible = true;
-            buttonResetHealing.Visible = false;
-            buttonLoadCfgHealer.Visible = true;
-            buttonSaveCfgHealer.Visible = false;
-        }
-        // --- /MAX HP MP ---
-
-        // --- SAVE CFG TAB ---
-        private void buttonSaveCfgHealer_Click(object sender, EventArgs e)
-        {
-            Functions.FileManager.saveHealerCfg(spellHealingList, itemHealingList);
-        }
-        // --- /SAVE CFG ---
-
-        // --- LOAD CFG TAB ---
-        private void buttonLoadCfgHealer_Click(object sender, EventArgs e)
-        {
-            List<Structs.Item> loadedItemList = null;
-            List<Structs.Spell> loadedSpellList = null;
-
-            Functions.FileManager.loadHealerCfg(out loadedItemList, out loadedSpellList);
-
-            if (loadedItemList != null && loadedSpellList != null)
-            {
-                // spell aux to real
-                spellHealingList.Clear();
-                spellHealingList = loadedSpellList;
-                updateSpellList();
-                // item aux to real
-                itemHealingList.Clear();
-                itemHealingList = loadedItemList;
-                updateItemList();
-                // window manipulation hiding/showing stuff on menus
-                groupBoxSpellHealing.Visible = true;
-                groupBoxItemHealing.Visible = true;
-                buttonLoadCfgHealer.Visible = false;
-                buttonSaveCfgHealer.Visible = true;
-                buttonApplyMaxValues.Visible = false;
-                buttonResetHealing.Visible = true;
-                maxHpInput.Text = itemHealingList[0].maxHp.ToString();
-                maxMpInput.Text = itemHealingList[0].maxMp.ToString();
-                maxMpInput.ReadOnly = true;
-                maxHpInput.ReadOnly = true;
-            }
-        }
-        // --- /LOAD CFG ---
-
         // -- NEW HOTKEYS --
         private void eaterHotkey_KeyDown(object sender, KeyEventArgs e)
         {
@@ -628,6 +531,95 @@ namespace WindowsFormsApplication4
             Functions.Actions.recoveryHotkey = (VirtualKeyCode)e.KeyCode;
         }
         // --- /NEW HOTKEYS ---
+
+        // --- MAX HP MP TAB ---
+        private void buttonApplyMaxValues_Click(object sender, EventArgs e)
+        {
+            if (maxHpInput != null && maxMpInput !=null)
+            {
+                int hpValid;
+                int mpValid;
+                int.TryParse(maxHpInput.Text, out hpValid);
+                int.TryParse(maxMpInput.Text, out mpValid);
+
+                if (hpValid > 0 && mpValid > 0)
+                {
+                    groupBoxItemHealing.Enabled = true;
+                    groupBoxSpellHealing.Enabled = true;
+                    maxHpInput.ReadOnly = true;
+                    maxMpInput.ReadOnly = true;
+                    buttonResetHealing.Visible = true;
+                    buttonApplyMaxValues.Visible = false;
+                    buttonLoadCfgHealer.Visible = false;
+                    buttonSaveCfgHealer.Visible = true;
+                }
+                else
+                {
+                    if (hpValid == 0) MessageBox.Show("Invalid HP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else if (mpValid == 0) MessageBox.Show("Invalid MP.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    groupBoxItemHealing.Enabled = false;
+                    groupBoxSpellHealing.Enabled = false;
+                }
+            }
+        }
+        private void buttonResetHealing_Click(object sender, EventArgs e)
+        {
+            spellHealingList.Clear();
+            itemHealingList.Clear();
+            updateItemList();
+            updateSpellList();
+            maxHpInput.ReadOnly = false;
+            maxMpInput.ReadOnly = false;
+            maxHpInput.Text = "";
+            maxMpInput.Text = "";
+            groupBoxItemHealing.Enabled = false;
+            groupBoxSpellHealing.Enabled = false;
+            buttonApplyMaxValues.Visible = true;
+            buttonResetHealing.Visible = false;
+            buttonLoadCfgHealer.Visible = true;
+            buttonSaveCfgHealer.Visible = false;
+        }
+        // --- /MAX HP MP ---
+
+        // --- SAVE CFG TAB ---
+        private void buttonSaveCfgHealer_Click(object sender, EventArgs e)
+        {
+            Functions.FileManager.saveHealerCfg(spellHealingList, itemHealingList);
+        }
+        // --- /SAVE CFG ---
+
+        // --- LOAD CFG TAB ---
+        private void buttonLoadCfgHealer_Click(object sender, EventArgs e)
+        {
+            List<Structs.Item> loadedItemList = null;
+            List<Structs.Spell> loadedSpellList = null;
+
+            Functions.FileManager.loadHealerCfg(out loadedItemList, out loadedSpellList);
+
+            if (loadedItemList != null && loadedSpellList != null)
+            {
+                // spell aux to real
+                spellHealingList.Clear();
+                spellHealingList = loadedSpellList;
+                updateSpellList();
+                // item aux to real
+                itemHealingList.Clear();
+                itemHealingList = loadedItemList;
+                updateItemList();
+                // window manipulation hiding/showing stuff on menus
+                groupBoxSpellHealing.Visible = true;
+                groupBoxItemHealing.Visible = true;
+                buttonLoadCfgHealer.Visible = false;
+                buttonSaveCfgHealer.Visible = true;
+                buttonApplyMaxValues.Visible = false;
+                buttonResetHealing.Visible = true;
+                maxHpInput.Text = itemHealingList[0].maxHp.ToString();
+                maxMpInput.Text = itemHealingList[0].maxMp.ToString();
+                maxMpInput.ReadOnly = true;
+                maxHpInput.ReadOnly = true;
+            }
+        }
+        // --- /LOAD CFG ---
 
         private void SEPARADOR()
         {
