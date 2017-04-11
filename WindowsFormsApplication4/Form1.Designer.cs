@@ -36,7 +36,7 @@ namespace WindowsFormsApplication4
             this.itemHealTimer = new System.Windows.Forms.Timer(this.components);
             this.statusCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tab_account = new System.Windows.Forms.TabPage();
+            this.tab_main = new System.Windows.Forms.TabPage();
             this.groupBoxAccountStatus = new System.Windows.Forms.GroupBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.label_daysLeftShow = new System.Windows.Forms.Label();
@@ -44,14 +44,6 @@ namespace WindowsFormsApplication4
             this.buttonPurchase = new System.Windows.Forms.Button();
             this.label_daysLeft = new System.Windows.Forms.Label();
             this.label_accountStatus = new System.Windows.Forms.Label();
-            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
-            this.buttonRegister = new System.Windows.Forms.Button();
-            this.login_button = new System.Windows.Forms.Button();
-            this.password_input = new System.Windows.Forms.TextBox();
-            this.username_input = new System.Windows.Forms.TextBox();
-            this.label_password = new System.Windows.Forms.Label();
-            this.label_username = new System.Windows.Forms.Label();
-            this.tab_main = new System.Windows.Forms.TabPage();
             this.groupBoxConfigManager = new System.Windows.Forms.GroupBox();
             this.buttonSaveConfig = new System.Windows.Forms.Button();
             this.buttonLoadConfig = new System.Windows.Forms.Button();
@@ -138,10 +130,8 @@ namespace WindowsFormsApplication4
             this.checkBoxPoison = new System.Windows.Forms.CheckBox();
             this.checkBoxParalyze = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
-            this.tab_account.SuspendLayout();
-            this.groupBoxAccountStatus.SuspendLayout();
-            this.groupBoxLogin.SuspendLayout();
             this.tab_main.SuspendLayout();
+            this.groupBoxAccountStatus.SuspendLayout();
             this.groupBoxConfigManager.SuspendLayout();
             this.tab_heal.SuspendLayout();
             this.groupBoxGeneralInfo.SuspendLayout();
@@ -181,7 +171,6 @@ namespace WindowsFormsApplication4
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tab_account);
             this.tabControl1.Controls.Add(this.tab_main);
             this.tabControl1.Controls.Add(this.tab_heal);
             this.tabControl1.Controls.Add(this.tab_actions);
@@ -192,17 +181,17 @@ namespace WindowsFormsApplication4
             this.tabControl1.Size = new System.Drawing.Size(542, 449);
             this.tabControl1.TabIndex = 0;
             // 
-            // tab_account
+            // tab_main
             // 
-            this.tab_account.Controls.Add(this.groupBoxAccountStatus);
-            this.tab_account.Controls.Add(this.groupBoxLogin);
-            this.tab_account.Location = new System.Drawing.Point(4, 22);
-            this.tab_account.Name = "tab_account";
-            this.tab_account.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_account.Size = new System.Drawing.Size(534, 413);
-            this.tab_account.TabIndex = 0;
-            this.tab_account.Text = "Account";
-            this.tab_account.UseVisualStyleBackColor = true;
+            this.tab_main.Controls.Add(this.groupBoxAccountStatus);
+            this.tab_main.Controls.Add(this.groupBoxConfigManager);
+            this.tab_main.Location = new System.Drawing.Point(4, 22);
+            this.tab_main.Name = "tab_main";
+            this.tab_main.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_main.Size = new System.Drawing.Size(534, 423);
+            this.tab_main.TabIndex = 1;
+            this.tab_main.Text = "Main";
+            this.tab_main.UseVisualStyleBackColor = true;
             // 
             // groupBoxAccountStatus
             // 
@@ -212,13 +201,12 @@ namespace WindowsFormsApplication4
             this.groupBoxAccountStatus.Controls.Add(this.buttonPurchase);
             this.groupBoxAccountStatus.Controls.Add(this.label_daysLeft);
             this.groupBoxAccountStatus.Controls.Add(this.label_accountStatus);
-            this.groupBoxAccountStatus.Location = new System.Drawing.Point(116, 92);
+            this.groupBoxAccountStatus.Location = new System.Drawing.Point(22, 29);
             this.groupBoxAccountStatus.Name = "groupBoxAccountStatus";
             this.groupBoxAccountStatus.Size = new System.Drawing.Size(270, 140);
-            this.groupBoxAccountStatus.TabIndex = 12;
+            this.groupBoxAccountStatus.TabIndex = 13;
             this.groupBoxAccountStatus.TabStop = false;
             this.groupBoxAccountStatus.Text = "Account Status";
-            this.groupBoxAccountStatus.Visible = false;
             // 
             // buttonLogOut
             // 
@@ -278,93 +266,13 @@ namespace WindowsFormsApplication4
             this.label_accountStatus.TabIndex = 5;
             this.label_accountStatus.Text = "Account Status:";
             // 
-            // groupBoxLogin
-            // 
-            this.groupBoxLogin.Controls.Add(this.buttonRegister);
-            this.groupBoxLogin.Controls.Add(this.login_button);
-            this.groupBoxLogin.Controls.Add(this.password_input);
-            this.groupBoxLogin.Controls.Add(this.username_input);
-            this.groupBoxLogin.Controls.Add(this.label_password);
-            this.groupBoxLogin.Controls.Add(this.label_username);
-            this.groupBoxLogin.Location = new System.Drawing.Point(116, 92);
-            this.groupBoxLogin.Name = "groupBoxLogin";
-            this.groupBoxLogin.Size = new System.Drawing.Size(270, 140);
-            this.groupBoxLogin.TabIndex = 11;
-            this.groupBoxLogin.TabStop = false;
-            this.groupBoxLogin.Text = "Log In";
-            // 
-            // buttonRegister
-            // 
-            this.buttonRegister.Location = new System.Drawing.Point(56, 90);
-            this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(101, 23);
-            this.buttonRegister.TabIndex = 10;
-            this.buttonRegister.Text = "Create Account";
-            this.buttonRegister.UseVisualStyleBackColor = true;
-            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
-            // 
-            // login_button
-            // 
-            this.login_button.Location = new System.Drawing.Point(163, 90);
-            this.login_button.Name = "login_button";
-            this.login_button.Size = new System.Drawing.Size(79, 23);
-            this.login_button.TabIndex = 4;
-            this.login_button.Text = "Log in";
-            this.login_button.UseVisualStyleBackColor = true;
-            this.login_button.Click += new System.EventHandler(this.login_button_Click);
-            // 
-            // password_input
-            // 
-            this.password_input.Location = new System.Drawing.Point(85, 53);
-            this.password_input.Name = "password_input";
-            this.password_input.Size = new System.Drawing.Size(156, 20);
-            this.password_input.TabIndex = 3;
-            this.password_input.Text = "pass";
-            // 
-            // username_input
-            // 
-            this.username_input.Location = new System.Drawing.Point(85, 23);
-            this.username_input.Name = "username_input";
-            this.username_input.Size = new System.Drawing.Size(156, 20);
-            this.username_input.TabIndex = 2;
-            this.username_input.Text = "admin@mail.com";
-            // 
-            // label_password
-            // 
-            this.label_password.AutoSize = true;
-            this.label_password.Location = new System.Drawing.Point(12, 52);
-            this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(56, 13);
-            this.label_password.TabIndex = 1;
-            this.label_password.Text = "Password:";
-            // 
-            // label_username
-            // 
-            this.label_username.AutoSize = true;
-            this.label_username.Location = new System.Drawing.Point(12, 26);
-            this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(58, 13);
-            this.label_username.TabIndex = 0;
-            this.label_username.Text = "Username:";
-            // 
-            // tab_main
-            // 
-            this.tab_main.Controls.Add(this.groupBoxConfigManager);
-            this.tab_main.Location = new System.Drawing.Point(4, 22);
-            this.tab_main.Name = "tab_main";
-            this.tab_main.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_main.Size = new System.Drawing.Size(534, 423);
-            this.tab_main.TabIndex = 1;
-            this.tab_main.Text = "Main";
-            this.tab_main.UseVisualStyleBackColor = true;
-            // 
             // groupBoxConfigManager
             // 
             this.groupBoxConfigManager.Controls.Add(this.buttonSaveConfig);
             this.groupBoxConfigManager.Controls.Add(this.buttonLoadConfig);
-            this.groupBoxConfigManager.Location = new System.Drawing.Point(37, 57);
+            this.groupBoxConfigManager.Location = new System.Drawing.Point(312, 29);
             this.groupBoxConfigManager.Name = "groupBoxConfigManager";
-            this.groupBoxConfigManager.Size = new System.Drawing.Size(109, 94);
+            this.groupBoxConfigManager.Size = new System.Drawing.Size(109, 140);
             this.groupBoxConfigManager.TabIndex = 0;
             this.groupBoxConfigManager.TabStop = false;
             this.groupBoxConfigManager.Text = "Config Manager";
@@ -794,9 +702,9 @@ namespace WindowsFormsApplication4
             this.labelNewSpellMpOver.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelNewSpellMpOver.Location = new System.Drawing.Point(1, 85);
             this.labelNewSpellMpOver.Name = "labelNewSpellMpOver";
-            this.labelNewSpellMpOver.Size = new System.Drawing.Size(58, 13);
+            this.labelNewSpellMpOver.Size = new System.Drawing.Size(67, 13);
             this.labelNewSpellMpOver.TabIndex = 9;
-            this.labelNewSpellMpOver.Text = "Mana over";
+            this.labelNewSpellMpOver.Text = "Mana OVER";
             // 
             // buttonClearNewSpell
             // 
@@ -834,9 +742,9 @@ namespace WindowsFormsApplication4
             this.labelNewSpellHp.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelNewSpellHp.Location = new System.Drawing.Point(1, 64);
             this.labelNewSpellHp.Name = "labelNewSpellHp";
-            this.labelNewSpellHp.Size = new System.Drawing.Size(69, 13);
+            this.labelNewSpellHp.Size = new System.Drawing.Size(80, 13);
             this.labelNewSpellHp.TabIndex = 3;
-            this.labelNewSpellHp.Text = "Health below";
+            this.labelNewSpellHp.Text = "Health BELOW";
             // 
             // labelNewSpellHotkey
             // 
@@ -921,7 +829,7 @@ namespace WindowsFormsApplication4
             this.tab_actions.Controls.Add(this.groupboxRings);
             this.tab_actions.Location = new System.Drawing.Point(4, 22);
             this.tab_actions.Name = "tab_actions";
-            this.tab_actions.Size = new System.Drawing.Size(534, 413);
+            this.tab_actions.Size = new System.Drawing.Size(534, 423);
             this.tab_actions.TabIndex = 4;
             this.tab_actions.Text = "Actions";
             this.tab_actions.UseVisualStyleBackColor = true;
@@ -1193,7 +1101,7 @@ namespace WindowsFormsApplication4
             this.tab_support.Controls.Add(this.groupBoxConditionHealer);
             this.tab_support.Location = new System.Drawing.Point(4, 22);
             this.tab_support.Name = "tab_support";
-            this.tab_support.Size = new System.Drawing.Size(534, 413);
+            this.tab_support.Size = new System.Drawing.Size(534, 423);
             this.tab_support.TabIndex = 5;
             this.tab_support.Text = "Support";
             this.tab_support.UseVisualStyleBackColor = true;
@@ -1318,13 +1226,11 @@ namespace WindowsFormsApplication4
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "<name> Tool v.0.0 (first sketch)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.tabControl1.ResumeLayout(false);
-            this.tab_account.ResumeLayout(false);
+            this.tab_main.ResumeLayout(false);
             this.groupBoxAccountStatus.ResumeLayout(false);
             this.groupBoxAccountStatus.PerformLayout();
-            this.groupBoxLogin.ResumeLayout(false);
-            this.groupBoxLogin.PerformLayout();
-            this.tab_main.ResumeLayout(false);
             this.groupBoxConfigManager.ResumeLayout(false);
             this.tab_heal.ResumeLayout(false);
             this.groupBoxGeneralInfo.ResumeLayout(false);
@@ -1361,21 +1267,10 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.Timer itemHealTimer;
         private System.Windows.Forms.Timer statusCheckTimer;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tab_account;
-        private System.Windows.Forms.TextBox password_input;
-        private System.Windows.Forms.TextBox username_input;
-        private System.Windows.Forms.Label label_password;
-        private System.Windows.Forms.Label label_username;
         private System.Windows.Forms.TabPage tab_main;
         private System.Windows.Forms.TabPage tab_heal;
         private System.Windows.Forms.TabPage tab_actions;
-        private System.Windows.Forms.Button login_button;
-        private System.Windows.Forms.Button buttonPurchase;
-        private System.Windows.Forms.Label label_daysLeft;
-        private System.Windows.Forms.Label label_accountStatus;
         private System.Windows.Forms.TabPage tab_support;
-        private System.Windows.Forms.Label label_accountStatusShow;
-        private System.Windows.Forms.Label label_daysLeftShow;
         private System.Windows.Forms.GroupBox groupBoxSpells;
         private System.Windows.Forms.GroupBox groupBoxRoutine;
         private System.Windows.Forms.GroupBox groupboxRings;
@@ -1400,7 +1295,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.ListBox listBoxSpellHealingActive;
         private System.Windows.Forms.Button buttonDownSpellHealing;
         private System.Windows.Forms.Button buttonUpSpellHealing;
-        private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.GroupBox groupBoxConditionHealer;
         private System.Windows.Forms.CheckBox checkBoxParalyze;
         private System.Windows.Forms.CheckBox checkBoxPoison;
@@ -1423,8 +1317,6 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.Button buttonUpItemHealing;
         private System.Windows.Forms.Button buttonRemoveSelectedItemHealing;
         private System.Windows.Forms.Label labelNewItemMp;
-        private System.Windows.Forms.GroupBox groupBoxAccountStatus;
-        private System.Windows.Forms.GroupBox groupBoxLogin;
         private System.Windows.Forms.GroupBox groupBoxManaWaster;
         private System.Windows.Forms.GroupBox groupBoxGeneralInfo;
         private System.Windows.Forms.Label label1;
@@ -1461,7 +1353,13 @@ namespace WindowsFormsApplication4
         private System.Windows.Forms.TextBox paralyzeHotkey;
         private System.Windows.Forms.ComboBox comboBoxItemName;
         private System.Windows.Forms.ComboBox comboBoxSpellName;
+        private System.Windows.Forms.GroupBox groupBoxAccountStatus;
         private System.Windows.Forms.Button buttonLogOut;
+        private System.Windows.Forms.Label label_daysLeftShow;
+        private System.Windows.Forms.Label label_accountStatusShow;
+        private System.Windows.Forms.Button buttonPurchase;
+        private System.Windows.Forms.Label label_daysLeft;
+        private System.Windows.Forms.Label label_accountStatus;
     }
 }
 

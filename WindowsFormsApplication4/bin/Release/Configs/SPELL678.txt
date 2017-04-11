@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ArrayOfSpell xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Spell>
+    <name>Exura Vita / Sio</name>
+    <hpPercent>550</hpPercent>
+    <mpPercent>160</mpPercent>
+    <hpPixel>639</hpPixel>
+    <mpPixel>1688</mpPixel>
+    <hpShow>58</hpShow>
+    <mpShow>3</mpShow>
+    <hotkey>VK_0</hotkey>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
+  </Spell>
+  <Spell>
+    <name>Exura Gran</name>
+    <hpPercent>680</hpPercent>
+    <mpPercent>70</mpPercent>
+    <hpPixel>742</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hpShow>72</hpShow>
+    <mpShow>1</mpShow>
+    <hotkey>VK_9</hotkey>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
+  </Spell>
+  <Spell>
+    <name>Exura</name>
+    <hpPercent>820</hpPercent>
+    <mpPercent>20</mpPercent>
+    <hpPixel>853</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hpShow>87</hpShow>
+    <mpShow>1</mpShow>
+    <hotkey>VK_8</hotkey>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
+  </Spell>
+</ArrayOfSpell>

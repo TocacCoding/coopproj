@@ -23,6 +23,10 @@ namespace WindowsFormsApplication4
         {
             InitializeComponent();
         }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             //Thread.Sleep(7000);
@@ -78,19 +82,6 @@ namespace WindowsFormsApplication4
         // --- /TIMERS ---
 
         // --- ACCOUNT TAB ---
-        private void login_button_Click(object sender, EventArgs e)
-        {
-            if (username_input.Text.ToString() == "admin@mail.com" && password_input.Text.ToString() == "pass")
-            {
-                MessageBox.Show("Welcome " + username_input.Text.ToString() + ".","Log In Success!");
-                this.groupBoxAccountStatus.Visible = true;
-                this.groupBoxLogin.Visible = false;
-            }
-            else
-            {
-                MessageBox.Show("Invalid USER/PASSWORD", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-        }
         private void buttonPurchase_Click(object sender, EventArgs e)
         {
             MessageBox.Show("sou o $$$$$ button!");
@@ -101,20 +92,20 @@ namespace WindowsFormsApplication4
         }
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            this.groupBoxAccountStatus.Visible = false;
-            this.groupBoxLogin.Visible = true;
-            MessageBox.Show("See you soon " + username_input.Text.ToString() + ".", "Log Out Sucess!");
+            this.Hide();
+            LoginForm fm = new LoginForm();
+            fm.Show();
         }
         // --- /ACCOUNT ---
 
         // --- MAIN TAB ---
         private void buttonSaveConfig_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("sou o save cfg!");
+            MessageBox.Show("not implemented - save ALL cfgs");
         }
         private void buttonLoadConfig_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("sou o load cfg!");
+            MessageBox.Show("not implemented - load ALL cfgs");
         }
         // --- /MAIN ---                
 
@@ -607,8 +598,8 @@ namespace WindowsFormsApplication4
                 itemHealingList = loadedItemList;
                 updateItemList();
                 // window manipulation hiding/showing stuff on menus
-                groupBoxSpellHealing.Visible = true;
-                groupBoxItemHealing.Visible = true;
+                groupBoxItemHealing.Enabled = true;
+                groupBoxSpellHealing.Enabled = true;
                 buttonLoadCfgHealer.Visible = false;
                 buttonSaveCfgHealer.Visible = true;
                 buttonApplyMaxValues.Visible = false;

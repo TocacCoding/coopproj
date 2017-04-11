@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ArrayOfItem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Item>
+    <name>UH Rune</name>
+    <hpPercent>680</hpPercent>
+    <mpPercent>1</mpPercent>
+    <hpPixel>742</hpPixel>
+    <mpPixel>1703</mpPixel>
+    <hotkey>OEM_4</hotkey>
+    <operatorHp>BELOW</operatorHp>
+    <operatorMp>BELOW</operatorMp>
+    <hpShow>72</hpShow>
+    <mpShow>1</mpShow>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
+  </Item>
+  <Item>
+    <name>Strong Mana</name>
+    <hpPercent>1</hpPercent>
+    <mpPercent>2000</mpPercent>
+    <hpPixel>217</hpPixel>
+    <mpPixel>1392</mpPixel>
+    <hotkey>VK_7</hotkey>
+    <operatorHp>OVER</operatorHp>
+    <operatorMp>BELOW</operatorMp>
+    <hpShow>1</hpShow>
+    <mpShow>43</mpShow>
+    <maxHp>935</maxHp>
+    <maxMp>4590</maxMp>
+  </Item>
+</ArrayOfItem>

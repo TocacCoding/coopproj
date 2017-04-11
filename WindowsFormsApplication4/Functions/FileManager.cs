@@ -67,6 +67,7 @@ namespace WindowsFormsApplication4.Functions
                     XmlSerializer xmlSerSpell = new XmlSerializer(typeof(List<Structs.Spell>));
                     xmlSerSpell.Serialize(streamSpell, spellHealingList);
                     streamSpell.Close();
+                    MessageBox.Show("CFG SAVED.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             // error messages first if fails
